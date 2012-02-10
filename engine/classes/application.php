@@ -15,9 +15,9 @@ class Application
     /**
      * Singleton instances
      * 
-     * @var  array
+     * @var  Application
      */
-    protected static $instance = array();
+    protected static $instance = null;
 
     /**
      * Application configuration
@@ -59,18 +59,15 @@ class Application
     /**
      * Returns singleton object
      * 
-     * @param   string       $application_name  Application name
      * @return  Application
      */
-    public static function instance($application_name = null)
+    public static function instance()
     {
-        $application_name = $application_name ?: APPLICATION_NAME;
-
-        if ( ! isset(self::$instance[$application_name]))
+        if ( ! isset(self::$instance))
         {
-            self::$instance[$application_name] = new Application($application_name);
+            self::$instance = new Application();
         }
-        return self::$instance[$application_name];
+        return self::$instance;
     }
 
     /**
@@ -115,4 +112,11 @@ class Application
         return $response;
     }
 
+    /**
+     * Process default request and renders response
+     */
+    public function run()
+    {
+        echo $this->process()->render();
+    }
 }
