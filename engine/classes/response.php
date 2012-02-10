@@ -52,5 +52,5 @@ class Response
 
         return $output;
     }
-    
+
 }

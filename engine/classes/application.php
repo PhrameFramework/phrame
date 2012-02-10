@@ -13,43 +13,25 @@
 class Application
 {
     /**
-     * Singleton instance
+     * Singleton instances
      * 
-     * @var  Application
+     * @var  array
      */
-    protected static $instance = null;
+    protected static $instance = array();
 
     /**
      * Application configuration
      * 
-     * @var  array
+     * @var  Config
      */
     protected $config = null;
 
     /**
-     * Request to process
-     * 
-     * @var  Request
-     */
-    protected $request = null;
-
-    /**
-     * Response to return
-     * 
-     * @var  Response
-     */
-    protected $response = null;
-
-    /**
      * Application constructor (protected)
-     * 
-     * @param  Request  $request  Request object
      */
-    protected function __construct($request = null)
+    protected function __construct()
     {
         $this->config = new Config();
-
-        $this->request = $request ?: new Request();
 
         // Error reporting
         error_reporting($this->config->error_reporting);
@@ -57,18 +39,18 @@ class Application
 
         // set base_url
         $base_url = '';
-        if($this->request->server('http_host'))
+        if ($_SERVER['HTTP_HOST'])
         {
             $base_url .= 'http';
-            if (($this->request->server('HTTPS') !== null and $this->request->server('HTTPS') != 'off') or ($this->request->server('HTTPS') === null and $this->request->server('SERVER_PORT') == 443))
+            if ((isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'] != 'off') or ( ! isset($_SERVER['HTTPS']) and $_SERVER['SERVER_PORT'] == 443))
             {
                 $base_url .= 's';
             }
-            $base_url .= '://'.$this->request->server('http_host');
+            $base_url .= '://'.$_SERVER['HTTP_HOST'];
         }
-        if ($this->request->server('script_name'))
+        if ($_SERVER['SCRIPT_NAME'])
         {
-            $base_url .= str_replace('\\', '/', dirname($this->request->server('script_name')));
+            $base_url .= str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
             $base_url = rtrim($base_url, '/');
         }
         $this->config->base_url = $base_url;
@@ -77,15 +59,18 @@ class Application
     /**
      * Returns singleton object
      * 
+     * @param   string       $application_name  Application name
      * @return  Application
      */
-    public static function instance()
+    public static function instance($application_name = null)
     {
-        if ( ! isset(self::$instance))
+        $application_name = $application_name ?: APPLICATION_NAME;
+
+        if ( ! isset(self::$instance[$application_name]))
         {
-            self::$instance = new Application();
+            self::$instance[$application_name] = new Application($application_name);
         }
-        return self::$instance;
+        return self::$instance[$application_name];
     }
 
     /**
@@ -117,12 +102,17 @@ class Application
 
     /**
      * Process request
+     * 
+     * @param   Request   $request   Request to process
+     * @return  Response
      */
-    public function run()
+    public function process($request = null)
     {
-        $this->response = new Response($this->request);
+        $request = $request ?: new Request();
 
-        echo $this->response->render();
+        $response = new Response($request);
+
+        return $response;
     }
 
 }

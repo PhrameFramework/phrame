@@ -50,4 +50,4 @@ require_once APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/bootstrap.php';
 /**
  * Run application
  */
-Application::instance()->run();
+echo Application::instance()->process()->render();
