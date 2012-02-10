@@ -61,4 +61,5 @@ class Route
         Application::instance()->controller  = $this->controller;
         Application::instance()->action      = $this->action;
     }
+    
 }

@@ -27,8 +27,12 @@ class Controller
         $this->template = new View('template');
     }
 
+    /**
+     * Page-not-found handler
+     */
     public function page_not_found()
     {
         $this->template->content = '404';
     }
+    
 }

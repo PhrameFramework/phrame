@@ -43,7 +43,7 @@ class Application
     /**
      * Application constructor (protected)
      * 
-     * @param   Request  $request  Request object
+     * @param  Request  $request  Request object
      */
     protected function __construct($request = null)
     {
@@ -108,7 +108,7 @@ class Application
      * Sets application configuration option
      * 
      * @param   string  $name   Option name
-     * @param   string  $value  Option value
+     * @param   mixed   $value  Option value
      */
     public function __set($name, $value)
     {

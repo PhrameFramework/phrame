@@ -29,7 +29,7 @@ class View
     /**
      * Creates View object
      * 
-     * @param   string  $view_name  View name
+     * @param  string  $view_name  View name
      */
     public function __construct($view_name, $data = array())
     {
@@ -74,4 +74,5 @@ class View
     {
         return $this->render();
     }
+
 }

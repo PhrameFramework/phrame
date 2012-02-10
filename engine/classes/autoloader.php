@@ -32,4 +32,5 @@ class Autoloader
             require_once APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/classes/model/'.strtolower($class_name).'.php';
         }
     }
+    
 }
