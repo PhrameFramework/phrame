@@ -33,12 +33,12 @@ define('PUBLIC_PATH', __DIR__);
 /**
  * Application to run
  */
-define('APPLICATION_NAME', getenv('APPLICATION_NAME') ? getenv('APPLICATION_NAME') : 'default');
+define('APPLICATION_NAME', getenv('APPLICATION_NAME') ?: 'default');
 
 /**
  * Application environment
  */
-define('APPLICATION_ENV', getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'development');
+define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 
 /**
  * Booting

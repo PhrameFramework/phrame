@@ -49,7 +49,7 @@ class Application
     {
         $this->config = new Config();
 
-        $this->request = isset($request) ? $request : new Request();
+        $this->request = $request ?: new Request();
 
         // Error reporting
         error_reporting($this->config->error_reporting);
