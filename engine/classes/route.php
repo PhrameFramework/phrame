@@ -40,7 +40,7 @@ class Route
      */
     public function __construct($request)
     {
-        $path_info = explode('/', trim($request->server('path_info'), '/'));
+        $path_info = explode('/', trim($request->server('request_uri'), '/'));
 
         $this->controller  =  ! empty($path_info[0]) ? $path_info[0] : Application::instance()->default_controller;
         $this->action      =  ! empty($path_info[1]) ? $path_info[1] : 'index';
@@ -61,5 +61,5 @@ class Route
         Application::instance()->controller  = $this->controller;
         Application::instance()->action      = $this->action;
     }
-    
+
 }
