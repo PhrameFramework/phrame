@@ -36,24 +36,6 @@ class Application
         // Error reporting
         error_reporting($this->config->error_reporting);
         ini_set('display_errors', $this->config->display_errors);
-
-        // set base_url
-        $base_url = '';
-        if ($_SERVER['HTTP_HOST'])
-        {
-            $base_url .= 'http';
-            if ((isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'] != 'off') or ( ! isset($_SERVER['HTTPS']) and $_SERVER['SERVER_PORT'] == 443))
-            {
-                $base_url .= 's';
-            }
-            $base_url .= '://'.$_SERVER['HTTP_HOST'];
-        }
-        if ($_SERVER['SCRIPT_NAME'])
-        {
-            $base_url .= str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
-            $base_url = rtrim($base_url, '/');
-        }
-        $this->config->base_url = $base_url;
     }
 
     /**

@@ -24,8 +24,29 @@ class Config
      */
     public function __construct()
     {
-        $this->config = include APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/config/config.php';
+        // set base_url
+        $base_url = '';
+        if ($_SERVER['HTTP_HOST'])
+        {
+            $base_url .= 'http';
+            if ((isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'] != 'off') or ( ! isset($_SERVER['HTTPS']) and $_SERVER['SERVER_PORT'] == 443))
+            {
+                $base_url .= 's';
+            }
+            $base_url .= '://'.$_SERVER['HTTP_HOST'];
+        }
+        if ($_SERVER['SCRIPT_NAME'])
+        {
+            $base_url .= str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+            $base_url = rtrim($base_url, '/');
+        }
+        $this->config['base_url'] = $base_url;
 
+        // Process config files
+        if (is_file(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/config/config.php'))
+        {
+            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/config/config.php');
+        }
         if (is_file(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/config/'.APPLICATION_ENV.'/config.php'))
         {
             $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/config/'.APPLICATION_ENV.'/config.php');
