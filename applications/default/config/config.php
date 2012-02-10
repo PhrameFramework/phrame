@@ -18,4 +18,9 @@ return array(
      */
     'default_controller'  => 'home',
 
+    /**
+     * Application language
+     */
+    'language'            => 'ru',
+
 );
