@@ -36,7 +36,7 @@
             </div>
             <footer>
                 <p class="pull-left">&copy; 2012, Phramework</p>
-                <p class="pull-right">See us on <a href="https://github.com/delmot/phramework">github</a></p>
+                <p class="pull-right">Watch us on <a href="https://github.com/delmot/phramework">github</a></p>
             </footer>
         </div>
     </body>
