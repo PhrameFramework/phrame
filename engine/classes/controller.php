@@ -29,10 +29,13 @@ class Controller
 
     /**
      * Page-not-found handler
+     *
+     * @param string $method
+     * @param array $parameters
      */
-    public function page_not_found()
+    public function __call($method, $parameters)
     {
         $this->template->content = '404';
     }
-    
+
 }
