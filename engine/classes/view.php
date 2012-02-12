@@ -30,6 +30,7 @@ class View
      * Creates View object
      * 
      * @param  string  $view_name  View name
+     * @param  array   $data       Data for view
      */
     public function __construct($view_name, $data = array())
     {
