@@ -21,8 +21,10 @@ class Config
 
     /**
      * Constructs Config object
+     *
+     * @param  string  $application_name  Application name
      */
-    public function __construct()
+    public function __construct($application_name = null)
     {
         // set base_url
         $base_url = '';
@@ -42,14 +44,16 @@ class Config
         }
         $this->config['base_url'] = $base_url;
 
+	    $application_name = $application_name ?: APPLICATION_NAME;
+
         // Process config files
-        if (is_file(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/config/config.php'))
+        if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/config.php'))
         {
-            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/config/config.php');
+            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$application_name.'/config/config.php');
         }
-        if (is_file(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/config/'.APPLICATION_ENV.'/config.php'))
+        if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/'.APPLICATION_ENV.'/config.php'))
         {
-            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/config/'.APPLICATION_ENV.'/config.php');
+            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$application_name.'/config/'.APPLICATION_ENV.'/config.php');
         }
 
         //TODO: process other files

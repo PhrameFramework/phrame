@@ -15,9 +15,9 @@ class Application
     /**
      * Singleton instances
      * 
-     * @var  Application
+     * @var  array
      */
-    protected static $instance = null;
+    protected static $instance = array();
 
     /**
      * Application configuration
@@ -28,10 +28,14 @@ class Application
 
     /**
      * Application constructor (protected)
+     *
+     * @param  string  $application_name  Application name
      */
-    protected function __construct()
+    protected function __construct($application_name = null)
     {
-        $this->config = new Config();
+	    $application_name = $application_name ?: APPLICATION_NAME;
+
+        $this->config = new Config($application_name);
 
         // Error reporting
         error_reporting($this->config->error_reporting);
@@ -40,16 +44,19 @@ class Application
 
     /**
      * Returns singleton object
-     * 
+     *
+     * @param   string  $application_name  Application name
      * @return  Application
      */
-    public static function instance()
+    public static function instance($application_name = null)
     {
-        if ( ! isset(self::$instance))
+	    $application_name = $application_name ?: APPLICATION_NAME;
+
+        if ( ! isset(self::$instance[$application_name]))
         {
-            self::$instance = new Application();
+            self::$instance[$application_name] = new Application($application_name);
         }
-        return self::$instance;
+        return self::$instance[$application_name];
     }
 
     /**
