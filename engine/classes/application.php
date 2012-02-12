@@ -33,7 +33,7 @@ class Application
      */
     protected function __construct($application_name = null)
     {
-	    $application_name = $application_name ?: APPLICATION_NAME;
+        $application_name = $application_name ?: APPLICATION_NAME;
 
         $this->config = new Config($application_name);
 
@@ -50,7 +50,7 @@ class Application
      */
     public static function instance($application_name = null)
     {
-	    $application_name = $application_name ?: APPLICATION_NAME;
+        $application_name = $application_name ?: APPLICATION_NAME;
 
         if ( ! isset(self::$instance[$application_name]))
         {

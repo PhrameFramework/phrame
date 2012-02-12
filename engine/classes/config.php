@@ -44,7 +44,7 @@ class Config
         }
         $this->config['base_url'] = $base_url;
 
-	    $application_name = $application_name ?: APPLICATION_NAME;
+        $application_name = $application_name ?: APPLICATION_NAME;
 
         // Process config files
         if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/config.php'))
