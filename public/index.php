@@ -33,7 +33,7 @@ define('PUBLIC_PATH', __DIR__);
 /**
  * Application to run
  */
-define('APPLICATION_NAME', getenv('APPLICATION_NAME') ?: 'default');
+define('APPLICATION_NAME', getenv('APPLICATION_NAME') ?: 'main');
 
 /**
  * Application environment
@@ -50,4 +50,4 @@ require_once APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/bootstrap.php';
 /**
  * Run application
  */
-Application::instance()->run();
+Engine\Application::instance()->run();

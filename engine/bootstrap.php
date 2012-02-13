@@ -12,4 +12,4 @@
 
 require_once ENGINE_PATH.'/classes/autoloader.php';
 
-spl_autoload_register(array('Autoloader', 'load'));
+spl_autoload_register('Engine\\Autoloader::load');

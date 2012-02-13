@@ -10,6 +10,8 @@
  * @link       http://phramework.itworks.in.ua/
  */
 
+namespace Engine;
+
 class Response
 {
     /**
@@ -38,7 +40,7 @@ class Response
     {
         $route = new Route($this->request);
 
-        $controller_name  = ucfirst($route->controller);
+        $controller_name  = 'Main\\Controller_'.ucfirst($route->controller);
         $controller       = new $controller_name();
         $action           = $route->action;
         $parameters       = $route->parameters;

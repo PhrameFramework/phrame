@@ -10,6 +10,8 @@
  * @link       http://phramework.itworks.in.ua/
  */
 
+namespace Engine;
+
 class Controller
 {
     /**

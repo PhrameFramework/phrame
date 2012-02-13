@@ -10,6 +10,8 @@
  * @link       http://phramework.itworks.in.ua/
  */
 
+namespace Engine;
+
 class Autoloader
 {
     /**
@@ -19,17 +21,23 @@ class Autoloader
      */
     public static function load($class_name)
     {
-        if (is_file(ENGINE_PATH.'/classes/'.strtolower($class_name).'.php'))
+        $namespace = 'Engine';
+        $file_name = $class_name;
+
+        if (strripos($class_name, '\\') !== false)
         {
-            require_once ENGINE_PATH.'/classes/'.strtolower($class_name).'.php';
+            list($namespace, $file_name) = explode('\\', $class_name);
         }
-        elseif (is_file(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/classes/controller/'.strtolower($class_name).'.php'))
+
+        $file_name = str_replace('_', '/', strtolower($file_name)).'.php';
+
+        if ($namespace === 'Engine' and is_file(ENGINE_PATH.'/classes/'.$file_name))
         {
-            require_once APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/classes/controller/'.strtolower($class_name).'.php';
+            require_once ENGINE_PATH.'/classes/'.$file_name;
         }
-        elseif (is_file(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/classes/model/'.strtolower($class_name).'.php'))
+        elseif (is_file(APPLICATIONS_PATH.'/'.strtolower($namespace).'/classes/'.$file_name))
         {
-            require_once APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/classes/model/'.strtolower($class_name).'.php';
+            require_once APPLICATIONS_PATH.'/'.strtolower($namespace).'/classes/'.$file_name;
         }
     }
     

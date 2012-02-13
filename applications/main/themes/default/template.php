@@ -6,24 +6,24 @@
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <?php echo Asset::css('bootstrap.css'); ?>
-        <?php echo Asset::css('style.css'); ?>
+        <?php echo Engine\Asset::css('bootstrap.css'); ?>
+        <?php echo Engine\Asset::css('style.css'); ?>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="<?php echo Application::instance()->base_url; ?>">Phramework</a>
+                    <a class="brand" href="<?php echo Engine\Application::instance()->base_url; ?>">Phramework</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li <?php if(Application::instance()->controller === 'home') echo 'class="active"'; ?>>
-                                <a href="<?php echo Application::instance()->base_url; ?>">Home</a>
+                            <li <?php if(Engine\Application::instance()->controller === 'home') echo 'class="active"'; ?>>
+                                <a href="<?php echo Engine\Application::instance()->base_url; ?>">Home</a>
                             </li>
-                            <li <?php if(Application::instance()->controller === 'about') echo 'class="active"'; ?>>
-                                <a href="<?php echo Application::instance()->base_url; ?>/about">About</a>
+                            <li <?php if(Engine\Application::instance()->controller === 'about') echo 'class="active"'; ?>>
+                                <a href="<?php echo Engine\Application::instance()->base_url; ?>/about">About</a>
                             </li>
-                            <li <?php if(Application::instance()->controller === 'documentation') echo 'class="active"'; ?>>
-                                <a href="<?php echo Application::instance()->base_url; ?>/documentation">Documentation</a>
+                            <li <?php if(Engine\Application::instance()->controller === 'documentation') echo 'class="active"'; ?>>
+                                <a href="<?php echo Engine\Application::instance()->base_url; ?>/documentation">Documentation</a>
                             </li>
                         </ul>
                     </div>
