@@ -1,13 +1,13 @@
 <?php
 /**
- * Part of the Phramework.
+ * Part of the Phrame
  *
- * @package    Phramework
+ * @package    Phrame
  * @version    0
- * @author     Phramework Development Team
+ * @author     Phrame Development Team
  * @license    MIT License
- * @copyright  2012 Phramework Development Team
- * @link       http://phramework.itworks.in.ua/
+ * @copyright  2012 Phrame Development Team
+ * @link       http://phrame.itworks.in.ua/
  */
 
 namespace Engine;

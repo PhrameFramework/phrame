@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Phramework</title>
+        <title>Phrame</title>
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -35,7 +35,7 @@
                 <?php echo $content; ?>
             </div>
             <footer>
-                <p class="pull-left">&copy; 2012, Phramework</p>
+                <p class="pull-left">&copy; 2012, Phrame</p>
                 <p class="pull-right">Watch us on <a href="https://github.com/delmot/phrame">github</a></p>
             </footer>
         </div>
