@@ -15,6 +15,13 @@ namespace Engine;
 class Controller
 {
     /**
+     * Application name
+     * 
+     * @var  string
+     */
+    protected $application_name;
+
+    /**
      * Template view object
      * 
      * @var  View
@@ -24,9 +31,9 @@ class Controller
     /**
      * Constructs Controller object
      */
-    public function __construct()
+    public function __construct($application_name = null)
     {
-        $this->template = new View('template');
+        $this->application_name = $application_name ?: APPLICATION_NAME;
     }
 
     /**

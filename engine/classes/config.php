@@ -49,6 +49,14 @@ class Config
         $application_name = $application_name ?: APPLICATION_NAME;
 
         // Process config files
+        if (is_file(ENGINE_PATH.'/config/config.php'))
+        {
+            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/config.php');
+        }
+        if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'config.php'))
+        {
+            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'config.php');
+        }
         if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/config.php'))
         {
             $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$application_name.'/config/config.php');

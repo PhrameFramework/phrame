@@ -47,16 +47,19 @@ class Response
      */
     public function render()
     {
-        $route = new Route($this->request);
+        $route = new Route($this->request, $this->application_name);
 
         $controller_name  = ucfirst($this->application_name).'\\Controller_'.ucfirst($route->controller);
-        $controller       = new $controller_name();
+        $controller       = new $controller_name($this->application_name);
         $action           = $route->action;
         $parameters       = $route->parameters;
 
         ob_start();
+        if ( ! isset($controller->template))
+        {
+            $controller->template = new View('template', array(), $this->application_name);
+        }
         call_user_func(array($controller, $action), $parameters);
-        $controller->$action($parameters);
         echo $controller->template->render();
         $output = ob_get_contents();
         ob_end_clean();

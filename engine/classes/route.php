@@ -36,32 +36,48 @@ class Route
     public $parameters;
 
     /**
+     * Application name
+     * 
+     * @var  string
+     */
+    protected $application_name;
+
+    /**
      * Creates Route object
      * 
-     * @param   Request  $request  Request object
+     * @param   Request  $request           Request object
+     * @param   string   $application_name  Application name
      */
-    public function __construct($request)
+    public function __construct($request, $application_name = null)
     {
-        $path_info = explode('/', trim($request->server('request_uri'), '/'));
+        $this->application_name = $application_name ?: APPLICATION_NAME;
 
-        $this->controller  =  ! empty($path_info[0]) ? $path_info[0] : Application::instance()->default_controller;
+        $path_info = array();
+
+        // Process request_uri if default application is called
+        if ($this->application_name === APPLICATION_NAME)
+        {
+            $path_info = explode('/', trim($request->server('request_uri'), '/'));
+        }
+
+        $this->controller  =  ! empty($path_info[0]) ? $path_info[0] : Application::instance($this->application_name)->default_controller;
         $this->action      =  ! empty($path_info[1]) ? $path_info[1] : 'index';
 
         //TODO: process config/routes.php
 
-        $routable = is_file(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/classes/controller/'.strtolower($this->controller).'.php');
+        $routable = is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/classes/controller/'.strtolower($this->controller).'.php');
 
         if ( ! $routable)
         {
-            $this->controller  = Application::instance()->default_controller;
+            $this->controller  = Application::instance($this->application_name)->default_controller;
             $this->action      = 'page_not_found';
         }
 
         $this->controller  = strtolower($this->controller);
         $this->action      = strtolower($this->action);
 
-        Application::instance()->controller  = $this->controller;
-        Application::instance()->action      = $this->action;
+        Application::instance($this->application_name)->controller  = $this->controller;
+        Application::instance($this->application_name)->action      = $this->action;
     }
 
 }

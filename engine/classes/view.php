@@ -29,15 +29,23 @@ class View
     protected $data = array();
 
     /**
+     * Application name
+     * 
+     * @var  string
+     */
+    protected $application_name;
+
+    /**
      * Creates View object
      * 
      * @param  string  $view_name  View name
      * @param  array   $data       Data for view
      */
-    public function __construct($view_name, $data = array())
+    public function __construct($view_name, $data = array(), $application_name = null)
     {
-        $this->view_name  = $view_name;
-        $this->data       = $data;
+        $this->view_name         = $view_name;
+        $this->data              = $data;
+        $this->application_name  = $application_name ?: APPLICATION_NAME;
     }
 
     /**
@@ -54,6 +62,7 @@ class View
     /**
      * Renders view
      * 
+     * @param   string  $application_name  Application name
      * @return  string
      */
     public function render()
@@ -61,7 +70,10 @@ class View
         extract($this->data, EXTR_REFS);
 
         ob_start();
-        include APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/themes/'.Application::instance()->theme.'/'.$this->view_name.'.php';
+        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/themes/'.Application::instance($this->application_name)->theme.'/'.$this->view_name.'.php'))
+        {
+            include APPLICATIONS_PATH.'/'.$this->application_name.'/themes/'.Application::instance($this->application_name)->theme.'/'.$this->view_name.'.php';
+        }
         $output = ob_get_contents();
         ob_end_clean();
 
