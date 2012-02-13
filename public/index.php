@@ -44,8 +44,6 @@ define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
  * Booting
  */
 require_once ENGINE_PATH.'/bootstrap.php';
-require_once APPLICATIONS_PATH.'/bootstrap.php';
-require_once APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/bootstrap.php';
 
 /**
  * Run application
