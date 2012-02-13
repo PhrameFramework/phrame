@@ -31,7 +31,8 @@ class Response
     /**
      * Constructs Response object
      * 
-     * @param  Request  $request  Request object
+     * @param  Request  $request           Request object
+     * @param  string   $application_name  Application name
      */
     public function __construct($request, $application_name = null)
     {
