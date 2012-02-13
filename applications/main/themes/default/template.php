@@ -13,7 +13,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="<?php echo Engine\Application::instance()->base_url; ?>">Phramework</a>
+                    <a class="brand" href="<?php echo Engine\Application::instance()->base_url; ?>">Phrame</a>
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li <?php if(Engine\Application::instance()->controller === 'home') echo 'class="active"'; ?>>
