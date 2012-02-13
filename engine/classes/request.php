@@ -49,11 +49,17 @@ class Request
     /**
      * Returns server parameter
      * 
-     * @param   string  $name  Parameter name
+     * @param   string  $name   Parameter name
+     * @param   mixed   $value  New value
      * @return  string
      */
-    public function server($name)
+    public function server($name, $value = null)
     {
+        if (isset($value))
+        {
+            $this->server[strtoupper($name)] = $value;
+        }
+
         return isset($this->server[strtoupper($name)]) ? $this->server[strtoupper($name)] : null;
     }
 
@@ -61,10 +67,16 @@ class Request
      * Returns get parameter
      * 
      * @param   string  $name  Parameter name
+     * @param   mixed   $value  New value
      * @return  string
      */
-    public function get($name)
+    public function get($name, $value = null)
     {
+        if (isset($value))
+        {
+            $this->get[strtoupper($name)] = $value;
+        }
+
         return isset($this->get[$name]) ? $this->get[$name] : null;
     }
 
@@ -72,10 +84,16 @@ class Request
      * Returns post parameter
      * 
      * @param   string  $name  Parameter name
+     * @param   mixed   $value  New value
      * @return  string
      */
-    public function post($name)
+    public function post($name, $value = null)
     {
+        if (isset($value))
+        {
+            $this->post[strtoupper($name)] = $value;
+        }
+
         return isset($this->post[$name]) ? $this->post[$name] : null;
     }
     

@@ -22,13 +22,22 @@ class Response
     protected $request = null;
 
     /**
+     * Application name
+     * 
+     * @var  string
+     */
+    protected $application_name = null;
+
+    /**
      * Constructs Response object
      * 
      * @param  Request  $request  Request object
      */
-    public function __construct($request)
+    public function __construct($request, $application_name = null)
     {
         $this->request = $request;
+
+        $this->application_name = $application_name ?: APPLICATION_NAME;
     }
 
     /**
@@ -40,7 +49,7 @@ class Response
     {
         $route = new Route($this->request);
 
-        $controller_name  = 'Main\\Controller_'.ucfirst($route->controller);
+        $controller_name  = ucfirst($this->application_name).'\\Controller_'.ucfirst($route->controller);
         $controller       = new $controller_name();
         $action           = $route->action;
         $parameters       = $route->parameters;

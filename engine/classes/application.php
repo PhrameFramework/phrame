@@ -22,6 +22,13 @@ class Application
     protected static $instance = array();
 
     /**
+     * Application name
+     * 
+     * @var  string
+     */
+    protected $application_name;
+
+    /**
      * Application configuration
      * 
      * @var  Config
@@ -35,9 +42,9 @@ class Application
      */
     protected function __construct($application_name = null)
     {
-        $application_name = $application_name ?: APPLICATION_NAME;
+        $this->application_name = $application_name ?: APPLICATION_NAME;
 
-        $this->config = new Config($application_name);
+        $this->config = new Config($this->application_name);
 
         // Error reporting
         error_reporting($this->config->error_reporting);
@@ -98,7 +105,7 @@ class Application
     {
         $request = $request ?: new Request();
 
-        $response = new Response($request);
+        $response = new Response($request, $this->application_name);
 
         return $response;
     }
