@@ -47,8 +47,11 @@ class Application
         $this->config = new Config($this->application_name);
 
         // Error reporting
-        error_reporting($this->config->error_reporting);
-        ini_set('display_errors', $this->config->display_errors);
+        if ($this->application_name === APPLICATION_NAME)
+        {
+            error_reporting($this->config->error_reporting);
+            ini_set('display_errors', $this->config->display_errors);
+        }
     }
 
     /**
