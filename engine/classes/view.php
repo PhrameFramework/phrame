@@ -62,7 +62,6 @@ class View
     /**
      * Renders view
      * 
-     * @param   string  $application_name  Application name
      * @return  string
      */
     public function render()
