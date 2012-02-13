@@ -74,7 +74,7 @@ class Request
     {
         if (isset($value))
         {
-            $this->get[strtoupper($name)] = $value;
+            $this->get[$name] = $value;
         }
 
         return isset($this->get[$name]) ? $this->get[$name] : null;
@@ -91,7 +91,7 @@ class Request
     {
         if (isset($value))
         {
-            $this->post[strtoupper($name)] = $value;
+            $this->post[$name] = $value;
         }
 
         return isset($this->post[$name]) ? $this->post[$name] : null;
