@@ -21,7 +21,7 @@ function activerecord_load($application_name)
         $cfg->set_model_directory(APPLICATIONS_PATH.'/'.$application_name.'/classes/model');
         $cfg->set_connections(
             array(
-                'connection' => $config['connection']
+                'development' => $config['connection']
             )
         );
     }

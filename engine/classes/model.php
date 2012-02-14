@@ -11,3 +11,8 @@
  */
 
 namespace Engine;
+
+class Model extends \ActiveRecord\Model
+{
+
+}
