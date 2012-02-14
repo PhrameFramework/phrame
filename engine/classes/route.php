@@ -97,7 +97,7 @@ class Route
         if ( ! $routable)
         {
             $this->controller  = Application::instance($this->application_name)->default_controller;
-            $this->action      = 'page_not_found';
+            $this->action      = '';
         }
 
         $this->controller  = strtolower($this->controller);
