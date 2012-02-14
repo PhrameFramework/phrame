@@ -6,6 +6,14 @@ function activerecord_load($application_name)
 
     $config = array();
 
+    if (is_file(ENGINE_PATH.'/config/db.php'))
+    {
+        $config = array_merge($config, include ENGINE_PATH.'/config/db.php');
+    }
+    if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'/db.php'))
+    {
+        $config = array_merge($config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'/db.php');
+    }
     if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/db.php'))
     {
         $config = array_merge($config, include APPLICATIONS_PATH.'/'.$application_name.'/config/db.php');
