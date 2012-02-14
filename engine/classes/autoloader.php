@@ -21,7 +21,7 @@ class Autoloader
      */
     public static function load($class_name)
     {
-        $namespace = 'Engine';
+        $namespace = __NAMESPACE__;
         $file_name = $class_name;
 
         if (strripos($class_name, '\\') !== false)
@@ -31,7 +31,7 @@ class Autoloader
 
         $file_name = str_replace('_', '/', strtolower($file_name)).'.php';
 
-        if ($namespace === 'Engine' and is_file(ENGINE_PATH.'/classes/'.$file_name))
+        if ($namespace === __NAMESPACE__ and is_file(ENGINE_PATH.'/classes/'.$file_name))
         {
             require_once ENGINE_PATH.'/classes/'.$file_name;
         }
