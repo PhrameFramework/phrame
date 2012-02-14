@@ -23,7 +23,7 @@
                                 <a href="<?php echo Engine\Application::instance()->base_url; ?>/about">About</a>
                             </li>
                             <li <?php if(Engine\Application::instance()->controller === 'documentation') echo 'class="active"'; ?>>
-                                <a href="<?php echo Engine\Application::instance()->base_url; ?>/documentation">Documentation</a>
+                                <a href="<?php echo Engine\Application::instance()->base_url; ?>/docs">Documentation</a>
                             </li>
                         </ul>
                     </div>
