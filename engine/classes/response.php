@@ -50,7 +50,11 @@ class Response
     {
         $route = new Route($this->request, $this->application_name);
 
-        $controller_name  = ucfirst($this->application_name).'\\Controller_'.ucfirst($route->controller);
+        $controller_name  = ucfirst($this->application_name).'\\Controller\\'.ucfirst($route->controller);
+        if ( ! class_exists($controller_name))
+        {
+            $controller_name  = str_replace('Controller\\', 'Controller_', $controller_name);
+        }
         $controller       = new $controller_name($this->application_name);
         $action           = $route->action;
         $parameters       = $route->parameters;

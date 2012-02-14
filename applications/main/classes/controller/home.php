@@ -1,10 +1,10 @@
 <?php
 
-namespace Main;
+namespace Main\Controller;
 
 use Engine;
 
-class Controller_Home extends Engine\Controller
+class Home extends Engine\Controller
 {
     public function index($name = 'World')
     {

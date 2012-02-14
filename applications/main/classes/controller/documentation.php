@@ -1,10 +1,10 @@
 <?php
 
-namespace Main;
+namespace Main\Controller;
 
 use Engine;
 
-class Controller_Documentation extends Engine\Controller
+class Documentation extends Engine\Controller
 {
     public function index()
     {

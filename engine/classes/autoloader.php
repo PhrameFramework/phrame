@@ -26,7 +26,14 @@ class Autoloader
 
         if (strripos($class_name, '\\') !== false)
         {
-            list($namespace, $file_name) = explode('\\', $class_name);
+            $path = explode('\\', $class_name);
+            $file_name = array_pop($path);
+            $namespace = array_shift($path);
+
+            if ( ! empty($path))
+            {
+                $file_name = implode('/', $path).'/'.$file_name;
+            }
         }
 
         $file_name = str_replace('_', '/', strtolower($file_name)).'.php';
