@@ -10,6 +10,6 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-require_once ENGINE_PATH.'/classes/autoloader.php';
+require_once 'autoloader.php';
 
 spl_autoload_register('Engine\\Autoloader::load');

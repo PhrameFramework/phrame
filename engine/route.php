@@ -92,7 +92,7 @@ class Route
         unset($path_info[1]);
         $this->parameters  = $path_info;
 
-        $routable = is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/classes/controller/'.strtolower($this->controller).'.php');
+        $routable = is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/controllers/'.strtolower($this->controller).'.php');
 
         if ( ! $routable)
         {
