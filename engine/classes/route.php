@@ -36,6 +36,13 @@ class Route
     public $parameters;
 
     /**
+     * Routes
+     * 
+     * @var  array
+     */
+    protected $routes = array();
+
+    /**
      * Application name
      * 
      * @var  string
@@ -52,22 +59,38 @@ class Route
     {
         $this->application_name = $application_name ?: APPLICATION_NAME;
 
-        $path_info = array();
-
         // Process request_uri if default application is called
-        if ($this->application_name === APPLICATION_NAME)
+        $request_uri = $this->application_name === APPLICATION_NAME ? trim($request->server('request_uri'), '/') : '';
+
+        // Process config/routes.php
+        if (is_file(ENGINE_PATH.'/config/routes.php'))
         {
-            $path_info = explode('/', trim($request->server('request_uri'), '/'));
+            $this->routes = array_merge($this->routes, include ENGINE_PATH.'/config/routes.php');
         }
+        if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'routes.php'))
+        {
+            $this->routes = array_merge($this->routes, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'routes.php');
+        }
+        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/routes.php'))
+        {
+            $this->routes = array_merge($this->routes, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/routes.php');
+        }
+        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/routes.php'))
+        {
+            $this->routes = array_merge($this->routes, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/routes.php');
+        }
+
+        //TODO: use regexp to choose the appropriate route
+        isset($this->routes[$request_uri]) and $request_uri = $this->routes[$request_uri];
+
+        $path_info = explode('/', $request_uri);
 
         $this->controller  = ! empty($path_info[0]) ? $path_info[0] : Application::instance($this->application_name)->default_controller;
         $this->action      = ! empty($path_info[1]) ? $path_info[1] : 'index';
-        
+
         unset($path_info[0]);
         unset($path_info[1]);
         $this->parameters  = $path_info;
-
-        //TODO: process config/routes.php
 
         $routable = is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/classes/controller/'.strtolower($this->controller).'.php');
 
