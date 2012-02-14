@@ -14,11 +14,6 @@ return array(
     'theme'               => 'default',
 
     /**
-     * Default controller
-     */
-    'default_controller'  => 'home',
-
-    /**
      * Application language
      */
     'language'            => 'ru',

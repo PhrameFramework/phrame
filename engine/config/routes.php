@@ -11,8 +11,8 @@ return array(
      * Routes
      */
     'routes' => array(
-        'docs' => 'documentation',
-        
+        //'docs' => 'documentation',
+
     ),
     
 );

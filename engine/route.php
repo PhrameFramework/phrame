@@ -81,11 +81,11 @@ class Route
         }
 
         //TODO: use regexp to choose the appropriate route
-        isset($this->routes[$request_uri]) and $request_uri = $this->routes[$request_uri];
+        isset($this->routes['routes'][$request_uri]) and $request_uri = $this->routes['routes'][$request_uri];
 
         $path_info = explode('/', $request_uri);
 
-        $this->controller  = ! empty($path_info[0]) ? $path_info[0] : Application::instance($this->application_name)->default_controller;
+        $this->controller  = ! empty($path_info[0]) ? $path_info[0] : $this->routes['default_controller'];
         $this->action      = ! empty($path_info[1]) ? $path_info[1] : 'index';
 
         unset($path_info[0]);
