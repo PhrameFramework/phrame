@@ -52,6 +52,13 @@ class Application
             error_reporting($this->config->error_reporting);
             ini_set('display_errors', $this->config->display_errors);
         }
+
+        // Load extensions
+        foreach ($this->config->extensions as $extension)
+        {
+            include_once EXTENSIONS_PATH.'/'.$extension.'/bootstrap.php';
+            call_user_func($extension.'_load', $this->application_name);
+        }
     }
 
     /**

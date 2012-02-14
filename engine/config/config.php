@@ -23,4 +23,12 @@ return array(
      */
     'language'            => 'ru',
 
+    /**
+     * Extensions to load
+     */
+    'extensions'          => array(
+        //'activerecord',
+
+    ),
+
 );
