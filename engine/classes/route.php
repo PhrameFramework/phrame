@@ -60,8 +60,12 @@ class Route
             $path_info = explode('/', trim($request->server('request_uri'), '/'));
         }
 
-        $this->controller  =  ! empty($path_info[0]) ? $path_info[0] : Application::instance($this->application_name)->default_controller;
-        $this->action      =  ! empty($path_info[1]) ? $path_info[1] : 'index';
+        $this->controller  = ! empty($path_info[0]) ? $path_info[0] : Application::instance($this->application_name)->default_controller;
+        $this->action      = ! empty($path_info[1]) ? $path_info[1] : 'index';
+        
+        unset($path_info[0]);
+        unset($path_info[1]);
+        $this->parameters  = $path_info;
 
         //TODO: process config/routes.php
 

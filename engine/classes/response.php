@@ -60,7 +60,7 @@ class Response
         {
             $controller->template = new View('template', array(), $this->application_name);
         }
-        call_user_func(array($controller, $action), $parameters);
+        call_user_func_array(array($controller, $action), $parameters);
         echo $controller->template->render();
         $output = ob_get_contents();
         ob_end_clean();
