@@ -27,7 +27,7 @@ return array(
      * Extensions to load
      */
     'extensions'          => array(
-        'activerecord',
+        //'activerecord',
 
     ),
 
