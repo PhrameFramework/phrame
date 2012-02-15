@@ -36,11 +36,11 @@ class Route
     public $parameters;
 
     /**
-     * Routes
+     * Routing config
      * 
      * @var  array
      */
-    protected $routes = array();
+    protected $config = array();
 
     /**
      * Application name
@@ -65,27 +65,27 @@ class Route
         // Process config/routes.php
         if (is_file(ENGINE_PATH.'/config/routes.php'))
         {
-            $this->routes = array_merge($this->routes, include ENGINE_PATH.'/config/routes.php');
+            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/routes.php');
         }
         if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'routes.php'))
         {
-            $this->routes = array_merge($this->routes, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'routes.php');
+            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'routes.php');
         }
         if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/routes.php'))
         {
-            $this->routes = array_merge($this->routes, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/routes.php');
+            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/routes.php');
         }
         if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/routes.php'))
         {
-            $this->routes = array_merge($this->routes, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/routes.php');
+            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/routes.php');
         }
 
         //TODO: use regexp to choose the appropriate route
-        isset($this->routes['routes'][$request_uri]) and $request_uri = $this->routes['routes'][$request_uri];
+        isset($this->config['routes'][$request_uri]) and $request_uri = $this->config['routes'][$request_uri];
 
         $path_info = explode('/', $request_uri);
 
-        $this->controller  = ! empty($path_info[0]) ? $path_info[0] : $this->routes['default_controller'];
+        $this->controller  = ! empty($path_info[0]) ? $path_info[0] : $this->config['default_controller'];
         $this->action      = ! empty($path_info[1]) ? $path_info[1] : 'index';
 
         unset($path_info[0]);
@@ -96,7 +96,7 @@ class Route
 
         if ( ! $routable)
         {
-            $this->controller  = Application::instance($this->application_name)->default_controller;
+            $this->controller  = $this->config['default_controller'];
             $this->action      = '';
         }
 
