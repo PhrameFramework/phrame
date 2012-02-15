@@ -31,7 +31,7 @@ class Lang
     /**
      * Lang configuration
      * 
-     * @var  array
+     * @var  Config
      */
     protected $config = array();
 
@@ -42,23 +42,7 @@ class Lang
     {
         $this->application_name = $application_name ?: APPLICATION_NAME;
 
-        // Process config files
-        if (is_file(PHRAME_PATH.'/engine/config/lang.php'))
-        {
-            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/lang.php');
-        }
-        if (is_file(PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/lang.php'))
-        {
-            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/lang.php');
-        }
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/lang.php'))
-        {
-            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/lang.php');
-        }
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/lang.php'))
-        {
-            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/lang.php');
-        }
+        $this->config = new Config('lang', $this->application_name);
     }
 
     /**
@@ -90,7 +74,10 @@ class Lang
      */
     public function get($str)
     {
-        return isset($this->config[Application::instance($this->application_name)->language][$str]) ? $this->config[Application::instance($this->application_name)->language][$str] : $str;
+        $language = Application::instance($this->application_name)->language;
+        $translate = $this->config->$language;
+
+        return isset($translate[$str]) ? $translate[$str] : $str;
     }
 
 }

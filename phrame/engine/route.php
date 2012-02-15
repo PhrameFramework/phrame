@@ -38,9 +38,9 @@ class Route
     /**
      * Routing config
      * 
-     * @var  array
+     * @var  Config
      */
-    protected $config = array();
+    protected $config = null;
 
     /**
      * Application name
@@ -62,30 +62,14 @@ class Route
         // Process request_uri if default application is called
         $request_uri = $this->application_name === APPLICATION_NAME ? trim($request->server('request_uri'), '/') : '';
 
-        // Process config files
-        if (is_file(PHRAME_PATH.'/engine/config/route.php'))
-        {
-            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/route.php');
-        }
-        if (is_file(PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'route.php'))
-        {
-            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'route.php');
-        }
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/route.php'))
-        {
-            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/route.php');
-        }
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/route.php'))
-        {
-            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/route.php');
-        }
+        $this->config = new Config('route', $this->application_name);
 
         //TODO: use regexp to choose the appropriate route
-        isset($this->config['routes'][$request_uri]) and $request_uri = $this->config['routes'][$request_uri];
+        isset($this->config->routes[$request_uri]) and $request_uri = $this->config->routes[$request_uri];
 
         $path_info = explode('/', $request_uri);
 
-        $this->controller  = ! empty($path_info[0]) ? $path_info[0] : $this->config['default_controller'];
+        $this->controller  = ! empty($path_info[0]) ? $path_info[0] : $this->config->default_controller;
         $this->action      = ! empty($path_info[1]) ? $path_info[1] : 'index';
 
         unset($path_info[0]);
@@ -96,7 +80,7 @@ class Route
 
         if ( ! $routable)
         {
-            $this->controller  = $this->config['default_controller'];
+            $this->controller  = $this->config->default_controller;
             $this->action      = '';
         }
 

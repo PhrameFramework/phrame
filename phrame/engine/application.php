@@ -31,9 +31,9 @@ class Application
     /**
      * Application configuration
      * 
-     * @var  array
+     * @var  Config
      */
-    protected $config = array();
+    protected $config = null;
 
     /**
      * Application constructor (protected)
@@ -43,6 +43,8 @@ class Application
     protected function __construct($application_name = null)
     {
         $this->application_name = $application_name ?: APPLICATION_NAME;
+
+        $this->config = new Config('application', $this->application_name);
 
         // set base_url
         $base_url = '';
@@ -60,35 +62,17 @@ class Application
             $base_url .= str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
             $base_url = rtrim($base_url, '/');
         }
-        $this->config['base_url'] = $base_url;
-
-        // Process config files
-        if (is_file(PHRAME_PATH.'/engine/config/application.php'))
-        {
-            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/application.php');
-        }
-        if (is_file(PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/application.php'))
-        {
-            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/application.php');
-        }
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/application.php'))
-        {
-            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/application.php');
-        }
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/application.php'))
-        {
-            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/application.php');
-        }
+        $this->config->base_url = $base_url;
 
         // Error reporting
         if ($this->application_name === APPLICATION_NAME)
         {
-            error_reporting($this->config['error_reporting']);
-            ini_set('display_errors', $this->config['display_errors']);
+            error_reporting($this->config->error_reporting);
+            ini_set('display_errors', $this->config->display_errors);
         }
 
         // Load extensions
-        foreach ($this->config['extensions'] as $extension)
+        foreach ($this->config->extensions as $extension)
         {
             call_user_func('\\Phrame\\'.ucfirst(strtolower($extension)).'\\Bootstrap::init', $this->application_name);
         }
@@ -124,7 +108,7 @@ class Application
      */
     public function __get($name)
     {
-        return $this->config[$name];
+        return $this->config->$name;
     }
 
     /**
@@ -135,7 +119,7 @@ class Application
      */
     public function __set($name, $value)
     {
-        $this->config[$name] = $value;
+        $this->config->$name = $value;
     }
 
     /**
