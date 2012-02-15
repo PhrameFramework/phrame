@@ -21,20 +21,22 @@ class Autoloader
      */
     public static function load($class_name)
     {
-        $class_name = strtolower(str_replace('\\', '/', $class_name));
+        $path = explode('\\', strtolower($class_name));
+        $type = array_shift($path);
+        $file = implode('/', $path).'.php';
 
-        if (stripos($class_name, __NAMESPACE__) === 0)
+        $file_name = ENGINE_PATH.'/'.$file;
+
+        if ($type === 'applications')
         {
-            $class_name = substr($class_name, strlen(__NAMESPACE__) + 1);
-            if (is_file(ENGINE_PATH.'/'.$class_name.'.php'))
-            {
-                require_once ENGINE_PATH.'/'.$class_name.'.php';
-            }
+            $file_name = APPLICATIONS_PATH.'/'.$file;
         }
-        elseif (is_file(APPLICATIONS_PATH.'/'.$class_name.'.php'))
+        elseif ($type === 'extensions')
         {
-            require_once APPLICATIONS_PATH.'/'.$class_name.'.php';
+            $file_name = EXTENSIONS_PATH.'/'.$file;
         }
+
+        require_once $file_name;
     }
     
 }

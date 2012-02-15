@@ -1,6 +1,6 @@
 <?php
 
-namespace Main\Controllers;
+namespace Applications\Main\Controllers;
 
 use Engine;
 
