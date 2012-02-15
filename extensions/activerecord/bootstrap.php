@@ -14,6 +14,7 @@ class Bootstrap
 
         $config = array();
 
+        // Process config files
         if (is_file('config/activerecord.php'))
         {
             $config = array_merge($config, include 'config/activerecord.php');

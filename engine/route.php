@@ -62,7 +62,7 @@ class Route
         // Process request_uri if default application is called
         $request_uri = $this->application_name === APPLICATION_NAME ? trim($request->server('request_uri'), '/') : '';
 
-        // Process config/routes.php
+        // Process config files
         if (is_file(ENGINE_PATH.'/config/route.php'))
         {
             $this->config = array_merge($this->config, include ENGINE_PATH.'/config/route.php');
