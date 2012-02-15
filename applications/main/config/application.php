@@ -16,7 +16,7 @@ return array(
     /**
      * Application language
      */
-    'language'            => 'ru',
+    'language'            => 'en',
 
     /**
      * Extensions to load

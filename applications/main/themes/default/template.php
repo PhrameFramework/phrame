@@ -17,13 +17,19 @@
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li <?php if(Engine\Application::instance()->controller === 'home') echo 'class="active"'; ?>>
-                                <a href="<?php echo Engine\Application::instance()->base_url; ?>">Home</a>
+                                <a href="<?php echo Engine\Application::instance()->base_url; ?>">
+                                    <?php echo Engine\Lang::instance()->get('Home'); ?>
+                                </a>
                             </li>
                             <li <?php if(Engine\Application::instance()->controller === 'about') echo 'class="active"'; ?>>
-                                <a href="<?php echo Engine\Application::instance()->base_url; ?>/about">About</a>
+                                <a href="<?php echo Engine\Application::instance()->base_url; ?>/about">
+                                    <?php echo Engine\Lang::instance()->get('About'); ?>
+                                </a>
                             </li>
                             <li <?php if(Engine\Application::instance()->controller === 'documentation') echo 'class="active"'; ?>>
-                                <a href="<?php echo Engine\Application::instance()->base_url; ?>/docs">Documentation</a>
+                                <a href="<?php echo Engine\Application::instance()->base_url; ?>/docs">
+                                    <?php echo Engine\Lang::instance()->get('Documentation'); ?>
+                                </a>
                             </li>
                         </ul>
                     </div>
