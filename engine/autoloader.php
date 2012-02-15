@@ -23,9 +23,13 @@ class Autoloader
     {
         $class_name = strtolower(str_replace('\\', '/', $class_name));
 
-        if (is_file(ENGINE_PATH.'/../'.$class_name.'.php'))
+        if (stripos($class_name, __NAMESPACE__) === 0)
         {
-            require_once ENGINE_PATH.'/../'.$class_name.'.php';
+            $class_name = substr($class_name, strlen(__NAMESPACE__) + 1);
+            if (is_file(ENGINE_PATH.'/'.$class_name.'.php'))
+            {
+                require_once ENGINE_PATH.'/'.$class_name.'.php';
+            }
         }
         elseif (is_file(APPLICATIONS_PATH.'/'.$class_name.'.php'))
         {
