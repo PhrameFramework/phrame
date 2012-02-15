@@ -15,27 +15,6 @@ namespace Phrame\Engine;
 class Config
 {
     /**
-     * Configuration name
-     * 
-     * @var  string
-     */
-    protected $config_name;
-
-    /**
-     * Application name
-     * 
-     * @var  string
-     */
-    protected $application_name;
-
-    /**
-     * Package name
-     * 
-     * @var  string
-     */
-    protected $package;
-
-    /**
      * Configuration array
      * 
      * @var  array
@@ -51,56 +30,59 @@ class Config
      */
     public function __construct($config_name = null, $application_name = null, $package = 'engine')
     {
-        $this->config_name       = $config_name ?: 'application';
-        $this->application_name  = $application_name ?: APPLICATION_NAME;
-        $this->package           = $package ?: 'engine';
+        $config_name       = $config_name ?: 'application';
+        $application_name  = $application_name ?: APPLICATION_NAME;
+        $package           = $package ?: 'engine';
 
         $this->config = array();
 
         // Process config files
 
-        if (is_file(PHRAME_PATH.'/'.$this->package.'/config/'.$this->config_name.'.php'))
+        if ($package !== 'engine')
+        {
+            if (is_file(PHRAME_PATH.'/'.$package.'/config/'.$config_name.'.php'))
+            {
+                $this->config = array_merge(
+                    $this->config,
+                    include PHRAME_PATH.'/'.$package.'/config/'.$config_name.'.php'
+                );
+            }
+            if (is_file(PHRAME_PATH.'/'.$package.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'))
+            {
+                $this->config = array_merge(
+                    $this->config,
+                    include PHRAME_PATH.'/'.$package.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'
+                );
+            }
+        }
+
+        if (is_file(PHRAME_PATH.'/engine/config/'.$config_name.'.php'))
         {
             $this->config = array_merge(
                 $this->config,
-                include PHRAME_PATH.'/'.$this->package.'/config/'.$this->config_name.'.php'
+                include PHRAME_PATH.'/engine/config/'.$config_name.'.php'
             );
         }
-        if (is_file(PHRAME_PATH.'/'.$this->package.'/config/'.APPLICATION_ENV.'/'.$this->config_name.'.php'))
+        if (is_file(PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/'.$config_name.'.php'))
         {
             $this->config = array_merge(
                 $this->config,
-                include PHRAME_PATH.'/'.$this->package.'/config/'.APPLICATION_ENV.'/'.$this->config_name.'.php'
+                include PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/'.$config_name.'.php'
             );
         }
 
-        if (is_file(PHRAME_PATH.'/engine/config/'.$this->config_name.'.php'))
+        if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/'.$config_name.'.php'))
         {
             $this->config = array_merge(
                 $this->config,
-                include PHRAME_PATH.'/engine/config/'.$this->config_name.'.php'
+                include APPLICATIONS_PATH.'/'.$application_name.'/config/'.$config_name.'.php'
             );
         }
-        if (is_file(PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/'.$this->config_name.'.php'))
+        if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'))
         {
             $this->config = array_merge(
                 $this->config,
-                include PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/'.$this->config_name.'.php'
-            );
-        }
-
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.$this->config_name.'.php'))
-        {
-            $this->config = array_merge(
-                $this->config,
-                include APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.$this->config_name.'.php'
-            );
-        }
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/'.$this->config_name.'.php'))
-        {
-            $this->config = array_merge(
-                $this->config,
-                include APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/'.$this->config_name.'.php'
+                include APPLICATIONS_PATH.'/'.$application_name.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'
             );
         }
     }
