@@ -63,21 +63,21 @@ class Route
         $request_uri = $this->application_name === APPLICATION_NAME ? trim($request->server('request_uri'), '/') : '';
 
         // Process config/routes.php
-        if (is_file(ENGINE_PATH.'/config/routes.php'))
+        if (is_file(ENGINE_PATH.'/config/route.php'))
         {
-            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/routes.php');
+            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/route.php');
         }
-        if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'routes.php'))
+        if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'route.php'))
         {
-            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'routes.php');
+            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'route.php');
         }
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/routes.php'))
+        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/route.php'))
         {
-            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/routes.php');
+            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/route.php');
         }
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/routes.php'))
+        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/route.php'))
         {
-            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/routes.php');
+            $this->config = array_merge($this->config, include APPLICATIONS_PATH.'/'.$this->application_name.'/config/'.APPLICATION_ENV.'/route.php');
         }
 
         //TODO: use regexp to choose the appropriate route
