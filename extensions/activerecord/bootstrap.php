@@ -26,7 +26,7 @@ function activerecord_load($application_name)
     if ( ! empty($config) and ! empty($config['connection']))
     {
         $cfg = ActiveRecord\Config::instance();
-        $cfg->set_model_directory(APPLICATIONS_PATH.'/'.$application_name.'/classes/model');
+        $cfg->set_model_directory(APPLICATIONS_PATH.'/'.$application_name.'/models');
         $cfg->set_connections(
             array(
                 'development' => $config['connection']
