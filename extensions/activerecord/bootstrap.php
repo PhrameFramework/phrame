@@ -10,25 +10,33 @@ class Bootstrap
      */
     public static function init($application_name)
     {
-        include_once 'php-activerecord/ActiveRecord.php';
+        include_once 'classes/ActiveRecord.php';
 
         $config = array();
 
-        if (is_file(ENGINE_PATH.'/config/db.php'))
+        if (is_file('config/activerecord.php'))
         {
-            $config = array_merge($config, include ENGINE_PATH.'/config/db.php');
+            $config = array_merge($config, include 'config/activerecord.php');
         }
-        if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'/db.php'))
+        if (is_file('config/'.APPLICATION_ENV.'/activerecord.php'))
         {
-            $config = array_merge($config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'/db.php');
+            $config = array_merge($config, include 'config/'.APPLICATION_ENV.'/activerecord.php');
         }
-        if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/db.php'))
+        if (is_file(ENGINE_PATH.'/config/activerecord.php'))
         {
-            $config = array_merge($config, include APPLICATIONS_PATH.'/'.$application_name.'/config/db.php');
+            $config = array_merge($config, include ENGINE_PATH.'/config/activerecord.php');
         }
-        if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/'.APPLICATION_ENV.'/db.php'))
+        if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'/activerecord.php'))
         {
-            $config = array_merge($config, include APPLICATIONS_PATH.'/'.$application_name.'/config/'.APPLICATION_ENV.'/db.php');
+            $config = array_merge($config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'/activerecord.php');
+        }
+        if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/activerecord.php'))
+        {
+            $config = array_merge($config, include APPLICATIONS_PATH.'/'.$application_name.'/config/activerecord.php');
+        }
+        if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/'.APPLICATION_ENV.'/activerecord.php'))
+        {
+            $config = array_merge($config, include APPLICATIONS_PATH.'/'.$application_name.'/config/'.APPLICATION_ENV.'/activerecord.php');
         }
 
         if ( ! empty($config) and ! empty($config['connection']))
