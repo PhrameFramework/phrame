@@ -65,7 +65,7 @@ class Lang
      * Returns singleton object
      *
      * @param   string  $application_name  Application name
-     * @return  Application
+     * @return  Lang
      */
     public static function instance($application_name = null)
     {
