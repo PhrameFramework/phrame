@@ -25,18 +25,7 @@ class Autoloader
         $type = array_shift($path);
         $file = implode('/', $path).'.php';
 
-        $file_name = ENGINE_PATH.'/'.$file;
-
-        if ($type === 'applications')
-        {
-            $file_name = APPLICATIONS_PATH.'/'.$file;
-        }
-        elseif ($type === 'extensions')
-        {
-            $file_name = EXTENSIONS_PATH.'/'.$file;
-        }
-
-        require_once $file_name;
+        require_once ($type === 'applications' ? APPLICATIONS_PATH : ($type === 'extensions' ? EXTENSIONS_PATH : ENGINE_PATH)).'/'.$file;
     }
     
 }
