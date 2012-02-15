@@ -12,7 +12,7 @@
 
 namespace Engine;
 
-class Model extends \ActiveRecord\Model
+class Model extends \Extensions\Activerecord\Model
 {
 
 }

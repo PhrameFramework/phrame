@@ -56,8 +56,7 @@ class Application
         // Load extensions
         foreach ($this->config->extensions as $extension)
         {
-            include_once EXTENSIONS_PATH.'/'.$extension.'/bootstrap.php';
-            call_user_func($extension.'_load', $this->application_name);
+            call_user_func('\\Extensions\\'.ucfirst(strtolower($extension)).'\\Bootstrap::init', $this->application_name);
         }
     }
 
