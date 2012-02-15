@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Engine;
+namespace Phrame;
 
 class Autoloader
 {
@@ -25,7 +25,7 @@ class Autoloader
         $type = array_shift($path);
         $file = implode('/', $path).'.php';
 
-        require_once ($type === 'applications' ? APPLICATIONS_PATH : ($type === 'extensions' ? EXTENSIONS_PATH : ENGINE_PATH)).'/'.$file;
+        require_once ($type === 'applications' ? APPLICATIONS_PATH : PHRAME_PATH).'/'.$file;
     }
     
 }

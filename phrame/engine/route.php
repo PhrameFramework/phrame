@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Phrame
+ * @package    Engine
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Engine;
+namespace Phrame\Engine;
 
 class Route
 {
@@ -63,13 +63,13 @@ class Route
         $request_uri = $this->application_name === APPLICATION_NAME ? trim($request->server('request_uri'), '/') : '';
 
         // Process config files
-        if (is_file(ENGINE_PATH.'/config/route.php'))
+        if (is_file(PHRAME_PATH.'/engine/config/route.php'))
         {
-            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/route.php');
+            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/route.php');
         }
-        if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'route.php'))
+        if (is_file(PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'route.php'))
         {
-            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'route.php');
+            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'route.php');
         }
         if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/route.php'))
         {

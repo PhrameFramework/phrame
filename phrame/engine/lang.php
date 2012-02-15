@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Phrame
+ * @package    Engine
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Engine;
+namespace Phrame\Engine;
 
 class Lang
 {
@@ -43,13 +43,13 @@ class Lang
         $this->application_name = $application_name ?: APPLICATION_NAME;
 
         // Process config files
-        if (is_file(ENGINE_PATH.'/config/lang.php'))
+        if (is_file(PHRAME_PATH.'/engine/config/lang.php'))
         {
-            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/lang.php');
+            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/lang.php');
         }
-        if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'/lang.php'))
+        if (is_file(PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/lang.php'))
         {
-            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'/lang.php');
+            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/lang.php');
         }
         if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/lang.php'))
         {

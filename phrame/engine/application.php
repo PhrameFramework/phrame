@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Phrame
+ * @package    Engine
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Engine;
+namespace Phrame\Engine;
 
 class Application
 {
@@ -63,13 +63,13 @@ class Application
         $this->config['base_url'] = $base_url;
 
         // Process config files
-        if (is_file(ENGINE_PATH.'/config/application.php'))
+        if (is_file(PHRAME_PATH.'/engine/config/application.php'))
         {
-            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/application.php');
+            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/application.php');
         }
-        if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'/application.php'))
+        if (is_file(PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/application.php'))
         {
-            $this->config = array_merge($this->config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'/application.php');
+            $this->config = array_merge($this->config, include PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/application.php');
         }
         if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/config/application.php'))
         {
@@ -90,7 +90,7 @@ class Application
         // Load extensions
         foreach ($this->config['extensions'] as $extension)
         {
-            call_user_func('\\Extensions\\'.ucfirst(strtolower($extension)).'\\Bootstrap::init', $this->application_name);
+            call_user_func('\\Phrame\\'.ucfirst(strtolower($extension)).'\\Bootstrap::init', $this->application_name);
         }
     }
 

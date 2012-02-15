@@ -1,6 +1,16 @@
 <?php
+/**
+ * Part of the Phrame
+ *
+ * @package    Activerecord
+ * @version    0
+ * @author     Phrame Development Team
+ * @license    MIT License
+ * @copyright  2012 Phrame Development Team
+ * @link       http://phrame.itworks.in.ua/
+ */
 
-namespace Extensions\Activerecord;
+namespace Phrame\Activerecord;
 
 class Bootstrap
 {
@@ -23,13 +33,13 @@ class Bootstrap
         {
             $config = array_merge($config, include 'config/'.APPLICATION_ENV.'/activerecord.php');
         }
-        if (is_file(ENGINE_PATH.'/config/activerecord.php'))
+        if (is_file(PHRAME_PATH.'/engine/config/activerecord.php'))
         {
-            $config = array_merge($config, include ENGINE_PATH.'/config/activerecord.php');
+            $config = array_merge($config, include PHRAME_PATH.'/engine/config/activerecord.php');
         }
-        if (is_file(ENGINE_PATH.'/config/'.APPLICATION_ENV.'/activerecord.php'))
+        if (is_file(PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/activerecord.php'))
         {
-            $config = array_merge($config, include ENGINE_PATH.'/config/'.APPLICATION_ENV.'/activerecord.php');
+            $config = array_merge($config, include PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/activerecord.php');
         }
         if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/activerecord.php'))
         {

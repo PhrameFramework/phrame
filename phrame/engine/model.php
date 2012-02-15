@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Phrame
+ * @package    Engine
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,6 +10,9 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-require_once 'autoloader.php';
+namespace Phrame\Engine;
 
-spl_autoload_register('Engine\\Autoloader::load');
+class Model extends \Phrame\Activerecord\Model
+{
+
+}

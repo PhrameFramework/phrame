@@ -2,7 +2,7 @@
 
 namespace Applications\Main\Controllers;
 
-use Engine;
+use Phrame\Engine;
 
 class Documentation extends Engine\Controller
 {

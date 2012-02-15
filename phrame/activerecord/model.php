@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Phrame
+ * @package    Activerecord
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,9 +10,9 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Engine;
+namespace Phrame\Activerecord;
 
-class Model extends \Extensions\Activerecord\Model
+class Model extends \ActiveRecord\Model
 {
-
+    
 }

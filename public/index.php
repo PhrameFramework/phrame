@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Phrame
+ * @package    Public
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -11,19 +11,14 @@
  */
 
 /**
- * Path to the engine
- */
-define('ENGINE_PATH', __DIR__.'/../engine');
-
-/**
  * Path to the applications
  */
 define('APPLICATIONS_PATH', __DIR__.'/../applications');
 
 /**
- * Path to the extensions
+ * Path to the phrame
  */
-define('EXTENSIONS_PATH', __DIR__.'/../extensions');
+define('PHRAME_PATH', __DIR__.'/../phrame');
 
 /**
  * Path to the docroot
@@ -41,11 +36,12 @@ define('APPLICATION_NAME', getenv('APPLICATION_NAME') ?: 'main');
 define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 
 /**
- * Booting
+ * Registering autoloader
  */
-require_once ENGINE_PATH.'/bootstrap.php';
+require_once PHRAME_PATH.'/autoloader.php';
+spl_autoload_register('Phrame\\Autoloader::load');
 
 /**
  * Run application
  */
-Engine\Application::instance()->run();
+Phrame\Engine\Application::instance()->run();
