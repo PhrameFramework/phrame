@@ -2,14 +2,31 @@
 
 return array(
     
-    'en' => array(
-        'Home' => 'Home',
+    /**
+     * Application language
+     */
+    'language'          => 'auto',
 
-    ),
+    /**
+     * Default application language
+     */
+    'default_language'  => 'en',
 
-    'ru' => array(
-        'Home' => 'Главная',
-        
+    /**
+     * Languages
+     */
+    'languages'  => array(
+
+        'en'  => array(
+            'Home'  => 'Home',
+
+        ),
+
+        'ru'  => array(
+            'Home'  => 'Главная',
+
+        ),
+
     ),
 
 );

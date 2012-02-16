@@ -36,6 +36,34 @@ class Lang
     protected $config = null;
 
     /**
+     * Application language
+     * 
+     * @var  string
+     */
+    protected $language;
+
+    /**
+     * Default application language
+     * 
+     * @var  string
+     */
+    protected $default_language;
+
+    /**
+     * Translations
+     * 
+     * @var  string
+     */
+    protected $translations;
+
+    /**
+     * Default translations
+     * 
+     * @var  string
+     */
+    protected $default_translations;
+
+    /**
      * Constructs Lang object
      * 
      * @param  string  $application_name  Application name
@@ -45,6 +73,11 @@ class Lang
         $this->application_name = $application_name ?: APPLICATION_NAME;
 
         $this->config = new Config('lang', $this->application_name);
+
+        $this->language              = $this->config->language === 'auto' ? strtolower(substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2)) : $this->config->language;
+        $this->default_language      = $this->config->default_language;
+        $this->translations          = isset($this->config->languages[$this->language]) ? $this->config->languages[$this->language] : array();
+        $this->default_translations  = isset($this->config->languages[$this->default_language]) ? $this->config->languages[$this->default_language] : array();
     }
 
     /**
@@ -77,10 +110,7 @@ class Lang
      */
     public function get($str)
     {
-        $language = Application::instance($this->application_name)->language;
-        $translate = $this->config->$language;
-
-        return isset($translate[$str]) ? $translate[$str] : $str;
+        return isset($this->translations[$str]) ? $this->translations[$str] : (isset($this->default_translations[$str]) ? $this->default_translations[$str] : $str);
     }
 
 }

@@ -14,11 +14,6 @@ return array(
     'theme'            => 'default',
 
     /**
-     * Application language
-     */
-    'language'         => 'ru',
-
-    /**
      * Extensions to load
      */
     'extensions'       => array(
