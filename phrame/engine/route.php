@@ -64,8 +64,15 @@ class Route
 
         $this->config = new Config('route', $this->application_name);
 
-        //TODO: use regexp to choose the appropriate route
-        isset($this->config->routes[$request_uri]) and $request_uri = $this->config->routes[$request_uri];
+        // use regexp to choose the appropriate route
+        foreach ($this->config->routes as $old_route => $new_route)
+        {
+            if (preg_match('#'.$old_route.'#', $request_uri) > 0)
+            {
+                $request_uri = preg_replace('#'.$old_route.'#', $new_route, $request_uri);
+                break;
+            }
+        }
 
         $path_info = explode('/', $request_uri);
 
