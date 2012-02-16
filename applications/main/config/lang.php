@@ -13,9 +13,9 @@ return array(
     'default_language'  => 'en',
 
     /**
-     * Languages
+     * Translations
      */
-    'languages'  => array(
+    'translations'  => array(
 
         'en'  => array(
             'Home'  => 'Home',
