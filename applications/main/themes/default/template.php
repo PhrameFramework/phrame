@@ -6,8 +6,8 @@
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <?php echo Phrame\Engine\Asset::instance()->css('bootstrap.css'); ?>
-        <?php echo Phrame\Engine\Asset::instance()->css('style.css'); ?>
+        <?php echo Phrame\Engine\Asset::instance()->css('bootstrap.css', array('media'=>'all')); ?>
+        <?php echo Phrame\Engine\Asset::instance()->css('style.css', array('media'=>'all')); ?>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">

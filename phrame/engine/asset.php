@@ -72,9 +72,10 @@ class Asset
      * 
      * @param   string  $file_name   Asset file name
      * @param   string  $asset_type  Asset type (img|css|js)
+     * @param   array   $attributes  Tag attributes
      * @return  string
      */
-    public function render_asset($file_name, $asset_type)
+    public function render_asset($file_name, $asset_type, $attributes = array())
     {
         $theme_file   = APPLICATIONS_PATH.'/'.$this->application_name.'/themes/'.Application::instance($this->application_name)->theme.'/assets/'.$asset_type.'/'.$file_name;
         $public_file  = PUBLIC_PATH.'/assets/'.$asset_type.'/'.$file_name;
@@ -90,23 +91,30 @@ class Asset
             $file_name .= '?'.filemtime($public_file);
         }
 
+        $attr = '';
+        foreach($attributes as $name => $value)
+        {
+            $attr .= $name.'="'.$value.'" ';
+        }
+
+
         $html = '';
 
         switch ($asset_type)
         {
             case ('img'):
             {
-                $html = '<img src="'.Application::instance($this->application_name)->base_url.'/assets/img/'.$file_name.'" />';
+                $html = '<img src="'.Application::instance($this->application_name)->base_url.'/assets/img/'.$file_name.'" '.$attr.'/>';
                 break;
             }
             case ('css'):
             {
-                $html = '<link type="text/css" rel="stylesheet" href="'.Application::instance($this->application_name)->base_url.'/assets/css/'.$file_name.'" />';
+                $html = '<link type="text/css" rel="stylesheet" href="'.Application::instance($this->application_name)->base_url.'/assets/css/'.$file_name.'" '.$attr.'/>';
                 break;
             }
             case ('js'):
             {
-                $html = '<script type="text/javascript" src="'.Application::instance($this->application_name)->base_url.'/assets/js/'.$file_name.'"></script>';
+                $html = '<script type="text/javascript" src="'.Application::instance($this->application_name)->base_url.'/assets/js/'.$file_name.'" '.$attr.'></script>';
                 break;
             }
         }
@@ -117,34 +125,37 @@ class Asset
     /**
      * Image asset
      * 
-     * @param   string  $file_name  File name
+     * @param   string  $file_name   File name
+     * @param   array   $attributes  Tag attributes
      * @return  string
      */
-    public function img($file_name)
+    public function img($file_name, $attributes = array())
     {
-        return $this->render_asset($file_name, 'img');
+        return $this->render_asset($file_name, 'img', $attributes);
     }
 
     /**
      * Style asset
      * 
-     * @param   string  $file_name  File name
+     * @param   string  $file_name   File name
+     * @param   array   $attributes  Tag attributes
      * @return  string
      */
-    public function css($file_name)
+    public function css($file_name, $attributes = array())
     {
-        return $this->render_asset($file_name, 'css');
+        return $this->render_asset($file_name, 'css', $attributes);
     }
 
     /**
      * Script asset
      * 
-     * @param   string  $file_name  File name
+     * @param   string  $file_name   File name
+     * @param   array   $attributes  Tag attributes
      * @return  string
      */
-    public function js($file_name)
+    public function js($file_name, $attributes = array())
     {
-        return $this->render_asset($file_name, 'js');
+        return $this->render_asset($file_name, 'js', $attributes);
     }
 
 }
