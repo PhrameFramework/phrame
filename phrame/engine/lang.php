@@ -38,7 +38,7 @@ class Lang
     /**
      * Constructs Lang object
      */    
-    public function __construct($application_name = null)
+    protected function __construct($application_name = null)
     {
         $this->application_name = $application_name ?: APPLICATION_NAME;
 
