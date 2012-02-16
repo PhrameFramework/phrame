@@ -36,7 +36,7 @@ class Asset
     protected $config = null;
 
     /**
-     * Constructs Lang object
+     * Constructs Asset object
      */    
     public function __construct($application_name = null)
     {

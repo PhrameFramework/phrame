@@ -33,7 +33,7 @@ class Lang
      * 
      * @var  Config
      */
-    protected $config = array();
+    protected $config = null;
 
     /**
      * Constructs Lang object
