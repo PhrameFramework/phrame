@@ -37,6 +37,8 @@ class Asset
 
     /**
      * Constructs Asset object
+     * 
+     * @param  string  $application_name  Application name
      */    
     protected function __construct($application_name = null)
     {
@@ -49,7 +51,7 @@ class Asset
      * Returns singleton object
      *
      * @param   string  $application_name  Application name
-     * @return  Lang
+     * @return  Asset
      */
     public static function instance($application_name = null)
     {

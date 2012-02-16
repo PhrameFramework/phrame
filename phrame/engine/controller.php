@@ -30,6 +30,8 @@ class Controller
 
     /**
      * Constructs Controller object
+     * 
+     * @param  string  $application_name  Application name
      */
     public function __construct($application_name = null)
     {
@@ -39,8 +41,8 @@ class Controller
     /**
      * Page-not-found handler
      *
-     * @param string $method
-     * @param array $parameters
+     * @param  string  $method
+     * @param  array   $parameters
      */
     public function __call($method, $parameters)
     {

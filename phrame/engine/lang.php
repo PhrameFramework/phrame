@@ -37,6 +37,8 @@ class Lang
 
     /**
      * Constructs Lang object
+     * 
+     * @param  string  $application_name  Application name
      */    
     protected function __construct($application_name = null)
     {
@@ -69,6 +71,7 @@ class Lang
 
     /**
      * Returns translated string
+     * 
      * @param   string  $str  String
      * @return  string
      */
