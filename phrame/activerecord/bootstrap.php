@@ -27,7 +27,7 @@ class Bootstrap
 
         include_once 'classes/ActiveRecord.php';
 
-        $config = new Engine\Config('activerecord', $application->name, 'activerecord');
+        $config = new Engine\Config('activerecord', $application, 'activerecord');
         $connection_string = $config->connection;
 
         if ( ! empty($connection_string))
