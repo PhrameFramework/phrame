@@ -46,6 +46,17 @@ class Controller
      */
     public function __call($method, $parameters)
     {
+        if (isset($_SERVER['FCGI_SERVER_VERSION']))
+        {
+            header('Status: 404 Not Found');
+        }
+        else
+        {
+            // determime protocol
+            $protocol = $_SERVER['SERVER_PROTOCOL'] ?: 'HTTP/1.1';
+            header($protocol.' 404 Not Found');
+        }
+        
         $this->template->content = '404';
     }
 
