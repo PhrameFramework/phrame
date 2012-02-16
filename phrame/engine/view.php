@@ -49,10 +49,21 @@ class View
     }
 
     /**
+     * Returns view data
+     * 
+     * @param   string  $name  Data name
+     * @return  mixed
+     */
+    public function __get($name)
+    {
+        return $this->data[$name];
+    }
+
+    /**
      * Sets data for view
      * 
      * @param  string  $name   Data name
-     * @param  string  $value  Data value
+     * @param  mixed   $value  Data value
      */
     public function __set($name, $value)
     {
