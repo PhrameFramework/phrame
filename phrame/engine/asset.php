@@ -15,20 +15,114 @@ namespace Phrame\Engine;
 class Asset
 {
     /**
+     * Singleton instances
+     * 
+     * @var  array
+     */
+    protected static $instance = array();
+
+    /**
+     * Application name
+     * 
+     * @var  string
+     */
+    protected $application_name;
+
+    /**
+     * Asset configuration
+     * 
+     * @var  Config
+     */
+    protected $config = null;
+
+    /**
+     * Constructs Lang object
+     */    
+    public function __construct($application_name = null)
+    {
+        $this->application_name = $application_name ?: APPLICATION_NAME;
+
+        $this->config = new Config('asset', $this->application_name);
+    }
+
+    /**
+     * Returns singleton object
+     *
+     * @param   string  $application_name  Application name
+     * @return  Lang
+     */
+    public static function instance($application_name = null)
+    {
+        $application_name = $application_name ?: APPLICATION_NAME;
+
+        if ( ! isset(self::$instance[$application_name]))
+        {
+            self::$instance[$application_name] = new Asset($application_name);
+        }
+        return self::$instance[$application_name];
+    }
+
+    /**
+     * Avoids singleton object cloning
+     */
+    protected function __clone(){}
+
+    /**
+     * Renders tags
+     * 
+     * @param   string  $file_name   Asset file name
+     * @param   string  $asset_type  Asset type (img|css|js)
+     * @return  string
+     */
+    public function render_asset($file_name, $asset_type)
+    {
+        $theme_file   = APPLICATIONS_PATH.'/'.$this->application_name.'/themes/'.Application::instance($this->application_name)->theme.'/assets/'.$asset_type.'/'.$file_name;
+        $public_file  = PUBLIC_PATH.'/assets/'.$asset_type.'/'.$file_name;
+
+        if ( ! is_file($public_file) or filemtime($public_file) != filemtime($theme_file))
+        {
+            copy($theme_file, $public_file);
+            touch($public_file, filemtime($theme_file));
+        }
+
+        if ($this->config->append_timestamp === true)
+        {
+            $file_name .= '?'.filemtime($public_file);
+        }
+
+        $html = '';
+
+        switch ($asset_type)
+        {
+            case ('img'):
+            {
+                $html = '<img src="'.Application::instance($this->application_name)->base_url.'/assets/img/'.$file_name.'" />';
+                break;
+            }
+            case ('css'):
+            {
+                $html = '<link type="text/css" rel="stylesheet" href="'.Application::instance($this->application_name)->base_url.'/assets/css/'.$file_name.'" />';
+                break;
+            }
+            case ('js'):
+            {
+                $html = '<script type="text/javascript" src="'.Application::instance($this->application_name)->base_url.'/assets/js/'.$file_name.'"></script>';
+                break;
+            }
+        }
+
+        return $html;
+    }
+
+    /**
      * Image asset
      * 
      * @param   string  $file_name  File name
      * @return  string
      */
-    public static function img($file_name)
+    public function img($file_name)
     {
-        if ( ! is_file(PUBLIC_PATH.'/assets/img/'.$file_name) or filemtime(PUBLIC_PATH.'/assets/img/'.$file_name) != filemtime(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/themes/'.Application::instance()->theme.'/assets/img/'.$file_name))
-        {
-            copy(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/themes/'.Application::instance()->theme.'/assets/img/'.$file_name, PUBLIC_PATH.'/assets/img/'.$file_name);
-            touch(PUBLIC_PATH.'/assets/img/'.$file_name, filemtime(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/themes/'.Application::instance()->theme.'/assets/img/'.$file_name));
-        }
-
-        return '<img src="'.Application::instance()->base_url.'/assets/img/'.$file_name.'" />';
+        return $this->render_asset($file_name, 'img');
     }
 
     /**
@@ -37,15 +131,9 @@ class Asset
      * @param   string  $file_name  File name
      * @return  string
      */
-    public static function css($file_name)
+    public function css($file_name)
     {
-        if ( ! is_file(PUBLIC_PATH.'/assets/css/'.$file_name) or filemtime(PUBLIC_PATH.'/assets/css/'.$file_name) != filemtime(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/themes/'.Application::instance()->theme.'/assets/css/'.$file_name))
-        {
-            copy(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/themes/'.Application::instance()->theme.'/assets/css/'.$file_name, PUBLIC_PATH.'/assets/css/'.$file_name);
-            touch(PUBLIC_PATH.'/assets/css/'.$file_name, filemtime(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/themes/'.Application::instance()->theme.'/assets/css/'.$file_name));
-        }
-
-        return '<link type="text/css" rel="stylesheet" href="'.Application::instance()->base_url.'/assets/css/'.$file_name.'" />';
+        return $this->render_asset($file_name, 'css');
     }
 
     /**
@@ -54,15 +142,9 @@ class Asset
      * @param   string  $file_name  File name
      * @return  string
      */
-    public static function js($file_name)
+    public function js($file_name)
     {
-        if ( ! is_file(PUBLIC_PATH.'/assets/js/'.$file_name) or filemtime(PUBLIC_PATH.'/assets/js/'.$file_name) != filemtime(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/themes/'.Application::instance()->theme.'/assets/js/'.$file_name))
-        {
-            copy(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/themes/'.Application::instance()->theme.'/assets/js/'.$file_name, PUBLIC_PATH.'/assets/js/'.$file_name);
-            touch(PUBLIC_PATH.'/assets/js/'.$file_name, filemtime(APPLICATIONS_PATH.'/'.APPLICATION_NAME.'/themes/'.Application::instance()->theme.'/assets/js/'.$file_name));
-        }
-
-        return '<script type="text/javascript" src="'.Application::instance()->base_url.'/assets/js/'.$file_name.'"></script>';
+        return $this->render_asset($file_name, 'js');
     }
 
 }
