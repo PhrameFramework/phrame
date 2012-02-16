@@ -15,27 +15,27 @@ namespace Phrame\Engine;
 class Controller
 {
     /**
-     * Application name
+     * Application object
      * 
-     * @var  string
+     * @var  Application
      */
-    protected $application_name;
+    protected $application = null;
 
     /**
      * Template view object
      * 
      * @var  View
      */
-    public $template;
+    public $template = null;
 
     /**
      * Constructs Controller object
      * 
-     * @param  string  $application_name  Application name
+     * @param  Application  $application  Application object
      */
-    public function __construct($application_name = null)
+    public function __construct($application = null)
     {
-        $this->application_name = $application_name ?: APPLICATION_NAME;
+        $this->application = $application ?: Application::instance();
     }
 
     /**
@@ -46,15 +46,13 @@ class Controller
      */
     public function __call($method, $parameters)
     {
-        if (isset($_SERVER['FCGI_SERVER_VERSION']))
+        if ($this->application->request->server('fcgi_server_version'))
         {
             header('Status: 404 Not Found');
         }
         else
         {
-            // determime protocol
-            $protocol = $_SERVER['SERVER_PROTOCOL'] ?: 'HTTP/1.1';
-            header($protocol.' 404 Not Found');
+            header($this->application->request->protocol().' 404 Not Found');
         }
         
         $this->template->content = '404';

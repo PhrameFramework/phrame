@@ -25,13 +25,13 @@ class Config
      * Contsructs Config object
      * 
      * @param  string  $config_name       Configuration name
-     * @param  string  $application_name  Application name
+     * @param  string  $application       Application object
      * @param  string  $package           Package name
      */
-    public function __construct($config_name = null, $application_name = null, $package = 'engine')
+    public function __construct($config_name = null, $application = null, $package = 'engine')
     {
         $config_name       = $config_name ?: 'application';
-        $application_name  = $application_name ?: APPLICATION_NAME;
+        $application       = $application ?: Application::instance();
         $package           = $package ?: 'engine';
 
         $this->config = array();
@@ -71,18 +71,18 @@ class Config
             );
         }
 
-        if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/'.$config_name.'.php'))
+        if (is_file(APPLICATIONS_PATH.'/'.$application->name.'/config/'.$config_name.'.php'))
         {
             $this->config = array_merge(
                 $this->config,
-                include APPLICATIONS_PATH.'/'.$application_name.'/config/'.$config_name.'.php'
+                include APPLICATIONS_PATH.'/'.$application->name.'/config/'.$config_name.'.php'
             );
         }
-        if (is_file(APPLICATIONS_PATH.'/'.$application_name.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'))
+        if (is_file(APPLICATIONS_PATH.'/'.$application->name.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'))
         {
             $this->config = array_merge(
                 $this->config,
-                include APPLICATIONS_PATH.'/'.$application_name.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'
+                include APPLICATIONS_PATH.'/'.$application->name.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'
             );
         }
     }

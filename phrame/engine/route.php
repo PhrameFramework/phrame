@@ -15,6 +15,13 @@ namespace Phrame\Engine;
 class Route
 {
     /**
+     * Application object
+     * 
+     * @var  Application
+     */
+    protected $application = null;
+
+    /**
      * Controller
      * 
      * @var  string
@@ -43,26 +50,19 @@ class Route
     protected $config = null;
 
     /**
-     * Application name
-     * 
-     * @var  string
-     */
-    protected $application_name;
-
-    /**
      * Creates Route object
      * 
-     * @param   Request  $request           Request object
-     * @param   string   $application_name  Application name
+     * @param   Request      $request      Request object
+     * @param   Application  $application  Application object
      */
-    public function __construct($request, $application_name = null)
+    public function __construct($request, $application = null)
     {
-        $this->application_name = $application_name ?: APPLICATION_NAME;
+        $this->application = $application ?: Application::instance(APPLICATION_NAME);
 
         // Process request_uri if default application is called
-        $request_uri = $this->application_name === APPLICATION_NAME ? trim($request->server('request_uri'), '/') : '';
+        $request_uri = $this->application->name === APPLICATION_NAME ? trim($request->server('request_uri'), '/') : '';
 
-        $this->config = new Config('route', $this->application_name);
+        $this->config = new Config('route', $this->application);
 
         // use regexp to choose the appropriate route
         foreach ($this->config->routes as $old_route => $new_route)
@@ -83,7 +83,7 @@ class Route
         unset($path_info[1]);
         $this->parameters  = $path_info;
 
-        $routable = is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/controllers/'.strtolower($this->controller).'.php');
+        $routable = is_file(APPLICATIONS_PATH.'/'.$this->application->name.'/controllers/'.strtolower($this->controller).'.php');
 
         if ( ! $routable)
         {
@@ -93,9 +93,6 @@ class Route
 
         $this->controller  = strtolower($this->controller);
         $this->action      = strtolower($this->action);
-
-        Application::instance($this->application_name)->controller  = $this->controller;
-        Application::instance($this->application_name)->action      = $this->action;
     }
 
 }

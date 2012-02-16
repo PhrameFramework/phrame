@@ -15,36 +15,71 @@ namespace Phrame\Engine;
 class Application
 {
     /**
-     * Singleton instances
+     * Application instances
      * 
      * @var  array
      */
-    protected static $instance = array();
+    protected static $instances = array();
 
     /**
      * Application name
      * 
      * @var  string
      */
-    protected $application_name;
+    public $name = '';
 
     /**
      * Application configuration
      * 
      * @var  Config
      */
-    protected $config = null;
+    public $config = null;
+
+    /**
+     * Request object
+     * 
+     * @var  Request
+     */
+    public $request = null;
+
+    /**
+     * Route object
+     * 
+     * @var  Route
+     */
+    public $route = null;
+
+    /**
+     * Response object
+     * 
+     * @var  Response
+     */
+    public $response = null;
+
+    /**
+     * Asset object
+     * 
+     * @var  Asset
+     */
+    public $asset = null;
+
+    /**
+     * Lang object
+     * 
+     * @var  Lang
+     */
+    public $lang = null;
 
     /**
      * Application constructor (protected)
      *
-     * @param  string  $application_name  Application name
+     * @param  string  $name  Application name
      */
-    protected function __construct($application_name = null)
+    protected function __construct($name = '')
     {
-        $this->application_name = $application_name ?: APPLICATION_NAME;
+        $this->name = $name ?: APPLICATION_NAME;
 
-        $this->config = new Config('application', $this->application_name);
+        $this->config = new Config('application', $this);
 
         // set base_url
         $base_url = '';
@@ -64,8 +99,12 @@ class Application
         }
         $this->config->base_url = $base_url;
 
+        $this->asset = new Asset($this);
+
+        $this->lang = new Lang($this);
+
         // Error reporting
-        if ($this->application_name === APPLICATION_NAME)
+        if ($this->name === APPLICATION_NAME)
         {
             error_reporting($this->config->error_reporting);
             ini_set('display_errors', $this->config->display_errors);
@@ -74,53 +113,31 @@ class Application
         // Load extensions
         foreach ($this->config->extensions as $extension)
         {
-            call_user_func('\\Phrame\\'.ucfirst(strtolower($extension)).'\\Bootstrap::init', $this->application_name);
+            call_user_func('\\Phrame\\'.ucfirst(strtolower($extension)).'\\Bootstrap::init', $this);
         }
     }
 
     /**
-     * Returns singleton object
+     * Returns Application instance
      *
-     * @param   string  $application_name  Application name
+     * @param   string       $application_name  Application name
      * @return  Application
      */
     public static function instance($application_name = null)
     {
         $application_name = $application_name ?: APPLICATION_NAME;
 
-        if ( ! isset(self::$instance[$application_name]))
+        if ( ! isset(self::$instances[$application_name]))
         {
-            self::$instance[$application_name] = new Application($application_name);
+            self::$instances[$application_name] = new Application($application_name);
         }
-        return self::$instance[$application_name];
+        return self::$instances[$application_name];
     }
 
     /**
      * Avoids singleton object cloning
      */
     protected function __clone(){}
-
-    /**
-     * Returns application configuration option
-     * 
-     * @param   string  $name  Option name
-     * @return  mixed
-     */
-    public function __get($name)
-    {
-        return $this->config->$name;
-    }
-
-    /**
-     * Sets application configuration option
-     * 
-     * @param   string  $name   Option name
-     * @param   mixed   $value  Option value
-     */
-    public function __set($name, $value)
-    {
-        $this->config->$name = $value;
-    }
 
     /**
      * Process request
@@ -130,11 +147,11 @@ class Application
      */
     public function process($request = null)
     {
-        $request = $request ?: new Request();
+        $this->request   = $request ?: new Request($this);
+        $this->route     = new Route($this->request, $this);
+        $this->response  = new Response($this->route, $this);
 
-        $response = new Response($request, $this->application_name);
-
-        return $response;
+        return $this->response;
     }
 
     /**

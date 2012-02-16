@@ -15,18 +15,11 @@ namespace Phrame\Engine;
 class Asset
 {
     /**
-     * Singleton instances
+     * Application object
      * 
-     * @var  array
+     * @var  Application
      */
-    protected static $instance = array();
-
-    /**
-     * Application name
-     * 
-     * @var  string
-     */
-    protected $application_name;
+    protected $application = null;
 
     /**
      * Asset configuration
@@ -38,36 +31,14 @@ class Asset
     /**
      * Constructs Asset object
      * 
-     * @param  string  $application_name  Application name
+     * @param  Application  $application  Application object
      */    
-    protected function __construct($application_name = null)
+    public function __construct($application = null)
     {
-        $this->application_name = $application_name ?: APPLICATION_NAME;
+        $this->application = $application ?: Application::instance();
 
-        $this->config = new Config('asset', $this->application_name);
+        $this->config = new Config('asset', $this->application);
     }
-
-    /**
-     * Returns singleton object
-     *
-     * @param   string  $application_name  Application name
-     * @return  Asset
-     */
-    public static function instance($application_name = null)
-    {
-        $application_name = $application_name ?: APPLICATION_NAME;
-
-        if ( ! isset(self::$instance[$application_name]))
-        {
-            self::$instance[$application_name] = new Asset($application_name);
-        }
-        return self::$instance[$application_name];
-    }
-
-    /**
-     * Avoids singleton object cloning
-     */
-    protected function __clone(){}
 
     /**
      * Renders tags
@@ -79,7 +50,7 @@ class Asset
      */
     public function render_asset($file_name, $asset_type, $attributes = array())
     {
-        $theme_file   = APPLICATIONS_PATH.'/'.$this->application_name.'/themes/'.Application::instance($this->application_name)->theme.'/assets/'.$asset_type.'/'.$file_name;
+        $theme_file   = APPLICATIONS_PATH.'/'.$this->application->name.'/themes/'.$this->application->config->theme.'/assets/'.$asset_type.'/'.$file_name;
         $public_file  = PUBLIC_PATH.'/assets/'.$asset_type.'/'.$file_name;
 
         if ( ! is_file($public_file) or filemtime($public_file) != filemtime($theme_file))
@@ -106,17 +77,17 @@ class Asset
         {
             case ('img'):
             {
-                $html = '<img src="'.Application::instance($this->application_name)->base_url.'/assets/img/'.$file_name.'" '.$attr.'/>';
+                $html = '<img src="'.$this->application->config->base_url.'/assets/img/'.$file_name.'" '.$attr.'/>';
                 break;
             }
             case ('css'):
             {
-                $html = '<link type="text/css" rel="stylesheet" href="'.Application::instance($this->application_name)->base_url.'/assets/css/'.$file_name.'" '.$attr.'/>';
+                $html = '<link type="text/css" rel="stylesheet" href="'.$this->application->config->base_url.'/assets/css/'.$file_name.'" '.$attr.'/>';
                 break;
             }
             case ('js'):
             {
-                $html = '<script type="text/javascript" src="'.Application::instance($this->application_name)->base_url.'/assets/js/'.$file_name.'" '.$attr.'></script>';
+                $html = '<script type="text/javascript" src="'.$this->application->config->base_url.'/assets/js/'.$file_name.'" '.$attr.'></script>';
                 break;
             }
         }

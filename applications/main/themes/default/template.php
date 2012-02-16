@@ -6,29 +6,29 @@
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <?php echo Phrame\Engine\Asset::instance()->css('bootstrap.css', array('media'=>'all')); ?>
-        <?php echo Phrame\Engine\Asset::instance()->css('style.css', array('media'=>'all')); ?>
+        <?php echo $this->application->asset->css('bootstrap.css', array('media'=>'all')); ?>
+        <?php echo $this->application->asset->css('style.css', array('media'=>'all')); ?>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="<?php echo Phrame\Engine\Application::instance()->base_url; ?>">Phrame</a>
+                    <a class="brand" href="<?php echo $this->application->config->base_url; ?>">Phrame</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li <?php if (Phrame\Engine\Application::instance()->controller === 'home') echo 'class="active"'; ?>>
-                                <a href="<?php echo Phrame\Engine\Application::instance()->base_url; ?>">
-                                    <?php echo Phrame\Engine\Lang::instance()->get('Home'); ?>
+                            <li <?php if ($this->application->route->controller === 'home') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->application->config->base_url; ?>">
+                                    <?php echo $this->application->lang->get('Home'); ?>
                                 </a>
                             </li>
-                            <li <?php if (Phrame\Engine\Application::instance()->controller === 'about') echo 'class="active"'; ?>>
-                                <a href="<?php echo Phrame\Engine\Application::instance()->base_url; ?>/about">
-                                    <?php echo Phrame\Engine\Lang::instance()->get('About'); ?>
+                            <li <?php if ($this->application->route->controller === 'about') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->application->config->base_url; ?>/about">
+                                    <?php echo $this->application->lang->get('About'); ?>
                                 </a>
                             </li>
-                            <li <?php if (Phrame\Engine\Application::instance()->controller === 'documentation') echo 'class="active"'; ?>>
-                                <a href="<?php echo Phrame\Engine\Application::instance()->base_url; ?>/docs">
-                                    <?php echo Phrame\Engine\Lang::instance()->get('Documentation'); ?>
+                            <li <?php if ($this->application->route->controller === 'documentation') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->application->config->base_url; ?>/docs">
+                                    <?php echo $this->application->lang->get('Documentation'); ?>
                                 </a>
                             </li>
                         </ul>

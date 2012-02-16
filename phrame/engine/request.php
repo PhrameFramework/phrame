@@ -15,6 +15,13 @@ namespace Phrame\Engine;
 class Request
 {
     /**
+     * Application object
+     * 
+     * @var  Application
+     */
+    protected $application = null;
+
+    /**
      * Server paraneters
      * 
      * @var  array
@@ -36,14 +43,28 @@ class Request
 
     /**
      * Constructs Request object
+     * 
+     * @param  Application  $application  Application object
      */
-    public function __construct()
+    public function __construct($application = null)
     {
+        $this->application = $application ?: Application::instance();
+        
         $this->server  = $_SERVER;
         $this->get     = $_GET;
         $this->post    = $_POST;
 
         //TODO: filter
+    }
+
+    /**
+     * Returns protocol
+     * 
+     * @return  string
+     */
+    public function protocol()
+    {
+        return $this->server('server_protocol') ?: 'HTTP/1.1';
     }
 
     /**

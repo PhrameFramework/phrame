@@ -15,30 +15,30 @@ namespace Phrame\Engine;
 class Response
 {
     /**
-     * Request object
+     * Application object
      * 
-     * @var  Request
+     * @var  Application
      */
-    protected $request = null;
+    protected $application = null;
 
     /**
-     * Application name
+     * Route object
      * 
-     * @var  string
+     * @var  Route
      */
-    protected $application_name = null;
+    protected $route = null;
 
     /**
      * Constructs Response object
      * 
-     * @param  Request  $request           Request object
-     * @param  string   $application_name  Application name
+     * @param  Route         $route        Route object
+     * @param  Application   $application  Application object
      */
-    public function __construct($request, $application_name = null)
+    public function __construct($route, $application = null)
     {
-        $this->request = $request;
+        $this->route = $route;
 
-        $this->application_name = $application_name ?: APPLICATION_NAME;
+        $this->application = $application ?: Application::instance(APPLICATION_NAME);
     }
 
     /**
@@ -48,17 +48,15 @@ class Response
      */
     public function render()
     {
-        $route = new Route($this->request, $this->application_name);
-
-        $controller_name  = 'Applications\\'.ucfirst($this->application_name).'\\Controllers\\'.ucfirst($route->controller);
-        $controller       = new $controller_name($this->application_name);
-        $action           = $route->action;
-        $parameters       = $route->parameters;
+        $controller_name  = 'Applications\\'.ucfirst($this->application->name).'\\Controllers\\'.ucfirst($this->route->controller);
+        $controller       = new $controller_name($this->application);
+        $action           = $this->route->action;
+        $parameters       = $this->route->parameters;
 
         ob_start();
         if ( ! isset($controller->template))
         {
-            $controller->template = new View('template', array(), $this->application_name);
+            $controller->template = new View('template', array(), $this->application);
         }
         call_user_func_array(array($controller, $action), $parameters);
         echo $controller->template->render();

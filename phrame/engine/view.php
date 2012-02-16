@@ -15,6 +15,13 @@ namespace Phrame\Engine;
 class View
 {
     /**
+     * Application object
+     * 
+     * @var  Application
+     */
+    protected $application = null;
+
+    /**
      * View name
      * 
      * @var  string
@@ -29,23 +36,17 @@ class View
     protected $data = array();
 
     /**
-     * Application name
-     * 
-     * @var  string
-     */
-    protected $application_name;
-
-    /**
      * Creates View object
      * 
-     * @param  string  $view_name  View name
-     * @param  array   $data       Data for view
+     * @param  string       $view_name    View name
+     * @param  array        $data         Data for view
+     * @param  Application  $application  Application object
      */
-    public function __construct($view_name, $data = array(), $application_name = null)
+    public function __construct($view_name, $data = array(), $application = null)
     {
-        $this->view_name         = $view_name;
-        $this->data              = $data;
-        $this->application_name  = $application_name ?: APPLICATION_NAME;
+        $this->view_name    = $view_name;
+        $this->data         = $data;
+        $this->application  = $application ?: Application::instance(APPLICATION_NAME);
     }
 
     /**
@@ -80,9 +81,9 @@ class View
         extract($this->data, EXTR_REFS);
 
         ob_start();
-        if (is_file(APPLICATIONS_PATH.'/'.$this->application_name.'/themes/'.Application::instance($this->application_name)->theme.'/'.$this->view_name.'.php'))
+        if (is_file(APPLICATIONS_PATH.'/'.$this->application->name.'/themes/'.$this->application->config->theme.'/'.$this->view_name.'.php'))
         {
-            include APPLICATIONS_PATH.'/'.$this->application_name.'/themes/'.Application::instance($this->application_name)->theme.'/'.$this->view_name.'.php';
+            include APPLICATIONS_PATH.'/'.$this->application->name.'/themes/'.$this->application->config->theme.'/'.$this->view_name.'.php';
         }
         $output = ob_get_contents();
         ob_end_clean();

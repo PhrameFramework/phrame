@@ -15,18 +15,11 @@ namespace Phrame\Engine;
 class Lang
 {
     /**
-     * Singleton instances
+     * Application object
      * 
-     * @var  array
+     * @var  Application
      */
-    protected static $instance = array();
-
-    /**
-     * Application name
-     * 
-     * @var  string
-     */
-    protected $application_name;
+    protected $application = null;
 
     /**
      * Lang configuration
@@ -66,41 +59,19 @@ class Lang
     /**
      * Constructs Lang object
      * 
-     * @param  string  $application_name  Application name
+     * @param  Application  $application  Application object
      */    
-    protected function __construct($application_name = null)
+    public function __construct($application = null)
     {
-        $this->application_name = $application_name ?: APPLICATION_NAME;
+        $this->application = $application ?: Application::instance(APPLICATION_NAME);
 
-        $this->config = new Config('lang', $this->application_name);
+        $this->config = new Config('lang', $this->application);
 
         $this->language              = $this->config->language === 'auto' ? strtolower(substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2)) : $this->config->language;
         $this->default_language      = $this->config->default_language;
         $this->translations          = isset($this->config->translations[$this->language]) ? $this->config->translations[$this->language] : array();
         $this->default_translations  = isset($this->config->translations[$this->default_language]) ? $this->config->translations[$this->default_language] : array();
     }
-
-    /**
-     * Returns singleton object
-     *
-     * @param   string  $application_name  Application name
-     * @return  Lang
-     */
-    public static function instance($application_name = null)
-    {
-        $application_name = $application_name ?: APPLICATION_NAME;
-
-        if ( ! isset(self::$instance[$application_name]))
-        {
-            self::$instance[$application_name] = new Lang($application_name);
-        }
-        return self::$instance[$application_name];
-    }
-
-    /**
-     * Avoids singleton object cloning
-     */
-    protected function __clone(){}
 
     /**
      * Returns translated string
