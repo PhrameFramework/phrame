@@ -29,6 +29,13 @@ class Response
     protected $route = null;
 
     /**
+     * Headers
+     * 
+     * @var  array  Response headers
+     */
+    public $headers = array();
+
+    /**
      * Constructs Response object
      * 
      * @param  Route         $route        Route object
@@ -62,6 +69,11 @@ class Response
         echo $controller->template->render();
         $output = ob_get_contents();
         ob_end_clean();
+
+        foreach ($this->headers as $header)
+        {
+            header($header, false);
+        }
 
         return $output;
     }

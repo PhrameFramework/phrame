@@ -48,11 +48,11 @@ class Controller
     {
         if ($this->application->request->server('fcgi_server_version'))
         {
-            header('Status: 404 Not Found');
+            $this->application->response->headers[] = 'Status: 404 Not Found';
         }
         else
         {
-            header($this->application->request->protocol().' 404 Not Found');
+            $this->application->response->headers[] = $this->application->request->protocol().' 404 Not Found';
         }
         
         $this->template->content = '404';
