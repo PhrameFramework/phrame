@@ -38,14 +38,13 @@ class Response
     /**
      * Constructs Response object
      * 
-     * @param  Route         $route        Route object
-     * @param  Application   $application  Application object
+     * @param  Route        $route        Route object
+     * @param  Application  $application  Application object
      */
     public function __construct($route, $application = null)
     {
-        $this->route = $route;
-
-        $this->application = $application ?: Application::instance(APPLICATION_NAME);
+        $this->route        = $route;
+        $this->application  = $application ?: Application::instance(APPLICATION_NAME);
     }
 
     /**
@@ -72,7 +71,7 @@ class Response
 
         foreach ($this->headers as $header)
         {
-            header($header, false);
+            //header($header, false);
         }
 
         return $output;

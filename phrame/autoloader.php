@@ -27,5 +27,5 @@ class Autoloader
 
         require_once ($type === 'applications' ? APPLICATIONS_PATH : PHRAME_PATH).'/'.$file;
     }
-    
+
 }

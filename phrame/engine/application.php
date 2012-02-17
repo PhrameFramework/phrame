@@ -161,4 +161,5 @@ class Application
     {
         echo $this->process()->render();
     }
+
 }

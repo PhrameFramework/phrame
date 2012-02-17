@@ -35,9 +35,8 @@ class Asset
      */    
     public function __construct($application = null)
     {
-        $this->application = $application ?: Application::instance();
-
-        $this->config = new Config('asset', $this->application);
+        $this->application  = $application ?: Application::instance();
+        $this->config       = new Config('asset', $this->application);
     }
 
     /**

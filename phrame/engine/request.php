@@ -117,5 +117,5 @@ class Request
 
         return isset($this->post[$name]) ? $this->post[$name] : null;
     }
-    
+
 }
