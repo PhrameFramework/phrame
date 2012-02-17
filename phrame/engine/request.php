@@ -50,6 +50,13 @@ class Request
     protected $cookie = array();
 
     /**
+     * Session parameters
+     * 
+     * @var  array
+     */
+    protected $session = array();
+
+    /**
      * Constructs Request object
      * 
      * @param  Application  $application  Application object
@@ -58,10 +65,11 @@ class Request
     {
         $this->application = $application ?: Application::instance();
         
-        $this->server  = $_SERVER;
-        $this->get     = $_GET;
-        $this->post    = $_POST;
-        $this->cookie  = $_COOKIE;
+        $this->server   = $_SERVER;
+        $this->get      = $_GET;
+        $this->post     = $_POST;
+        $this->cookie   = $_COOKIE;
+        $this->session  = $_SESSION;
 
         //TODO: filter
     }
