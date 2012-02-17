@@ -19,8 +19,7 @@ class Bootstrap
      */
     public static function init()
     {
-        // starting session
-        session_start();
+        
     }
 
 }

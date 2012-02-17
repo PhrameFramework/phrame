@@ -9,6 +9,11 @@ return array(
     'display_errors'   => 1,
 
     /**
+     * Use php sessions
+     */
+    'use_sessions'     => false,
+
+    /**
      * Theme
      */
     'theme'            => 'default',

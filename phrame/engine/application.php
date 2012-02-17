@@ -81,6 +81,11 @@ class Application
 
         $this->config = new Config('application', $this);
 
+        if ($this->config->use_sessions === true)
+        {
+            session_start();
+        }
+
         // set base_url
         $base_url = '';
         if ($_SERVER['HTTP_HOST'])
