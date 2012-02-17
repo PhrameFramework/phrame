@@ -77,9 +77,9 @@ class Response
      */
     public function cookie($name, $value, $expire = null, $path = null, $domain = null, $secure = null, $httponly = null)
     {
-        $this->cookies[] = array(
-            'name'      => $name      ?: 'phrame',
-            'value'     => $value     ?: '',
+        $this->cookies[$name] = array(
+            'name'      => $name,
+            'value'     => $value,
             'expire'    => $expire    ?: time() + 60 * 60,
             'path'      => $path      ?: '/',
             'domain'    => $domain    ?: parse_url($this->application->config->base_url, PHP_URL_HOST),
@@ -113,15 +113,15 @@ class Response
         // send cookies
         foreach ($this->cookies as $cookie)
         {
-            $name      = isset($cookie['name'])     ? $cookie['name']     : 'phrame';
-            $value     = isset($cookie['value'])    ? $cookie['value']    : '';
-            $expire    = isset($cookie['expire'])   ? $cookie['expire']   : time() + 60 * 60;
-            $path      = isset($cookie['path'])     ? $cookie['path']     : '/';
-            $domain    = isset($cookie['domain'])   ? $cookie['domain']   : parse_url($this->application->config->base_url, PHP_URL_HOST);
-            $secure    = isset($cookie['secure'])   ? $cookie['secure']   : false;
-            $httponly  = isset($cookie['httponly']) ? $cookie['httponly'] : false;
-
-            setcookie($name, $value, $expire, $path, $domain, $secure, $httponly);
+            setcookie(
+                isset($cookie['name'])     ? $cookie['name']     : 'phrame',
+                isset($cookie['value'])    ? $cookie['value']    : '',
+                isset($cookie['expire'])   ? $cookie['expire']   : time() + 60 * 60,
+                isset($cookie['path'])     ? $cookie['path']     : '/',
+                isset($cookie['domain'])   ? $cookie['domain']   : parse_url($this->application->config->base_url, PHP_URL_HOST),
+                isset($cookie['secure'])   ? $cookie['secure']   : false,
+                isset($cookie['httponly']) ? $cookie['httponly'] : false
+            );
         }
 
         // send headers
