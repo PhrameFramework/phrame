@@ -129,8 +129,11 @@ class Response
         $output = ob_get_contents();
         ob_end_clean();
 
-        // set session parameters
-        $_SESSION = $this->session;
+        if ($this->application->config->use_sessions === true)
+        {
+            // set session parameters
+            $_SESSION = $this->session;
+        }
 
         // send cookies
         foreach ($this->cookies as $cookie)
