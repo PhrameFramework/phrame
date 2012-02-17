@@ -25,7 +25,7 @@ class Bootstrap
     {
         $application = $application ?: Engine\Application::instance();
 
-        include_once 'classes/ActiveRecord.php';
+        include_once 'vendor/ActiveRecord.php';
 
         $config = new Engine\Config('activerecord', $application, 'activerecord');
         $connection_string = $config->connection;
