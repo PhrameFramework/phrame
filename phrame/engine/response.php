@@ -33,14 +33,14 @@ class Response
      * 
      * @var  array  Response headers
      */
-    public $headers = array();
+    protected $headers = array();
 
     /**
      * Cookies
      * 
      * @var  array
      */
-    public $cookies = array();
+    protected $cookies = array();
 
     /**
      * Constructs Response object
@@ -52,6 +52,40 @@ class Response
     {
         $this->route        = $route;
         $this->application  = $application ?: Application::instance(APPLICATION_NAME);
+    }
+
+    /**
+     * Add header
+     * 
+     * @param  string  $header  Header
+     */
+    public function header($header)
+    {
+        $this->headers[] = $header;
+    }
+
+    /**
+     * Add cookie
+     * 
+     * @param  string  $name      Cookie name
+     * @param  string  $value     Cookie valuse
+     * @param  int     $expire    Expire
+     * @param  string  $path      Cookie path
+     * @param  string  $domain    Cookie domain
+     * @param  bool    $secure    Is the cookie secure?
+     * @param  bool    $httponly  Is the cookie http only?
+     */
+    public function cookie($name, $value, $expire = null, $path = null, $domain = null, $secure = null, $httponly = null)
+    {
+        $this->cookies[] = array(
+            'name'      => $name      ?: 'phrame',
+            'value'     => $value     ?: '',
+            'expire'    => $expire    ?: time() + 60 * 60,
+            'path'      => $path      ?: '/',
+            'domain'    => $domain    ?: parse_url($this->application->config->base_url, PHP_URL_HOST),
+            'secure'    => $secure    ?: false,
+            'httponly'  => $httponly  ?: false,
+        );
     }
 
     /**

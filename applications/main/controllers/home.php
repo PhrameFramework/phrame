@@ -15,9 +15,6 @@ class Home extends Engine\Controller
             )
         );
 
-        $this->application->response->cookies[] = array(
-            'name'   => 'about',
-            'value'  => $name,
-        );
+        $this->application->response->cookie('about', $name);
     }
 }
