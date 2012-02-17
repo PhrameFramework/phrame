@@ -42,6 +42,11 @@ require_once PHRAME_PATH.'/autoloader.php';
 spl_autoload_register('Phrame\\Autoloader::load');
 
 /**
+ * Booting
+ */
+Phrame\Engine\Bootstrap::init();
+
+/**
  * Run application
  */
 Phrame\Engine\Application::instance()->run();

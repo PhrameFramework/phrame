@@ -91,8 +91,13 @@ class Request
      * @param   mixed   $value  New value
      * @return  string
      */
-    public function server($name, $value = null)
+    public function server($name = null, $value = null)
     {
+        if ( ! isset($name))
+        {
+            return $this->server;
+        }
+
         if (isset($value))
         {
             $this->server[strtoupper($name)] = $value;
@@ -108,8 +113,13 @@ class Request
      * @param   mixed   $value  New value
      * @return  string
      */
-    public function get($name, $value = null)
+    public function get($name = null, $value = null)
     {
+        if ( ! isset($name))
+        {
+            return $this->get;
+        }
+
         if (isset($value))
         {
             $this->get[$name] = $value;
@@ -125,8 +135,13 @@ class Request
      * @param   mixed   $value  New value
      * @return  string
      */
-    public function post($name, $value = null)
+    public function post($name = null, $value = null)
     {
+        if ( ! isset($name))
+        {
+            return $this->post;
+        }
+
         if (isset($value))
         {
             $this->post[$name] = $value;
@@ -142,14 +157,41 @@ class Request
      * @param   mixed   $value  New value
      * @return  string
      */
-    public function cookie($name, $value = null)
+    public function cookie($name = null, $value = null)
     {
+        if ( ! isset($name))
+        {
+            return $this->cookie;
+        }
+
         if (isset($value))
         {
             $this->cookie[$name] = $value;
         }
 
         return isset($this->cookie[$name]) ? $this->cookie[$name] : null;
+    }
+
+    /**
+     * Returns session parameter
+     * 
+     * @param   string  $name   Parameter name
+     * @param   mixed   $value  New value
+     * @return  string
+     */
+    public function session($name = null, $value = null)
+    {
+        if ( ! isset($name))
+        {
+            return $this->session;
+        }
+
+        if (isset($value))
+        {
+            $this->session[$name] = $value;
+        }
+
+        return isset($this->session[$name]) ? $this->session[$name] : null;
     }
 
 }

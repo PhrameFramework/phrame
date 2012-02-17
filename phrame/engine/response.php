@@ -43,6 +43,13 @@ class Response
     protected $cookies = array();
 
     /**
+     * Session
+     * 
+     * @var  array
+     */
+    protected $session = array();
+
+    /**
      * Constructs Response object
      * 
      * @param  Route        $route        Route object
@@ -52,6 +59,7 @@ class Response
     {
         $this->route        = $route;
         $this->application  = $application ?: Application::instance(APPLICATION_NAME);
+        $this->session      = $this->application->request->session();
     }
 
     /**
@@ -89,6 +97,17 @@ class Response
     }
 
     /**
+     * Add session parameter
+     * 
+     * @param  string  $name   Parameter name
+     * @param  string  $value  Parameter value
+     */
+    public function session($name, $value)
+    {
+        $this->session[$name] = $value;
+    }
+
+    /**
      * Renders response
      * 
      * @return  string
@@ -109,6 +128,9 @@ class Response
         echo $controller->template->render();
         $output = ob_get_contents();
         ob_end_clean();
+
+        // set session parameters
+        $_SESSION = $this->session;
 
         // send cookies
         foreach ($this->cookies as $cookie)
