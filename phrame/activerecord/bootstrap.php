@@ -19,7 +19,7 @@ class Bootstrap
     /**
      * Loads and initializes extension
      * 
-     * @param  Application  $application  Application object
+     * @param  Engine\Application  $application  Application object
      */
     public static function init($application = null)
     {

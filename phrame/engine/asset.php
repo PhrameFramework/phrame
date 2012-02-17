@@ -69,7 +69,6 @@ class Asset
             $attr .= $name.'="'.$value.'" ';
         }
 
-
         $html = '';
 
         switch ($asset_type)
