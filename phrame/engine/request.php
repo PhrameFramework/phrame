@@ -37,9 +37,17 @@ class Request
 
     /**
      * Post parameters
+     * 
      * @var  array
      */
     protected $post = array();
+
+    /**
+     * Cookie parameters
+     * 
+     * @var  array
+     */
+    protected $cookie = array();
 
     /**
      * Constructs Request object
@@ -53,6 +61,7 @@ class Request
         $this->server  = $_SERVER;
         $this->get     = $_GET;
         $this->post    = $_POST;
+        $this->cookie  = $_COOKIE;
 
         //TODO: filter
     }
@@ -87,7 +96,7 @@ class Request
     /**
      * Returns get parameter
      * 
-     * @param   string  $name  Parameter name
+     * @param   string  $name   Parameter name
      * @param   mixed   $value  New value
      * @return  string
      */
@@ -104,7 +113,7 @@ class Request
     /**
      * Returns post parameter
      * 
-     * @param   string  $name  Parameter name
+     * @param   string  $name   Parameter name
      * @param   mixed   $value  New value
      * @return  string
      */
@@ -116,6 +125,23 @@ class Request
         }
 
         return isset($this->post[$name]) ? $this->post[$name] : null;
+    }
+
+    /**
+     * Returns cookie parameter
+     * 
+     * @param   string  $name   Parameter name
+     * @param   mixed   $value  New value
+     * @return  string
+     */
+    public function cookie($name, $value = null)
+    {
+        if (isset($value))
+        {
+            $this->cookie[$name] = $value;
+        }
+
+        return isset($this->cookie[$name]) ? $this->cookie[$name] : null;
     }
 
 }

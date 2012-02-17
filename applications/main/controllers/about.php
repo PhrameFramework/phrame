@@ -8,6 +8,6 @@ class About extends Engine\Controller
 {
     public function index()
     {
-        $this->template->content = 'about';
+        $this->template->content = 'About '.$this->application->request->cookie('about');
     }
 }

@@ -36,6 +36,13 @@ class Response
     public $headers = array();
 
     /**
+     * Cookies
+     * 
+     * @var  array
+     */
+    public $cookies = array();
+
+    /**
      * Constructs Response object
      * 
      * @param  Route        $route        Route object
@@ -69,6 +76,21 @@ class Response
         $output = ob_get_contents();
         ob_end_clean();
 
+        // send cookies
+        foreach ($this->cookies as $cookie)
+        {
+            $name      = isset($cookie['name'])     ? $cookie['name']     : 'phrame';
+            $value     = isset($cookie['value'])    ? $cookie['value']    : '';
+            $expire    = isset($cookie['expire'])   ? $cookie['expire']   : time() + 60 * 60;
+            $path      = isset($cookie['path'])     ? $cookie['path']     : '/';
+            $domain    = isset($cookie['domain'])   ? $cookie['domain']   : parse_url($this->application->config->base_url, PHP_URL_HOST);
+            $secure    = isset($cookie['secure'])   ? $cookie['secure']   : false;
+            $httponly  = isset($cookie['httponly']) ? $cookie['httponly'] : false;
+
+            setcookie($name, $value, $expire, $path, $domain, $secure, $httponly);
+        }
+
+        // send headers
         foreach ($this->headers as $header)
         {
             header($header, false);
