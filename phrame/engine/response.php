@@ -40,7 +40,7 @@ class Response
      * 
      * @var  array
      */
-    protected $cookies = array();
+    protected $cookie = array();
 
     /**
      * Session
@@ -85,7 +85,7 @@ class Response
      */
     public function cookie($name, $value, $expire = null, $path = null, $domain = null, $secure = null, $httponly = null)
     {
-        $this->cookies[$name] = array(
+        $this->cookie[$name] = array(
             'name'      => $name,
             'value'     => $value,
             'expire'    => $expire    ?: time() + 60 * 60,
@@ -136,7 +136,7 @@ class Response
         }
 
         // send cookies
-        foreach ($this->cookies as $cookie)
+        foreach ($this->cookie as $cookie)
         {
             setcookie(
                 isset($cookie['name'])     ? $cookie['name']     : 'phrame',
