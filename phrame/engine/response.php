@@ -33,7 +33,7 @@ class Response
      * 
      * @var  array  Response headers
      */
-    protected $headers = array();
+    protected $header = array();
 
     /**
      * Cookies
@@ -69,7 +69,7 @@ class Response
      */
     public function header($header)
     {
-        $this->headers[] = $header;
+        $this->header[] = $header;
     }
 
     /**
@@ -150,7 +150,7 @@ class Response
         }
 
         // send headers
-        foreach ($this->headers as $header)
+        foreach ($this->header as $header)
         {
             header($header, false);
         }
