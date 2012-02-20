@@ -58,7 +58,7 @@ class Response
     public function __construct($route, $application = null)
     {
         $this->route        = $route;
-        $this->application  = $application ?: Application::instance(APPLICATION_NAME);
+        $this->application  = $application ?: Application::instance();
         $this->session      = $this->application->request->session();
     }
 

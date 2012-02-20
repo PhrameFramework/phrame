@@ -57,7 +57,7 @@ class Route
      */
     public function __construct($request, $application = null)
     {
-        $this->application = $application ?: Application::instance(APPLICATION_NAME);
+        $this->application = $application ?: Application::instance();
 
         // Process request_uri if default application is called
         $request_uri = $this->application->name === APPLICATION_NAME ? trim($request->server('request_uri'), '/') : '';
