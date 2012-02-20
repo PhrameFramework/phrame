@@ -30,9 +30,9 @@ class Config
      */
     public function __construct($config_name = null, $application = null, $package = 'engine')
     {
-        $config_name       = $config_name ?: 'application';
-        $application       = $application ?: Application::instance();
-        $package           = $package ?: 'engine';
+        $config_name  = $config_name ?: 'application';
+        $application  = $application ?: Application::instance();
+        $package      = $package ?: 'engine';
 
         $this->config = array();
 

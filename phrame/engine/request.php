@@ -69,10 +69,7 @@ class Request
         $this->get      = $_GET;
         $this->post     = $_POST;
         $this->cookie   = $_COOKIE;
-        if ($this->application->config->use_sessions === true)
-        {
-            $this->session  = $_SESSION;
-        }
+        $this->session  = $this->application->config->use_sessions === true ? $_SESSION : array();
 
         //TODO: filter
     }

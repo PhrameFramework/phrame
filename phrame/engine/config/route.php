@@ -8,6 +8,11 @@ return array(
     'default_controller' => 'home',
 
     /**
+     * Default action name
+     */
+    'default_action'     => 'index',
+
+    /**
      * Routes
      */
     'routes' => array(

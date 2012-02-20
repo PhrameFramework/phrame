@@ -143,7 +143,7 @@ class Response
                 isset($cookie['value'])    ? $cookie['value']    : '',
                 isset($cookie['expire'])   ? $cookie['expire']   : time() + 60 * 60,
                 isset($cookie['path'])     ? $cookie['path']     : '/',
-                isset($cookie['domain'])   ? $cookie['domain']   : parse_url($this->application->config->base_url, PHP_URL_HOST),
+                isset($cookie['domain'])   ? $cookie['domain']   : null,
                 isset($cookie['secure'])   ? $cookie['secure']   : false,
                 isset($cookie['httponly']) ? $cookie['httponly'] : false
             );

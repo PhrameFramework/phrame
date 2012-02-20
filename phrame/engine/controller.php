@@ -55,7 +55,7 @@ class Controller
             $this->application->response->header($this->application->request->protocol().' 404 Not Found');
         }
         
-        $this->template->content = '404';
+        $this->template->content = '404 Not Found';
     }
 
 }

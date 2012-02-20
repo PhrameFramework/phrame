@@ -36,6 +36,20 @@ class Application
     public $config = null;
 
     /**
+     * Asset object
+     * 
+     * @var  Asset
+     */
+    public $asset = null;
+
+    /**
+     * Lang object
+     * 
+     * @var  Lang
+     */
+    public $lang = null;
+
+    /**
      * Request object
      * 
      * @var  Request
@@ -57,29 +71,16 @@ class Application
     public $response = null;
 
     /**
-     * Asset object
-     * 
-     * @var  Asset
-     */
-    public $asset = null;
-
-    /**
-     * Lang object
-     * 
-     * @var  Lang
-     */
-    public $lang = null;
-
-    /**
      * Application constructor (protected)
      *
      * @param  string  $name  Application name
      */
     protected function __construct($name = '')
     {
-        $this->name = $name ?: APPLICATION_NAME;
-
-        $this->config = new Config('application', $this);
+        $this->name    = $name ?: APPLICATION_NAME;
+        $this->config  = new Config('application', $this);
+        $this->asset   = new Asset($this);
+        $this->lang    = new Lang($this);
 
         if ($this->config->use_sessions === true)
         {
@@ -99,14 +100,9 @@ class Application
         }
         if ($_SERVER['SCRIPT_NAME'])
         {
-            $base_url .= str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
-            $base_url = rtrim($base_url, '/');
+            $base_url .= rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
         }
         $this->config->base_url = $base_url;
-
-        $this->asset = new Asset($this);
-
-        $this->lang = new Lang($this);
 
         // Error reporting
         if ($this->name === APPLICATION_NAME)
@@ -139,11 +135,6 @@ class Application
         
         return self::$instances[$application_name];
     }
-
-    /**
-     * Avoids singleton object cloning
-     */
-    protected function __clone(){}
 
     /**
      * Process request
