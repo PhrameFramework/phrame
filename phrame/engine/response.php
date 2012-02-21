@@ -22,11 +22,11 @@ class Response
     protected $application = null;
 
     /**
-     * Route object
+     * Request object
      * 
-     * @var  Route
+     * @var  Request
      */
-    protected $route = null;
+    protected $request = null;
 
     /**
      * Headers
@@ -52,12 +52,12 @@ class Response
     /**
      * Constructs Response object
      * 
-     * @param  Route        $route        Route object
+     * @param  Request      $request      Request object
      * @param  Application  $application  Application object
      */
-    public function __construct($route, $application = null)
+    public function __construct($request, $application = null)
     {
-        $this->route        = $route;
+        $this->request      = $request;
         $this->application  = $application ?: Application::instance();
         $this->session      = $this->application->request->session();
     }
@@ -114,10 +114,10 @@ class Response
      */
     public function render()
     {
-        $controller_name  = 'Applications\\'.ucfirst($this->application->name).'\\Controllers\\'.ucfirst($this->route->controller);
+        $controller_name  = 'Applications\\'.ucfirst($this->application->name).'\\Controllers\\'.ucfirst($this->request->route->controller);
         $controller       = new $controller_name($this->application);
-        $action           = $this->route->action;
-        $parameters       = $this->route->parameters;
+        $action           = $this->request->route->action;
+        $parameters       = $this->request->route->parameters;
 
         ob_start();
         if ( ! isset($controller->template))

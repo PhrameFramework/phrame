@@ -16,17 +16,17 @@
                     <a class="brand" href="<?php echo $this->application->config->base_url; ?>">Phrame</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li <?php if ($this->application->route->controller === 'home') echo 'class="active"'; ?>>
+                            <li <?php if ($this->application->request->route->controller === 'home') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->application->config->base_url; ?>">
                                     <?php echo $this->lang->get('Home'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->application->route->controller === 'about') echo 'class="active"'; ?>>
+                            <li <?php if ($this->application->request->route->controller === 'about') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->application->config->base_url; ?>/about">
                                     <?php echo $this->lang->get('About'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->application->route->controller === 'documentation') echo 'class="active"'; ?>>
+                            <li <?php if ($this->application->request->route->controller === 'documentation') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->application->config->base_url; ?>/docs">
                                     <?php echo $this->lang->get('Documentation'); ?>
                                 </a>

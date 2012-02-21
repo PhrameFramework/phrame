@@ -43,13 +43,6 @@ class Application
     public $request = null;
 
     /**
-     * Route object
-     * 
-     * @var  Route
-     */
-    public $route = null;
-
-    /**
      * Response object
      * 
      * @var  Response
@@ -129,8 +122,7 @@ class Application
     public function process($request = null)
     {
         $this->request   = $request ?: new Request($this);
-        $this->route     = new Route($this->request, $this);
-        $this->response  = new Response($this->route, $this);
+        $this->response  = new Response($this->request, $this);
 
         return $this->response;
     }

@@ -57,6 +57,13 @@ class Request
     protected $session = array();
 
     /**
+     * Route object
+     * 
+     * @var  Route
+     */
+    public $route = null;
+
+    /**
      * Constructs Request object
      * 
      * @param  Application  $application  Application object
@@ -72,6 +79,8 @@ class Request
         $this->session  = $this->application->config->use_sessions === true ? $_SESSION : array();
 
         //TODO: filter
+
+        $this->route    = new Route($this, $this->application);
     }
 
     /**
