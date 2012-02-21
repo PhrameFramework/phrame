@@ -22,6 +22,20 @@ class View
     protected $application = null;
 
     /**
+     * Asset object
+     * 
+     * @var  Asset
+     */
+    protected $asset = null;
+
+    /**
+     * Lang object
+     * 
+     * @var  Lang
+     */
+    protected $lang = null;
+
+    /**
      * View name
      * 
      * @var  string
@@ -47,6 +61,8 @@ class View
         $this->view_name    = $view_name;
         $this->data         = $data;
         $this->application  = $application ?: Application::instance();
+        $this->asset        = new Asset($this->application);
+        $this->lang         = new Lang($this->application);
     }
 
     /**

@@ -1,4 +1,4 @@
-<h1><?php echo $this->application->lang->get('Blog'); ?></h1>
+<h1><?php echo $this->lang->get('Blog'); ?></h1>
 <hr />
 <?php
 foreach ($posts as $post)

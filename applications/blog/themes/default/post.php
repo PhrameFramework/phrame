@@ -7,7 +7,7 @@
         <?php echo $post->post_text; ?>
     </div>
     <hr />
-    <h3><?php echo $this->application->lang->get('Comments'); ?></h3>
+    <h3><?php echo $this->lang->get('Comments'); ?></h3>
     <?php
     foreach ($comments as $comment)
     {

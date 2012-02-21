@@ -36,20 +36,6 @@ class Application
     public $config = null;
 
     /**
-     * Asset object
-     * 
-     * @var  Asset
-     */
-    public $asset = null;
-
-    /**
-     * Lang object
-     * 
-     * @var  Lang
-     */
-    public $lang = null;
-
-    /**
      * Request object
      * 
      * @var  Request
@@ -79,8 +65,6 @@ class Application
     {
         $this->name    = $name ?: APPLICATION_NAME;
         $this->config  = new Config('application', $this);
-        $this->asset   = new Asset($this);
-        $this->lang    = new Lang($this);
 
         if ($this->config->use_sessions === true)
         {
