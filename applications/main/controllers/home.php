@@ -17,4 +17,13 @@ class Home extends Engine\Controller
 
         $this->application->response->cookie('about', $name);
     }
+
+    /**
+     * Custom 404 handler
+     */
+    public function error_404()
+    {
+        $this->template->content = 'Page Not Found';
+    }
+
 }

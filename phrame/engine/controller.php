@@ -39,7 +39,15 @@ class Controller
     }
 
     /**
-     * Page-not-found handler
+     * 404 handler
+     */
+    public function error_404()
+    {
+        $this->template->content = '404 Not Found';
+    }
+
+    /**
+     * Handles unroutable calls
      *
      * @param  string  $method
      * @param  array   $parameters
@@ -55,7 +63,7 @@ class Controller
             $this->application->response->header($this->application->request->protocol().' 404 Not Found');
         }
         
-        $this->template->content = '404 Not Found';
+        $this->error_404();
     }
 
 }
