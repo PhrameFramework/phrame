@@ -52,16 +52,15 @@ class Route
     /**
      * Creates Route object
      * 
-     * @param   Request      $request      Request object
      * @param   Application  $application  Application object
      */
-    public function __construct($request, $application = null)
+    public function __construct($application = null)
     {
         $this->application  = $application ?: Application::instance();
         $this->config       = new Config('route', $this->application);
 
-        // Process request_uri if default application is called
-        $request_uri = trim($request->server('request_uri'), '/');
+        // Process request_uri
+        $request_uri = trim($this->application->request->server('request_uri'), '/');
 
         // use regexp to choose the appropriate route
         foreach ($this->config->routes as $old_route => $new_route)
