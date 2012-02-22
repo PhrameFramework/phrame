@@ -125,7 +125,10 @@ class Response
             $controller->layout = new View('layout', array(), $this->application);
         }
         call_user_func_array(array($controller, $action), $parameters);
-        echo $controller->layout->render();
+        if (method_exists($controller->layout, 'render'))
+        {
+            echo $controller->layout->render();
+        }
         $output = ob_get_contents();
         ob_end_clean();
 
