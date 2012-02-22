@@ -24,15 +24,15 @@ class Config
     /**
      * Contsructs Config object
      * 
-     * @param  string  $config_name       Configuration name
-     * @param  string  $application       Application object
-     * @param  string  $package           Package name
+     * @param  string  $config_name  Configuration name
+     * @param  string  $application  Application object
+     * @param  string  $package      Package name
      */
     public function __construct($config_name = null, $application = null, $package = 'engine')
     {
         $config_name  = $config_name ?: 'application';
         $application  = $application ?: Application::instance();
-        $package      = $package ?: 'engine';
+        $package      = $package     ?: 'engine';
 
         $this->config = array();
 

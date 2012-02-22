@@ -88,11 +88,11 @@ class Response
         $this->cookie[$name] = array(
             'name'      => $name,
             'value'     => $value,
-            'expire'    => $expire    ?: time() + 60 * 60,
-            'path'      => $path      ?: '/',
-            'domain'    => $domain    ?: parse_url($this->application->config->base_url, PHP_URL_HOST),
-            'secure'    => $secure    ?: false,
-            'httponly'  => $httponly  ?: false,
+            'expire'    => $expire   ?: time() + 60 * 60,
+            'path'      => $path     ?: '/',
+            'domain'    => $domain   ?: parse_url($this->application->config->base_url, PHP_URL_HOST),
+            'secure'    => $secure   ?: false,
+            'httponly'  => $httponly ?: false,
         );
     }
 

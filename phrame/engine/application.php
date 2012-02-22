@@ -109,7 +109,7 @@ class Application
         {
             self::$instances[$application_name] = new Application($application_name);
         }
-        
+
         return self::$instances[$application_name];
     }
 

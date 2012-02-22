@@ -62,7 +62,7 @@ class Controller
         {
             $this->application->response->header($this->application->request->protocol().' 404 Not Found');
         }
-        
+
         $this->error_404();
     }
 

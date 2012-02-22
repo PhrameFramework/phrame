@@ -77,13 +77,13 @@ class Request
     public function __construct($application = null, $route = null, $server = array(), $get = array(), $post = array(), $cookie = array(), $session = array())
     {
         $this->application = $application ?: Application::instance();
-        
+
         $this->server   = ! empty($server)  ? $server  : $_SERVER;
         $this->get      = ! empty($get)     ? $get     : $_GET;
         $this->post     = ! empty($post)    ? $post    : $_POST;
         $this->cookie   = ! empty($cookie)  ? $cookie  : $_COOKIE;
         $this->session  = ! empty($session) ? $session : ($this->application->config->use_sessions === true ? $_SESSION : array());
-        
+
         $this->route = $route ?: new Route($this, $this->application);
     }
 
