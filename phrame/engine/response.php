@@ -110,9 +110,10 @@ class Response
     /**
      * Renders response
      * 
+     * @param   bool    $use_layout  Use layout to render response
      * @return  string
      */
-    public function render()
+    public function render($use_layout = true)
     {
         $controller_name  = 'Applications\\'.ucfirst($this->application->name).'\\Controllers\\'.ucfirst($this->request->route->controller);
         $controller       = new $controller_name($this->application);
@@ -127,7 +128,7 @@ class Response
         call_user_func_array(array($controller, $action), $parameters);
         if (method_exists($controller->layout, 'render'))
         {
-            echo $controller->layout->render();
+            echo $use_layout ? $controller->layout->render() : $controller->layout->content;
         }
         $output = ob_get_contents();
         ob_end_clean();
