@@ -130,7 +130,7 @@ class Application
     {
         $this->request   = $request ?: new Request($this);
         $this->route     = new Route($this->request, $this);
-        $this->response  = new Response($this->request, $this);
+        $this->response  = new Response($this->route, $this);
 
         return $this->response;
     }
