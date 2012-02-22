@@ -59,6 +59,7 @@ class Asset
     {
         $theme_file   = APPLICATIONS_PATH.'/'.$this->application->name.'/themes/'.$this->application->config->theme.'/assets/'.$asset_type.'/'.$file_name;
         $public_file  = PUBLIC_PATH.'/assets/'.$asset_type.'/'.$this->file_prefix.'-'.$file_name;
+        $public_url   = $this->application->config->base_url.'/assets/'.$asset_type.'/'.$this->file_prefix.'-'.$file_name;
 
         if ( ! is_file($public_file) or filemtime($public_file) != filemtime($theme_file))
         {
@@ -83,17 +84,17 @@ class Asset
         {
             case ('img'):
             {
-                $html = '<img src="'.$this->application->config->base_url.'/assets/img/'.$this->file_prefix.'-'.$file_name.'" '.$attr.'/>';
+                $html = '<img src="'.$public_url.'" '.$attr.'/>';
                 break;
             }
             case ('css'):
             {
-                $html = '<link type="text/css" rel="stylesheet" href="'.$this->application->config->base_url.'/assets/css/'.$this->file_prefix.'-'.$file_name.'" '.$attr.'/>';
+                $html = '<link type="text/css" rel="stylesheet" href="'.$public_url.'" '.$attr.'/>';
                 break;
             }
             case ('js'):
             {
-                $html = '<script type="text/javascript" src="'.$this->application->config->base_url.'/assets/js/'.$this->file_prefix.'-'.$file_name.'" '.$attr.'></script>';
+                $html = '<script type="text/javascript" src="'.$public_url.'" '.$attr.'></script>';
                 break;
             }
         }
