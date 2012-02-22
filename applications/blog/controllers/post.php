@@ -9,7 +9,7 @@ class Post extends Engine\Controller
 {
     public function index($id)
     {
-        $this->template->content = new Engine\View(
+        $this->layout->content = new Engine\View(
             'post',
             array(
                 'post'      => Models\Post::find_by_id($id),

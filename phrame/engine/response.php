@@ -120,12 +120,12 @@ class Response
         $parameters       = $this->request->route->parameters;
 
         ob_start();
-        if ( ! isset($controller->template))
+        if ( ! isset($controller->layout))
         {
-            $controller->template = new View('template', array(), $this->application);
+            $controller->layout = new View('layout', array(), $this->application);
         }
         call_user_func_array(array($controller, $action), $parameters);
-        echo $controller->template->render();
+        echo $controller->layout->render();
         $output = ob_get_contents();
         ob_end_clean();
 

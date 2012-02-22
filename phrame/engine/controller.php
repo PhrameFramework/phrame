@@ -22,11 +22,11 @@ class Controller
     protected $application = null;
 
     /**
-     * Template view object
+     * Layout view object
      * 
      * @var  View
      */
-    public $template = null;
+    public $layout = null;
 
     /**
      * Constructs Controller object
@@ -43,7 +43,7 @@ class Controller
      */
     public function error_404()
     {
-        $this->template->content = '404 Not Found';
+        $this->layout->content = '404 Not Found';
     }
 
     /**

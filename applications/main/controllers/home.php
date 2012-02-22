@@ -8,7 +8,7 @@ class Home extends Engine\Controller
 {
     public function index($name = 'World')
     {
-        $this->template->content = new Engine\View(
+        $this->layout->content = new Engine\View(
             'home',
             array(
                 'name' => $name
@@ -23,7 +23,7 @@ class Home extends Engine\Controller
      */
     public function error_404()
     {
-        $this->template->content = 'Page Not Found';
+        $this->layout->content = 'Page Not Found';
     }
 
 }
