@@ -29,6 +29,13 @@ class Asset
     protected $config = null;
 
     /**
+     * Asset file prefix
+     * 
+     * @var  string
+     */
+    protected $file_prefix = '';
+
+    /**
      * Constructs Asset object
      * 
      * @param  Application  $application  Application object
@@ -37,6 +44,7 @@ class Asset
     {
         $this->application  = $application ?: Application::instance();
         $this->config       = new Config('asset', $this->application);
+        $this->file_prefix  = md5($this->application->name);
     }
 
     /**
@@ -50,7 +58,7 @@ class Asset
     public function render_asset($file_name, $asset_type, $attributes = array())
     {
         $theme_file   = APPLICATIONS_PATH.'/'.$this->application->name.'/themes/'.$this->application->config->theme.'/assets/'.$asset_type.'/'.$file_name;
-        $public_file  = PUBLIC_PATH.'/assets/'.$asset_type.'/'.$file_name;
+        $public_file  = PUBLIC_PATH.'/assets/'.$asset_type.'/'.$this->file_prefix.'-'.$file_name;
 
         if ( ! is_file($public_file) or filemtime($public_file) != filemtime($theme_file))
         {
@@ -75,17 +83,17 @@ class Asset
         {
             case ('img'):
             {
-                $html = '<img src="'.$this->application->config->base_url.'/assets/img/'.$file_name.'" '.$attr.'/>';
+                $html = '<img src="'.$this->application->config->base_url.'/assets/img/'.$this->file_prefix.'-'.$file_name.'" '.$attr.'/>';
                 break;
             }
             case ('css'):
             {
-                $html = '<link type="text/css" rel="stylesheet" href="'.$this->application->config->base_url.'/assets/css/'.$file_name.'" '.$attr.'/>';
+                $html = '<link type="text/css" rel="stylesheet" href="'.$this->application->config->base_url.'/assets/css/'.$this->file_prefix.'-'.$file_name.'" '.$attr.'/>';
                 break;
             }
             case ('js'):
             {
-                $html = '<script type="text/javascript" src="'.$this->application->config->base_url.'/assets/js/'.$file_name.'" '.$attr.'></script>';
+                $html = '<script type="text/javascript" src="'.$this->application->config->base_url.'/assets/js/'.$this->file_prefix.'-'.$file_name.'" '.$attr.'></script>';
                 break;
             }
         }
