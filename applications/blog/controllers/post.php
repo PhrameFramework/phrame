@@ -22,7 +22,8 @@ class Post extends Engine\Controller
                         )
                     )
                 )
-            )
+            ),
+            $this->application
         );
     }
 

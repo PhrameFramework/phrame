@@ -31,6 +31,11 @@
                                     <?php echo $this->lang->get('Documentation'); ?>
                                 </a>
                             </li>
+                            <li <?php if ($this->application->request->route->controller === 'blog') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->application->config->base_url; ?>/blog">
+                                    <?php echo $this->lang->get('Blog'); ?>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

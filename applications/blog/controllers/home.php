@@ -13,7 +13,8 @@ class Home extends Engine\Controller
             'home',
             array(
                 'posts' => Models\Post::find('all'),
-            )
+            ),
+            $this->application
         );
     }
 
