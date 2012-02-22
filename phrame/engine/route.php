@@ -61,7 +61,7 @@ class Route
         $this->config       = new Config('route', $this->application);
 
         // Process request_uri if default application is called
-        $request_uri = $this->application->name === APPLICATION_NAME ? trim($request->server('request_uri'), '/') : '';
+        $request_uri = trim($request->server('request_uri'), '/');
 
         // use regexp to choose the appropriate route
         foreach ($this->config->routes as $old_route => $new_route)

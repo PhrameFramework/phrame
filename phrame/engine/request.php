@@ -57,24 +57,16 @@ class Request
     protected $session = array();
 
     /**
-     * Route object
-     * 
-     * @var  Route
-     */
-    public $route = null;
-
-    /**
      * Constructs Request object
      * 
      * @param  Application  $application  Application object
-     * @param  Route        $route        Route object
      * @param  array        $server       Server parameters
      * @param  array        $get          Get parameters
      * @param  array        $post         Post parameters
      * @param  array        $cookie       Cookie parameters
      * @param  array        $session      Session parameters
      */
-    public function __construct($application = null, $route = null, $server = array(), $get = array(), $post = array(), $cookie = array(), $session = array())
+    public function __construct($application = null, $server = array(), $get = array(), $post = array(), $cookie = array(), $session = array())
     {
         $this->application = $application ?: Application::instance();
 
@@ -83,8 +75,6 @@ class Request
         $this->post     = ! empty($post)    ? $post    : $_POST;
         $this->cookie   = ! empty($cookie)  ? $cookie  : $_COOKIE;
         $this->session  = ! empty($session) ? $session : ($this->application->config->use_sessions === true ? $_SESSION : array());
-
-        $this->route = $route ?: new Route($this, $this->application);
     }
 
     /**

@@ -8,16 +8,16 @@ class Blog extends Engine\Controller
 {
     public function index()
     {
-        $this->layout->content = Engine\Application::instance('blog')->process()->render(false);
+        $request = new Engine\Request(Engine\Application::instance('blog'));
+        $request->server('request_uri', '/');
+
+        $this->layout->content = Engine\Application::instance('blog')->process($request)->render(false);
     }
 
     public function post($id)
     {
-        $request         = new Engine\Request(Engine\Application::instance('blog'));
-        $request->route  = new Engine\Route($request, Engine\Application::instance('blog'));
-        $request->route->controller  = 'post';
-        $request->route->action      = 'index';
-        $request->route->parameters  = array($id);
+        $request = new Engine\Request(Engine\Application::instance('blog'));
+        $request->server('request_uri', '/post/'.$id);
         
         $this->layout->content = Engine\Application::instance('blog')->process($request)->render(false);
     }
