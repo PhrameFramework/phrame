@@ -16,9 +16,8 @@ return array(
      * Routes
      */
     'routes' => array(
-        '^docs$'                => 'documentation',
-        '^docs/([a-zA-Z0-9]+)'  => 'documentation/$1',
-        '^post/([a-zA-Z0-9]+)'  => 'blog/post/$1',
+        '^docs$'          => 'documentation',
+        '^post/([0-9]+)'  => 'blog/post/$1',
         
     ),
     
