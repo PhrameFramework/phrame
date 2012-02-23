@@ -57,12 +57,22 @@ class Asset
      */
     public function render_asset($file_name, $asset_type, $attributes = array())
     {
+        $fn    = explode('/', $file_name);
+        $file  = $this->file_prefix.'-'.array_pop($fn);
+        $dir   = implode('/', $fn);
+        $dir  .= ! empty($dir) ? '/' : '';
+
         $theme_file   = APPLICATIONS_PATH.'/'.$this->application->name.'/themes/'.$this->application->config->theme.'/assets/'.$asset_type.'/'.$file_name;
-        $public_file  = PUBLIC_PATH.'/assets/'.$asset_type.'/'.$this->file_prefix.'-'.$file_name;
-        $public_url   = $this->application->config->base_url.'/assets/'.$asset_type.'/'.$this->file_prefix.'-'.$file_name;
+        $public_file  = PUBLIC_PATH.'/assets/'.$asset_type.'/'.$dir.$file;
+        $public_url   = $this->application->config->base_url.'/assets/'.$asset_type.'/'.$dir.$file;
 
         if ( ! is_file($public_file) or filemtime($public_file) != filemtime($theme_file))
         {
+            if ( ! is_dir(dirname($public_file)))
+            {
+                mkdir(dirname($public_file), 0777, true);
+            }
+
             copy($theme_file, $public_file);
             touch($public_file, filemtime($theme_file));
         }
