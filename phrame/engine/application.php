@@ -123,12 +123,21 @@ class Application
     /**
      * Process request
      * 
-     * @param   Request   $request  Request to process
+     * @param   mixed     $request  Request to process or request uri
      * @return  Response
      */
     public function process($request = null)
     {
-        $this->request   = $request ?: new Request($this);
+        if (is_string($request))
+        {
+            $this->request = new Request($this);
+            $this->request->server('request_uri', $request);
+        }
+        else
+        {
+            $this->request   = $request ?: new Request($this);
+        }
+        
         $this->route     = new Route($this);
         $this->response  = new Response($this);
 
