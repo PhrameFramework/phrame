@@ -16,10 +16,7 @@ class Blog extends Engine\Controller
 
     public function post($id)
     {
-        $request = new Engine\Request(Engine\Application::instance('blog'));
-        $request->server('request_uri', '/post/'.$id);
-        
-        $this->layout->content = Engine\Application::instance('blog')->process($request)->render(false);
+        $this->layout->content = Engine\Application::instance('blog')->process()->render(false);
     }
 
 }
