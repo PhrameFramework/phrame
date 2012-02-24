@@ -19,55 +19,98 @@ class Model
      * 
      * @var  array
      */
-    protected $data = array();
+    protected static $data = array();
+
+    /**
+     * Current row
+     * 
+     * @var  array
+     */
+    protected $row;
+
+    /**
+     * The key of the current row
+     * 
+     * @var  int
+     */
+    protected $key;
 
     /**
      * Constructs model
      * 
      * @param  array  $data  Initial data
      */
-    public function __construct($data = array())
+    public function __construct($row = array())
     {
-        $this->data = $data;
+        $this->row  = $row;
+        $this->key  = null;
     }
 
     /**
-     * Adds data to the storage
+     * Returns row
      * 
-     * @param   mixed  $value  Data to store
+     * @param   string  $name  Attribute name
+     * @return  mixed
      */
-    public function add($value)
+    public function __get($name)
     {
-        $this->data[] = $value;
+        return isset($this->row[$name]) ? $this->row[$name] : null;
+    }
+
+    /**
+     * Sets row
+     * 
+     * @param  string  $name   Attribute name
+     * @param  mixed   $value  Attribute value
+     */
+    public function __set($name, $value)
+    {
+        $this->row[$name] = $value;
+    }
+
+    /**
+     * Saves row to the storage
+     */
+    public function save()
+    {
+        if ( ! isset($this->key))
+        {
+            self::$data[] = $this->row;
+            $keys = array_keys(self::$data);
+            $this->key = end($keys);
+        }
+        else
+        {
+            self::$data[$this->key] = $this->row;
+        }
     }
 
     /**
      * Deletes data from the storage
-     * 
-     * @param   array  $value  Data to delete
      */
-    public function delete($value)
+    public function delete()
     {
-        $key = array_search($value, $this->data);
+        $key = array_search($this->row, self::$data);
 
         if ($key !== false)
         {
-            unset($this->data[$key]);
+            unset(self::$data[$key]);
         }
     }
 
     /**
      * Finds data from the storage
+     * 
      * @param   string  $condition  Find condition
      * @return  array
      */
-    public function find($condition = 'all')
+    public static function find($condition = 'all')
     {
-        $data = array();
+        $keys = array();
 
         if ($condition === 'all')
         {
-            $data = $this->data;
+            $keys = array_keys(self::$data);
         }
         else
         {
@@ -76,12 +119,33 @@ class Model
             $condition_operation  = array_shift($condition_elements);
             $condition_value      = implode(' ', $condition_elements);
 
-            foreach ($this->data as $item)
+            foreach (self::$data as $key => $item)
             {
                 if (eval('return "'.$item[$condition_field].'"'.$condition_operation.$condition_value.';') === true)
                 {
-                    $data[] = $item;
+                    $keys[] = $key;
                 }
+            }
+        }
+
+        $data = null;
+        if (count($keys) === 1)
+        {
+            $key        = array_shift($keys);
+            $item       = new self(self::$data[$key]);
+            $item->key  = $key;
+
+            $data = $item;
+        }
+        elseif (count($keys) > 1)
+        {
+            $data = array();
+            foreach ($keys as $key)
+            {
+                $item       = new self(self::$data[$key]);
+                $item->key  = $key;
+
+                $data[] = $item;
             }
         }
 
@@ -93,9 +157,9 @@ class Model
      * 
      * @return  int
      */
-    public function count()
+    public static function count()
     {
-        return count($data);
+        return count(self::$data);
     }
 
 }
