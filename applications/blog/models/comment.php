@@ -2,9 +2,9 @@
 
 namespace Applications\Blog\Models;
 
-use Phrame\Engine;
+use Phrame\Activerecord;
 
-class Comment extends Engine\Model
+class Comment extends Activerecord\Model
 {
 
 }

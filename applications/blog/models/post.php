@@ -2,9 +2,9 @@
 
 namespace Applications\Blog\Models;
 
-use Phrame\Engine;
+use Phrame\Activerecord;
 
-class Post extends Engine\Model
+class Post extends Activerecord\Model
 {
 
 }
