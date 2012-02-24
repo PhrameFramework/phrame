@@ -8,7 +8,7 @@ class Blog extends Engine\Controller
 {
     public function index()
     {
-        $this->layout->content = Engine\Application::instance('blog')->process('/')->render(false);
+        $this->layout->content = Engine\Application::instance('blog')->process_uri('/')->render(false);
     }
 
     public function post($id)
