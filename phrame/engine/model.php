@@ -38,7 +38,7 @@ class Model
     /**
      * Constructs model
      * 
-     * @param  array  $data  Initial data
+     * @param  array  $row  Initial data
      */
     public function __construct($row = array())
     {
