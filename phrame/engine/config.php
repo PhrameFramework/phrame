@@ -38,36 +38,18 @@ class Config
 
         // Process config files
 
-        if ($package !== 'engine')
-        {
-            if (is_file(PHRAME_PATH.'/'.$package.'/config/'.$config_name.'.php'))
-            {
-                $this->config = array_merge(
-                    $this->config,
-                    include PHRAME_PATH.'/'.$package.'/config/'.$config_name.'.php'
-                );
-            }
-            if (is_file(PHRAME_PATH.'/'.$package.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'))
-            {
-                $this->config = array_merge(
-                    $this->config,
-                    include PHRAME_PATH.'/'.$package.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'
-                );
-            }
-        }
-
-        if (is_file(PHRAME_PATH.'/engine/config/'.$config_name.'.php'))
+        if (is_file(PHRAME_PATH.'/'.$package.'/config/'.$config_name.'.php'))
         {
             $this->config = array_merge(
                 $this->config,
-                include PHRAME_PATH.'/engine/config/'.$config_name.'.php'
+                include PHRAME_PATH.'/'.$package.'/config/'.$config_name.'.php'
             );
         }
-        if (is_file(PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/'.$config_name.'.php'))
+        if (is_file(PHRAME_PATH.'/'.$package.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'))
         {
             $this->config = array_merge(
                 $this->config,
-                include PHRAME_PATH.'/engine/config/'.APPLICATION_ENV.'/'.$config_name.'.php'
+                include PHRAME_PATH.'/'.$package.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'
             );
         }
 
