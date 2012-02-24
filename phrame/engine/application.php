@@ -144,7 +144,7 @@ class Application
     public function process_uri($uri)
     {
         $request = new Request($this);
-        $request->server('request_uri', $request);
+        $request->server('request_uri', $uri);
 
         return $this->process($request);
     }
