@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Engine
+ * @package    Phrame
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Phrame\Engine;
+namespace Packages\Phrame;
 
 class Application
 {
@@ -98,7 +98,7 @@ class Application
         // Load extensions
         foreach ($this->config->extensions as $extension)
         {
-            call_user_func('\\Phrame\\'.ucfirst(strtolower($extension)).'\\Bootstrap::init', $this);
+            call_user_func('\\Packages\\'.ucfirst(strtolower($extension)).'\\Bootstrap::init', $this);
         }
     }
 

@@ -2,14 +2,14 @@
 
 namespace Applications\Blog\Controllers;
 
-use Phrame\Engine;
+use Packages\Phrame;
 use Applications\Blog\Models;
 
-class Post extends Engine\Controller
+class Post extends Phrame\Controller
 {
     public function index($id)
     {
-        $this->layout->content = new Engine\View(
+        $this->layout->content = new Phrame\View(
             'post',
             array(
                 'post'      => Models\Post::find_by_id($id),

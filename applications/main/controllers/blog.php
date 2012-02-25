@@ -2,18 +2,18 @@
 
 namespace Applications\Main\Controllers;
 
-use Phrame\Engine;
+use Packages\Phrame;
 
-class Blog extends Engine\Controller
+class Blog extends Phrame\Controller
 {
     public function index()
     {
-        $this->layout->content = Engine\Application::instance('blog')->process_uri('/')->render(false);
+        $this->layout->content = Phrame\Application::instance('blog')->process_uri('/')->render(false);
     }
 
     public function post($id)
     {
-        $this->layout->content = Engine\Application::instance('blog')->process()->render(false);
+        $this->layout->content = Phrame\Application::instance('blog')->process()->render(false);
     }
 
 }

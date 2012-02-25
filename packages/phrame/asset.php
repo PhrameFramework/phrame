@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Engine
+ * @package    Phrame
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Phrame\Engine;
+namespace Packages\Phrame;
 
 class Asset
 {

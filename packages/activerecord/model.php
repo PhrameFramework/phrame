@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Codeception
+ * @package    Activerecord
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,9 +10,9 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Phrame\Codeception;
+namespace Packages\Activerecord;
 
-class CodeGuy extends \Codeception\AbstractGuy
+class Model extends \ActiveRecord\Model
 {
     
 }

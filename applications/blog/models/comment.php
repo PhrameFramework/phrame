@@ -2,7 +2,7 @@
 
 namespace Applications\Blog\Models;
 
-use Phrame\Activerecord;
+use Packages\Activerecord;
 
 class Comment extends Activerecord\Model
 {

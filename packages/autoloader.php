@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Phrame
+ * @package    Packages
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Phrame;
+namespace Packages;
 
 class Autoloader
 {
@@ -25,7 +25,7 @@ class Autoloader
         $type = array_shift($path);
         $file = implode('/', $path).'.php';
 
-        require_once ($type === 'applications' ? APPLICATIONS_PATH : PHRAME_PATH).'/'.$file;
+        require_once ($type === 'applications' ? APPLICATIONS_PATH : PACKAGES_PATH).'/'.$file;
     }
 
 }

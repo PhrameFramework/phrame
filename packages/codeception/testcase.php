@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Engine
+ * @package    Codeception
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,16 +10,9 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Phrame\Engine;
+namespace Packages\Codeception;
 
-class Bootstrap
+class TestCase extends \Codeception\TestCase
 {
-    /**
-     * Loads and initializes engine
-     */
-    public static function init()
-    {
-        
-    }
-
+    
 }

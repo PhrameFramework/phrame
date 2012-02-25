@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Phrame\Codeception;
+namespace Packages\Codeception;
 
 class TestGuy extends \Codeception\AbstractGuy
 {

@@ -2,12 +2,12 @@
 
 namespace Applications\Main\Controllers;
 
-use Phrame\Engine;
+use Packages\Phrame;
 
-class Documentation extends Engine\Controller
+class Documentation extends Phrame\Controller
 {
     public function index()
     {
-        $this->layout->content = Engine\Application::instance('documentation')->process_uri('/')->render();
+        $this->layout->content = Phrame\Application::instance('documentation')->process_uri('/')->render();
     }
 }

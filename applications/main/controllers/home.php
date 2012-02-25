@@ -2,13 +2,13 @@
 
 namespace Applications\Main\Controllers;
 
-use Phrame\Engine;
+use Packages\Phrame;
 
-class Home extends Engine\Controller
+class Home extends Phrame\Controller
 {
     public function index($name = 'World')
     {
-        $this->layout->content = new Engine\View(
+        $this->layout->content = new Phrame\View(
             'home',
             array(
                 'name' => $name

@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Activerecord
+ * @package    Phrame
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,9 +10,16 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Phrame\Activerecord;
+namespace Packages\Phrame;
 
-class Model extends \ActiveRecord\Model
+class Bootstrap
 {
-    
+    /**
+     * Loads and initializes engine
+     */
+    public static function init()
+    {
+        
+    }
+
 }

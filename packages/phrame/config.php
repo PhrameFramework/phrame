@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Engine
+ * @package    Phrame
  * @version    0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Phrame\Engine;
+namespace Packages\Phrame;
 
 class Config
 {
@@ -28,28 +28,28 @@ class Config
      * @param  string  $application  Application object
      * @param  string  $package      Package name
      */
-    public function __construct($config_name = null, $application = null, $package = 'engine')
+    public function __construct($config_name = null, $application = null, $package = 'phrame')
     {
         $config_name  = $config_name ?: 'application';
         $application  = $application ?: Application::instance();
-        $package      = $package     ?: 'engine';
+        $package      = $package     ?: 'phrame';
 
         $this->config = array();
 
         // Process config files
 
-        if (is_file(PHRAME_PATH.'/'.$package.'/config/'.$config_name.'.php'))
+        if (is_file(PACKAGES_PATH.'/'.$package.'/config/'.$config_name.'.php'))
         {
             $this->config = array_merge(
                 $this->config,
-                include PHRAME_PATH.'/'.$package.'/config/'.$config_name.'.php'
+                include PACKAGES_PATH.'/'.$package.'/config/'.$config_name.'.php'
             );
         }
-        if (is_file(PHRAME_PATH.'/'.$package.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'))
+        if (is_file(PACKAGES_PATH.'/'.$package.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'))
         {
             $this->config = array_merge(
                 $this->config,
-                include PHRAME_PATH.'/'.$package.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'
+                include PACKAGES_PATH.'/'.$package.'/config/'.APPLICATION_ENV.'/'.$config_name.'.php'
             );
         }
 

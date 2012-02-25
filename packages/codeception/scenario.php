@@ -10,9 +10,9 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Phrame\Codeception;
+namespace Packages\Codeception;
 
-class TestCase extends \Codeception\TestCase
+class Scenario extends \Codeception\Scenario
 {
     
 }

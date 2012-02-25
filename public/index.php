@@ -16,9 +16,9 @@
 define('APPLICATIONS_PATH', __DIR__.'/../applications');
 
 /**
- * Path to the phrame
+ * Path to the packages
  */
-define('PHRAME_PATH', __DIR__.'/../phrame');
+define('PACKAGES_PATH', __DIR__.'/../packages');
 
 /**
  * Path to the docroot
@@ -38,15 +38,15 @@ define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 /**
  * Registering autoloader
  */
-require_once PHRAME_PATH.'/autoloader.php';
-spl_autoload_register('Phrame\\Autoloader::load');
+require_once PACKAGES_PATH.'/autoloader.php';
+spl_autoload_register('Packages\\Autoloader::load');
 
 /**
  * Booting
  */
-Phrame\Engine\Bootstrap::init();
+Packages\Phrame\Bootstrap::init();
 
 /**
  * Run application
  */
-Phrame\Engine\Application::instance()->run();
+Packages\Phrame\Application::instance()->run();
