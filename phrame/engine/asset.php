@@ -79,7 +79,7 @@ class Asset
 
         if ($this->config->append_timestamp === true)
         {
-            $file_name .= '?'.filemtime($public_file);
+            $public_url .= '?'.filemtime($public_file);
         }
 
         $attr = '';
