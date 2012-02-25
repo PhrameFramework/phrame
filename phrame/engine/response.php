@@ -99,6 +99,16 @@ class Response
     }
 
     /**
+     * Redirects to the url
+     * 
+     * @param  string  $url  URL
+     */
+    public function redirect($url)
+    {
+        header('Location: '.$url, true, 302);
+    }
+
+    /**
      * Renders response
      * 
      * @param   bool    $use_layout  Use layout to render response
