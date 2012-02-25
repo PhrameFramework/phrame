@@ -22,7 +22,7 @@ class Request
     protected $application = null;
 
     /**
-     * Server paraneters
+     * Server parameters
      * 
      * @var  array
      */

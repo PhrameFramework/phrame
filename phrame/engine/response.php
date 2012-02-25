@@ -67,7 +67,7 @@ class Response
      * Add cookie
      * 
      * @param  string  $name      Cookie name
-     * @param  string  $value     Cookie valuse
+     * @param  string  $value     Cookie value
      * @param  int     $expire    Expire
      * @param  string  $path      Cookie path
      * @param  string  $domain    Cookie domain
