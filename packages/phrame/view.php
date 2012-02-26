@@ -94,6 +94,14 @@ class View
      */
     public function render()
     {
+        foreach ($this->data as &$data)
+        {
+            if (is_string($data))
+            {
+                $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+            }
+        }
+
         extract($this->data, EXTR_REFS);
 
         ob_start();

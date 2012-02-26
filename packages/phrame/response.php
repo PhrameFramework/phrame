@@ -200,7 +200,14 @@ class Response
         call_user_func_array(array($controller, $action), $parameters);
         if (method_exists($controller->layout, 'render'))
         {
-            echo $use_layout ? $controller->layout->render() : $controller->layout->content;
+            if ($use_layout)
+            {
+                echo $controller->layout->render();
+            }
+            else
+            {
+                return $controller->layout->content;
+            }
         }
         $output = ob_get_contents();
         ob_end_clean();
