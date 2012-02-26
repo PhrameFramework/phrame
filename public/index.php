@@ -38,13 +38,16 @@ define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 /**
  * Registering autoloader
  */
-require_once PACKAGES_PATH.'/autoloader.php';
-spl_autoload_register('Packages\\Autoloader::load');
+spl_autoload_register(
+    function ($class_name)
+    {
+        $path = explode('\\', strtolower($class_name));
+        $type = array_shift($path);
+        $file = implode('/', $path).'.php';
 
-/**
- * Booting
- */
-Packages\Phrame\Bootstrap::init();
+        require_once ($type === 'applications' ? APPLICATIONS_PATH : PACKAGES_PATH).'/'.$file;
+    }
+);
 
 /**
  * Run application
