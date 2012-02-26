@@ -182,8 +182,8 @@ class Response
     /**
      * Renders response
      * 
-     * @param   bool    $render_layout  Render layout or return View object
-     * @return  string
+     * @param   bool         $render_layout  Render layout or return View object
+     * @return  string|View
      */
     public function render($render_layout = true)
     {
