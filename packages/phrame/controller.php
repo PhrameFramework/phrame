@@ -54,14 +54,7 @@ class Controller
      */
     public function __call($method, $parameters)
     {
-        if ($this->application->request->server('fcgi_server_version'))
-        {
-            $this->application->response->header('Status: 404 Not Found');
-        }
-        else
-        {
-            $this->application->response->header($this->application->request->protocol().' 404 Not Found');
-        }
+        $this->application->response->status(404);
 
         $this->error_404();
     }
