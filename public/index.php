@@ -50,6 +50,6 @@ spl_autoload_register(
 );
 
 /**
- * Run application
+ * Booting
  */
-Packages\Phrame\Application::instance()->run();
+Packages\Phrame\Bootstrap::init();
