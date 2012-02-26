@@ -182,10 +182,10 @@ class Response
     /**
      * Renders response
      * 
-     * @param   bool    $use_layout  Use layout to render response
+     * @param   bool    $render_layout  Render layout or return View object
      * @return  string
      */
-    public function render($use_layout = true)
+    public function render($render_layout = true)
     {
         $controller_name  = 'Applications\\'.ucfirst($this->application->name).'\\Controllers\\'.ucfirst($this->application->route->controller);
         $controller       = new $controller_name($this->application);
@@ -200,17 +200,15 @@ class Response
         call_user_func_array(array($controller, $action), $parameters);
         if (method_exists($controller->layout, 'render'))
         {
-            if ($use_layout)
-            {
-                echo $controller->layout->render();
-            }
-            else
-            {
-                return $controller->layout->content;
-            }
+            echo $controller->layout->render();
         }
         $output = ob_get_contents();
         ob_end_clean();
+
+        if ( ! $render_layout)
+        {
+            return $controller->layout;
+        }
 
         if ($this->application->config->use_sessions === true)
         {

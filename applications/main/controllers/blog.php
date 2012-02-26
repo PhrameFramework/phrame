@@ -8,12 +8,12 @@ class Blog extends Phrame\Controller
 {
     public function index()
     {
-        $this->layout->content = Phrame\Application::instance('blog')->process_uri('/')->render(false);
+        $this->layout->content = Phrame\Application::instance('blog')->process_uri('/')->render(false)->content;
     }
 
     public function post($id)
     {
-        $this->layout->content = Phrame\Application::instance('blog')->process()->render(false);
+        $this->layout->content = Phrame\Application::instance('blog')->process()->render(false)->content;
     }
 
 }
