@@ -3,7 +3,7 @@
  * Part of the Phrame
  *
  * @package    Public
- * @version    0
+ * @version    0.0.0
  * @author     Phrame Development Team
  * @license    MIT License
  * @copyright  2012 Phrame Development Team
