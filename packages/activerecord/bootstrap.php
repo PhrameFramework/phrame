@@ -17,7 +17,7 @@ use Packages\Phrame;
 class Bootstrap
 {
     /**
-     * Loads and initializes extension
+     * Loads and initializes package
      * 
      * @param  Phrame\Application  $application  Application object
      */

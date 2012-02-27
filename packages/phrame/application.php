@@ -95,10 +95,10 @@ class Application
             ini_set('display_errors', $this->config->display_errors);
         }
 
-        // Load extensions
-        foreach ($this->config->extensions as $extension)
+        // Load packages
+        foreach ($this->config->packages as $package)
         {
-            call_user_func('\\Packages\\'.ucfirst(strtolower($extension)).'\\Bootstrap::init', $this);
+            call_user_func('\\Packages\\'.ucfirst(strtolower($package)).'\\Bootstrap::init', $this);
         }
     }
 

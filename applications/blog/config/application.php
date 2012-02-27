@@ -19,9 +19,9 @@ return array(
     'theme'            => 'default',
 
     /**
-     * Extensions to load
+     * Packages to load
      */
-    'extensions'       => array(
+    'packages'       => array(
         'activerecord',
 
     ),
