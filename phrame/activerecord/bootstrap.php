@@ -10,24 +10,24 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Packages\Activerecord;
+namespace Phrame\Activerecord;
 
-use Packages\Phrame;
+use Phrame\Core;
 
 class Bootstrap
 {
     /**
      * Loads and initializes package
      * 
-     * @param  Phrame\Application  $application  Application object
+     * @param  Core\Application  $application  Application object
      */
     public static function init($application = null)
     {
-        $application = $application ?: Phrame\Application::instance();
+        $application = $application ?: Core\Application::instance();
 
         include_once 'vendor/ActiveRecord.php';
 
-        $config = new Phrame\Config('activerecord', $application, 'activerecord');
+        $config = new Core\Config('activerecord', $application, 'activerecord');
         $connection_string = $config->connection;
 
         if ( ! empty($connection_string))

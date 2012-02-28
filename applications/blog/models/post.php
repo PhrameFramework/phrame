@@ -2,7 +2,7 @@
 
 namespace Applications\Blog\Models;
 
-use Packages\Activerecord;
+use Phrame\Activerecord;
 
 class Post extends Activerecord\Model
 {

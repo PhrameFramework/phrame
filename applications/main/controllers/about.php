@@ -2,9 +2,9 @@
 
 namespace Applications\Main\Controllers;
 
-use Packages\Phrame;
+use Phrame\Core;
 
-class About extends Phrame\Controller
+class About extends Core\Controller
 {
     public function index()
     {

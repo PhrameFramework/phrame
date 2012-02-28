@@ -2,18 +2,18 @@
 
 namespace Applications\Main\Controllers;
 
-use Packages\Phrame;
+use Phrame\Core;
 
-class Blog extends Phrame\Controller
+class Blog extends Core\Controller
 {
     public function index()
     {
-        $this->layout->content = Phrame\Application::instance('blog')->process_uri('/')->render(false)->content;
+        $this->layout->content = Core\Application::instance('blog')->process_uri('/')->render(false)->content;
     }
 
     public function post($id)
     {
-        $this->layout->content = Phrame\Application::instance('blog')->process()->render(false)->content;
+        $this->layout->content = Core\Application::instance('blog')->process()->render(false)->content;
     }
 
 }

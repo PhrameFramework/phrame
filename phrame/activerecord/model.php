@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Packages\Activerecord;
+namespace Phrame\Activerecord;
 
 class Model extends \ActiveRecord\Model
 {

@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Phrame
+ * @package    Core
  * @version    0.0.0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Packages\Phrame;
+namespace Phrame\Core;
 
 class Config
 {
@@ -28,11 +28,11 @@ class Config
      * @param  string  $application  Application object
      * @param  string  $package      Package name
      */
-    public function __construct($config_name = null, $application = null, $package = 'phrame')
+    public function __construct($config_name = null, $application = null, $package = 'core')
     {
         $config_name  = $config_name ?: 'application';
         $application  = $application ?: Application::instance();
-        $package      = $package     ?: 'phrame';
+        $package      = $package     ?: 'core';
 
         $this->config = array();
 

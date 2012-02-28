@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Phrame
+ * @package    Core
  * @version    0.0.0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,7 +10,7 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Packages\Phrame;
+namespace Phrame\Core;
 
 class Model
 {

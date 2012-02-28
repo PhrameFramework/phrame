@@ -18,7 +18,7 @@ define('APPLICATIONS_PATH', __DIR__.'/../applications');
 /**
  * Path to the packages
  */
-define('PACKAGES_PATH', __DIR__.'/../packages');
+define('PACKAGES_PATH', __DIR__.'/../phrame');
 
 /**
  * Path to the docroot
@@ -52,4 +52,4 @@ spl_autoload_register(
 /**
  * Booting
  */
-Packages\Phrame\Bootstrap::init();
+Phrame\Core\Bootstrap::init();

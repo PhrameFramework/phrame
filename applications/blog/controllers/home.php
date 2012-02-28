@@ -2,14 +2,14 @@
 
 namespace Applications\Blog\Controllers;
 
-use Packages\Phrame;
+use Phrame\Core;
 use Applications\Blog\Models;
 
-class Home extends Phrame\Controller
+class Home extends Core\Controller
 {
     public function index()
     {
-        $this->layout->content = new Phrame\View(
+        $this->layout->content = new Core\View(
             'home',
             array(
                 'posts' => Models\Post::find('all'),

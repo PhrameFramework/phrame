@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Phrame
+ * @package    Codeception
  * @version    0.0.0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,20 +10,22 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Packages\Phrame;
+namespace Phrame\Codeception;
+
+use Phrame\Core;
 
 class Bootstrap
 {
     /**
      * Loads and initializes package
      * 
-     * @param  Phrame\Application  $application  Application object
+     * @param  Core\Application  $application  Application object
      */
     public static function init($application = null)
     {
-        $application = $application ?: Application::instance();
+        $application = $application ?: Core\Application::instance();
 
-        $application->run();
+        include_once 'vendor/autoload.php';
     }
 
 }

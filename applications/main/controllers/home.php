@@ -2,13 +2,13 @@
 
 namespace Applications\Main\Controllers;
 
-use Packages\Phrame;
+use Phrame\Core;
 
-class Home extends Phrame\Controller
+class Home extends Core\Controller
 {
     public function index($name = 'World')
     {
-        $this->layout->content = new Phrame\View(
+        $this->layout->content = new Core\View(
             'home',
             array(
                 'name' => $name

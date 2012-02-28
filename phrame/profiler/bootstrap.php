@@ -2,7 +2,7 @@
 /**
  * Part of the Phrame
  *
- * @package    Codeception
+ * @package    Profiler
  * @version    0.0.0
  * @author     Phrame Development Team
  * @license    MIT License
@@ -10,22 +10,22 @@
  * @link       http://phrame.itworks.in.ua/
  */
 
-namespace Packages\Codeception;
+namespace Phrame\Profiler;
 
-use Packages\Phrame;
+use Phrame\Core;
 
 class Bootstrap
 {
     /**
-     * Loads and initializes package
+     * Loads and initializes extension
      * 
-     * @param  Phrame\Application  $application  Application object
+     * @param  Core\Application  $application  Application object
      */
     public static function init($application = null)
     {
-        $application = $application ?: Phrame\Application::instance();
+        $application = $application ?: Core\Application::instance();
 
-        include_once 'vendor/autoload.php';
+        require_once 'vendor/classes/PhpQuickProfiler.php';
     }
 
 }
