@@ -6,7 +6,7 @@ Clone repository:
 
     git clone --recursive https://github.com/PhrameFramework/phrame
 
-Install packages from [Packagist](http://packagist.org):
+Install packages from [Packagist](http://packagist.org/packages/phrame/):
 
     curl -s http://getcomposer.org/installer | php
     php composer.phar install
