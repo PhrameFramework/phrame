@@ -1,0 +1,13 @@
+{
+    "name": "phrame",
+    "version": "0.1.0",
+    "config": {
+        "vendor-dir": "."
+    },
+    "require": {
+        "phrame/core": ">=0.1.0",
+        "phrame/activerecord": ">=0.1.0",
+        "phrame/codeception": ">=0.1.0",
+        "phrame/profiler": ">=0.1.0"
+    }
+}
