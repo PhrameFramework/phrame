@@ -47,7 +47,7 @@
             </div>
             <footer>
                 <p class="pull-left">&copy; 2012, Phrame</p>
-                <p class="pull-right">Watch us on <a href="https://github.com/delmot/phrame">github</a></p>
+                <p class="pull-right">Watch us on <a href="https://github.com/PhrameFramework">github</a></p>
             </footer>
         </div>
     </body>
