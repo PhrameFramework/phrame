@@ -4,3 +4,6 @@
 [submodule "phrame/activerecord"]
 	path = phrame/activerecord
 	url = git@github.com:PhrameFramework/activerecord.git
+[submodule "phrame/codeception"]
+	path = phrame/codeception
+	url = git@github.com:PhrameFramework/codeception.git
