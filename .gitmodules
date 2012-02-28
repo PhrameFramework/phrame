@@ -1,0 +1,3 @@
+[submodule "phrame/core"]
+	path = phrame/core
+	url = git@github.com:PhrameFramework/core.git
