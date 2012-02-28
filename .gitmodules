@@ -1,3 +1,6 @@
 [submodule "phrame/core"]
 	path = phrame/core
 	url = git@github.com:PhrameFramework/core.git
+[submodule "phrame/activerecord"]
+	path = phrame/activerecord
+	url = git@github.com:PhrameFramework/activerecord.git
