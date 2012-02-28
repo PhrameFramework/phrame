@@ -7,3 +7,6 @@
 [submodule "phrame/codeception"]
 	path = phrame/codeception
 	url = git@github.com:PhrameFramework/codeception.git
+[submodule "phrame/profiler"]
+	path = phrame/profiler
+	url = git@github.com:PhrameFramework/profiler.git
