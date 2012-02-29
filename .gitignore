@@ -1,5 +1,3 @@
-applications/default/cache/*
-applications/default/tmp/*
 public/assets/css/*
 public/assets/img/*
 public/assets/js/*
