@@ -18,7 +18,7 @@ define('APPLICATIONS_PATH', __DIR__.'/../applications');
 /**
  * Path to the packages
  */
-define('PACKAGES_PATH', __DIR__.'/../phrame');
+define('PACKAGES_PATH', __DIR__.'/../packages');
 
 /**
  * Path to the docroot
@@ -41,11 +41,11 @@ define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 spl_autoload_register(
     function ($class_name)
     {
-        $path = explode('\\', strtolower($class_name));
-        $type = array_shift($path);
-        $file = implode('/', $path).'.php';
+        $path    = explode('\\', strtolower($class_name));
+        $vendor  = array_shift($path);
+        $file    = implode('/', $path).'.php';
 
-        require_once ($type === 'applications' ? APPLICATIONS_PATH : PACKAGES_PATH).'/'.$file;
+        require_once ($vendor === 'applications' ? APPLICATIONS_PATH : PACKAGES_PATH.'/'.$vendor).'/'.$file;
     }
 );
 

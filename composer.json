@@ -2,7 +2,7 @@
     "name": "phrame",
     "version": "0.1.0",
     "config": {
-        "vendor-dir": "."
+        "vendor-dir": "packages"
     },
     "require": {
         "phrame/core": ">=0.1.0",
