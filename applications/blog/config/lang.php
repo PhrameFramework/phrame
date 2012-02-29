@@ -5,7 +5,7 @@ return array(
     /**
      * Application language
      */
-    'language'          => 'ru',
+    'language'          => 'auto',
 
     /**
      * Default application language

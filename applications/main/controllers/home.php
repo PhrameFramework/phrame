@@ -6,7 +6,7 @@ use Phrame\Core;
 
 class Home extends Core\Controller
 {
-    public function index($name = 'World')
+    public function index($name = 'Phrame')
     {
         $this->layout->content = new Core\View(
             'home',
