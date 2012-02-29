@@ -41,11 +41,9 @@ define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 spl_autoload_register(
     function ($class_name)
     {
-        $path    = explode('\\', strtolower($class_name));
-        $vendor  = array_shift($path);
-        $file    = implode('/', $path).'.php';
-
-        require_once ($vendor === 'applications' ? APPLICATIONS_PATH : PACKAGES_PATH.'/'.$vendor).'/'.$file;
+        $file = str_replace('\\', '/', strtolower($class_name)).'.php';
+        
+        require_once is_file(APPLICATIONS_PATH.'/'.$file) ? APPLICATIONS_PATH.'/'.$file : PACKAGES_PATH.'/'.$file;
     }
 );
 

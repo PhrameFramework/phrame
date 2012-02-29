@@ -1,9 +1,9 @@
 <?php
 
-namespace Applications\Blog\Controllers;
+namespace Blog\Controllers;
 
 use Phrame\Core;
-use Applications\Blog\Models;
+use Blog\Models;
 
 class Post extends Core\Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Applications\Blog\Models;
+namespace Blog\Models;
 
 use Phrame\Activerecord;
 
