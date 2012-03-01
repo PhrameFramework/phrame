@@ -10,7 +10,7 @@
 
 <p>Make <b>assets</b> directory writable:</p>
 <pre>
-<strong>$</strong> chmod 777 public/assets
+<strong>$</strong> chmod -R 777 public/assets
 </pre>
 
 <p>Install packages from <a href="http://packagist.org/packages/phrame/">Packagist</a>:</p>
