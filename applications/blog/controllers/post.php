@@ -18,4 +18,17 @@ class Post extends Core\Controller
         );
     }
 
+    public function comment()
+    {
+        $comment = new Models\Comment();
+        $comment->post_id         = $this->application->request->post('post_id');
+        $comment->comment_date    = date('Y-m-d H:i');
+        $comment->comment_author  = $this->application->request->post('comment_author');
+        $comment->comment_text    = $this->application->request->post('comment_text');
+        $comment->save();
+
+        $post_id = $this->application->request->post('post_id');
+        $this->application->response->redirect('/post/'.$post_id);
+    }
+
 }

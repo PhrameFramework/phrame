@@ -16,4 +16,8 @@ class Blog extends Core\Controller
         $this->layout->content = Core\Application::instance('blog')->process()->render(false)->content;
     }
 
+    public function comment()
+    {
+        Core\Application::instance('blog')->process_uri('post/comment')->render(false);
+    }
 }

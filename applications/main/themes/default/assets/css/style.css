@@ -39,3 +39,12 @@ body {
 footer {
     padding-top: 10px;
 }
+.post .links {
+    padding-top: 10px;
+}
+.post form {
+    padding-top: 20px;
+}
+.comment {
+    padding: 10px 0;
+}
