@@ -13,7 +13,7 @@
     <hr />
     <h3><?php echo $this->lang->get('Comments'); ?></h3>
     <?php
-    foreach ($comments as $comment)
+    foreach ($post->comments as $comment)
     {
         ?>
         <div>

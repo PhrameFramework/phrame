@@ -12,16 +12,7 @@ class Post extends Core\Controller
         $this->layout->content = new Core\View(
             'post',
             array(
-                'post'      => Models\Post::find_by_id($id),
-                'comments'  => Models\Comment::find(
-                    'all',
-                    array(
-                        'conditions' => array(
-                            'post_id = ?',
-                            $id
-                        )
-                    )
-                )
+                'post' => Models\Post::find_by_id($id)
             ),
             $this->application
         );

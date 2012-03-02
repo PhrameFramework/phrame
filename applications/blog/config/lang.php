@@ -22,6 +22,7 @@ return array(
             'Blog'         => 'Blog',
             'Watch us on'  => 'Watch us on',
             'Comments'     => 'Comments',
+            'Read more...' => 'Read more...',
 
         ),
 
@@ -30,6 +31,7 @@ return array(
             'Blog'         => 'Блог',
             'Watch us on'  => 'Следите за нами на',
             'Comments'     => 'Комментарии',
+            'Read more...' => 'Читать дальше...',
 
         ),
 
