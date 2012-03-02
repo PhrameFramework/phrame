@@ -5,7 +5,7 @@ return array(
     /**
      * Application language
      */
-    'language'          => 'auto',
+    'language'          => 'ru',
 
     /**
      * Default application language
@@ -23,6 +23,10 @@ return array(
             'Watch us on'  => 'Watch us on',
             'Comments'     => 'Comments',
             'Read more...' => 'Read more...',
+            'Add comment'  => 'Add comment',
+            'Name'         => 'Name',
+            'Text'         => 'Text',
+            'Send'         => 'Send',
 
         ),
 
@@ -32,6 +36,10 @@ return array(
             'Watch us on'  => 'Следите за нами на',
             'Comments'     => 'Комментарии',
             'Read more...' => 'Читать дальше...',
+            'Add comment'  => 'Добавить комментарий',
+            'Name'         => 'Имя',
+            'Text'         => 'Текст',
+            'Send'         => 'Отправить',
 
         ),
 
