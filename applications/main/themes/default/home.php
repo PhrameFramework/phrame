@@ -10,6 +10,7 @@
 
 <p>Make <b>assets</b> directory writable:</p>
 <pre>
+<strong>$</strong> cd phrame
 <strong>$</strong> chmod -R 777 public/assets
 </pre>
 

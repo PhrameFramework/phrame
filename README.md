@@ -8,6 +8,7 @@ Clone repository:
 
 Make **assets** directory writable:
 
+    $ cd phrame
     $ chmod -R 777 public/assets
 
 Install packages from [Packagist](http://packagist.org/packages/phrame/):
