@@ -17,5 +17,5 @@ foreach ($posts as $post)
             <a href="<?php echo $this->application->config->base_url.'/post/'.$post->id; ?>#comments"><?php echo $this->lang->get('Comments').' ('.count($post->comments).')'; ?></a>
         </div>
     </div>
-    <?
+    <?php
 }
