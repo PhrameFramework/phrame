@@ -8,6 +8,6 @@ class Documentation extends Core\Controller
 {
     public function index()
     {
-        $this->layout->content = Core\Application::instance('documentation')->process_uri('/')->render();
+        $this->layout->content = Core\Application::instance('documentation')->process_uri('/')->body(true);
     }
 }
