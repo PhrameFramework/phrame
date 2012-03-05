@@ -8,6 +8,6 @@ class Home extends Core\Controller
 {
     public function index()
     {
-        echo 'Documentation';
+        return 'Documentation';
     }
 }
