@@ -5,9 +5,9 @@
         "vendor-dir": "packages"
     },
     "require": {
-        "phrame/core": "0.2.*",
-        "phrame/activerecord": "0.2.*",
-        "phrame/codeception": "0.2.*",
-        "phrame/profiler": "0.2.*"
+        "phrame/core": "dev-master",
+        "phrame/activerecord": "dev-master",
+        "phrame/codeception": "dev-master",
+        "phrame/profiler": "dev-master"
     }
 }
