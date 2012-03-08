@@ -1,6 +1,5 @@
 {
     "name": "phrame",
-    "version": "0.2.0",
     "config": {
         "vendor-dir": "packages"
     },
