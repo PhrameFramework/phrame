@@ -1,12 +1,12 @@
 [submodule "packages/phrame/core"]
 	path = packages/phrame/core
-	url = git@github.com:PhrameFramework/core.git
+	url = git://github.com/PhrameFramework/core.git
 [submodule "packages/phrame/activerecord"]
 	path = packages/phrame/activerecord
-	url = git@github.com:PhrameFramework/activerecord.git
+	url = git://github.com/PhrameFramework/activerecord.git
 [submodule "packages/phrame/codeception"]
 	path = packages/phrame/codeception
-	url = git@github.com:PhrameFramework/codeception.git
+	url = git://github.com/PhrameFramework/codeception.git
 [submodule "packages/phrame/profiler"]
 	path = packages/phrame/profiler
-	url = git@github.com:PhrameFramework/profiler.git
+	url = git://github.com/PhrameFramework/profiler.git
