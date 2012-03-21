@@ -9,13 +9,22 @@ class Post extends Core\Controller
 {
     public function index($id)
     {
-        $this->layout->content = new Core\View(
-            'post',
-            array(
-                'post' => Models\Post::find_by_id($id)
-            ),
-            $this->application
-        );
+        $post = Models\Post::find_by_id($id);
+
+        if ( ! empty($post))
+        {
+            $this->layout->content = new Core\View(
+                'post',
+                array(
+                    'post' => Models\Post::find_by_id($id)
+                ),
+                $this->application
+            );
+        }
+        else
+        {
+            $this->error_404();
+        }
     }
 
     public function comment()
