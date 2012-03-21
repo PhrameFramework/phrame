@@ -18,12 +18,4 @@ class Home extends Core\Controller
         $this->application->response->cookie('about', $name);
     }
 
-    /**
-     * Custom 404 handler
-     */
-    public function error_404()
-    {
-        $this->layout->content = 'Page Not Found';
-    }
-
 }
