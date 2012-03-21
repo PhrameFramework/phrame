@@ -11,10 +11,11 @@ PHP 5.3 Framework
 
 [Download](https://github.com/PhrameFramework/phrame/zipball/master) and extract the latest version
 
-Make **assets** directory writable:
+Make **assets** and **logs** directories writable:
 
     $ cd phrame
     $ chmod -R 777 public/assets
+    $ chmod -R 777 applications/main/logs
 
 Install packages from [Composer](http://packagist.org/packages/phrame/):
 

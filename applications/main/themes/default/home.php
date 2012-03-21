@@ -15,11 +15,12 @@
 
 <p><a href="https://github.com/PhrameFramework/phrame/zipball/master">Download</a> and extract the latest version</p>
 
-<p>Make <strong>assets</strong> directory writable:</p>
+<p>Make <strong>assets</strong> and <strong>logs</strong> directories writable:</p>
 
 <pre>
 <strong>$</strong> cd phrame
 <strong>$</strong> chmod -R 777 public/assets
+<strong>$</strong> chmod -R 777 applications/main/logs
 </pre>
 
 <p>Install packages from <a href="http://packagist.org/packages/phrame/">Composer</a>:</p>
