@@ -14,7 +14,7 @@ class Home extends Core\Controller
             array(
                 'posts' => Models\Post::find('all'),
             ),
-            $this->application
+            $this->app
         );
     }
 

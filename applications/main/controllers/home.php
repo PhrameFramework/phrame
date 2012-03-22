@@ -15,7 +15,7 @@ class Home extends Core\Controller
             )
         );
 
-        $this->application->response->cookie('about', $name);
+        $this->app->response->cookie('about', $name);
     }
 
 }

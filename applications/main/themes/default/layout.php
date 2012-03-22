@@ -14,26 +14,26 @@
             <a href="http://github.com/PhrameFramework"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="<?php echo $this->application->config->base_url; ?>">Phrame</a>
+                    <a class="brand" href="<?php echo $this->app->config->base_url; ?>">Phrame</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li <?php if ($this->application->route->controller === 'home') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->application->config->base_url; ?>">
+                            <li <?php if ($this->app->route->controller === 'home') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>">
                                     <?php echo $this->lang->get('Home'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->application->route->controller === 'about') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->application->config->base_url; ?>/about">
+                            <li <?php if ($this->app->route->controller === 'about') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>/about">
                                     <?php echo $this->lang->get('About'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->application->route->controller === 'documentation') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->application->config->base_url; ?>/docs">
+                            <li <?php if ($this->app->route->controller === 'documentation') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>/docs">
                                     <?php echo $this->lang->get('Documentation'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->application->route->controller === 'blog') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->application->config->base_url; ?>/blog">
+                            <li <?php if ($this->app->route->controller === 'blog') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>/blog">
                                     <?php echo $this->lang->get('Blog'); ?>
                                 </a>
                             </li>

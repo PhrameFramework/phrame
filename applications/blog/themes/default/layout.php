@@ -13,11 +13,11 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="<?php echo $this->application->config->base_url; ?>">Phrame</a>
+                    <a class="brand" href="<?php echo $this->app->config->base_url; ?>">Phrame</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li <?php if ($this->application->route->controller === 'home') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->application->config->base_url; ?>">
+                            <li <?php if ($this->app->route->controller === 'home') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>">
                                     <?php echo $this->lang->get('Home'); ?>
                                 </a>
                             </li>

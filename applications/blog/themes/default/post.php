@@ -26,7 +26,7 @@
         <?php
     }
     ?>
-    <form method="post" action="<?php echo $this->application->config->base_url; ?>/post/comment">
+    <form method="post" action="<?php echo $this->app->config->base_url; ?>/post/comment">
         <fieldset>
             <legend><?php echo $this->lang->get('Add comment'); ?></legend>
             <div class="control-group">
