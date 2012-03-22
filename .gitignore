@@ -3,3 +3,4 @@ composer.lock
 packages/.composer
 public/assets/*
 applications/*/logs/*
+.idea
