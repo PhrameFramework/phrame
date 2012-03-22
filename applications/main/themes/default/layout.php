@@ -17,22 +17,22 @@
                     <a class="brand" href="<?php echo $this->app->config->base_url; ?>">Phrame</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li <?php if ($this->app->route->controller === 'home') echo 'class="active"'; ?>>
+                            <li <?php if ($this->app->route->application === 'main' and $this->app->route->controller === 'home') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->app->config->base_url; ?>">
                                     <?php echo $this->lang->get('Home'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->app->route->controller === 'about') echo 'class="active"'; ?>>
+                            <li <?php if ($this->app->route->application === 'main' and $this->app->route->controller === 'about') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->app->config->base_url; ?>/about">
                                     <?php echo $this->lang->get('About'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->app->route->controller === 'documentation') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->app->config->base_url; ?>/docs">
+                            <li <?php if ($this->app->route->application === 'documentation') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>/documentation">
                                     <?php echo $this->lang->get('Documentation'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->app->route->controller === 'blog') echo 'class="active"'; ?>>
+                            <li <?php if ($this->app->route->application === 'main' and $this->app->route->controller === 'blog') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->app->config->base_url; ?>/blog">
                                     <?php echo $this->lang->get('Blog'); ?>
                                 </a>

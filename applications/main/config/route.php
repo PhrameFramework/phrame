@@ -16,7 +16,6 @@ return array(
      * Routes
      */
     'routes' => array(
-        '^docs$'          => 'documentation',
         '^post/([0-9]+)'  => 'blog/post/$1',
         '^post/comment'   => 'blog/comment',
         
