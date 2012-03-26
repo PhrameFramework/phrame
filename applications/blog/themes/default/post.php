@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1><?php echo $this->lang->get('Blog'); ?></h1>
+    <h1><?php echo $this->app->lang->get('Blog'); ?></h1>
 </div>
 
 <div class="post">
@@ -11,7 +11,7 @@
         <?php echo $post->post_text; ?>
     </div>
     <hr />
-    <h3><?php echo $this->lang->get('Comments'); ?></h3>
+    <h3><?php echo $this->app->lang->get('Comments'); ?></h3>
     <?php
     foreach ($post->comments as $comment)
     {
@@ -28,26 +28,26 @@
     ?>
     <form method="post" action="<?php echo $this->app->config->base_url; ?>/post/comment">
         <fieldset>
-            <legend><?php echo $this->lang->get('Add comment'); ?></legend>
+            <legend><?php echo $this->app->lang->get('Add comment'); ?></legend>
             <div class="control-group">
                 <div class="controls">
                     <input type="hidden" name="post_id" value="<?php echo $post->id; ?>" />
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="comment_author"><?php echo $this->lang->get('Name'); ?></label>
+                <label class="control-label" for="comment_author"><?php echo $this->app->lang->get('Name'); ?></label>
                 <div class="controls">
                     <input type="text" name="comment_author" class="input-xlarge" id="comment_author" />
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="comment_text"><?php echo $this->lang->get('Text'); ?></label>
+                <label class="control-label" for="comment_text"><?php echo $this->app->lang->get('Text'); ?></label>
                 <div class="controls">
                     <textarea rows="3" name="comment_text" id="comment_text" class="input-xlarge"></textarea>
                 </div>
             </div>
             <div class="form-actions">
-                <button class="btn btn-primary" type="submit"><?php echo $this->lang->get('Send'); ?></button>
+                <button class="btn btn-primary" type="submit"><?php echo $this->app->lang->get('Send'); ?></button>
             </div>
         </fieldset>
     </form>

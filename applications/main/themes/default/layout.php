@@ -6,8 +6,8 @@
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <?php echo $this->asset->css('bootstrap.css', array('media'=>'all')); ?>
-        <?php echo $this->asset->css('style.css', array('media'=>'all')); ?>
+        <?php echo $this->app->asset->css('bootstrap.css', array('media'=>'all')); ?>
+        <?php echo $this->app->asset->css('style.css', array('media'=>'all')); ?>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -19,22 +19,22 @@
                         <ul class="nav">
                             <li <?php if ($this->app->route->application === 'main' and $this->app->route->controller === 'home') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->app->config->base_url; ?>">
-                                    <?php echo $this->lang->get('Home'); ?>
+                                    <?php echo $this->app->lang->get('Home'); ?>
                                 </a>
                             </li>
                             <li <?php if ($this->app->route->application === 'main' and $this->app->route->controller === 'about') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->app->config->base_url; ?>/about">
-                                    <?php echo $this->lang->get('About'); ?>
+                                    <?php echo $this->app->lang->get('About'); ?>
                                 </a>
                             </li>
                             <li <?php if ($this->app->route->application === 'documentation') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->app->config->base_url; ?>/documentation">
-                                    <?php echo $this->lang->get('Documentation'); ?>
+                                    <?php echo $this->app->lang->get('Documentation'); ?>
                                 </a>
                             </li>
                             <li <?php if ($this->app->route->application === 'main' and $this->app->route->controller === 'blog') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->app->config->base_url; ?>/blog">
-                                    <?php echo $this->lang->get('Blog'); ?>
+                                    <?php echo $this->app->lang->get('Blog'); ?>
                                 </a>
                             </li>
                         </ul>
