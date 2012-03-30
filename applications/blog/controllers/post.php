@@ -18,7 +18,7 @@ class Post extends Core\Controller
                 array(
                     'post' => $post
                 ),
-                $this->app
+                $this->app_name
             );
         }
         else
