@@ -9,7 +9,7 @@ class Blog extends Core\Controller
     public function index()
     {
         // This shows how to handle a specific uri in another application and to get some layout's variable
-        $this->layout->content = Core\Applications::instance('blog')->response('/')->body->content;
+        $this->layout->content = Core\Applications::instance('blog')->response->body->content;
     }
 
     public function post($id)
@@ -21,6 +21,6 @@ class Blog extends Core\Controller
     public function comment()
     {
         // Simple handling of a specific uri in another application
-        Core\Applications::instance('blog')->response('post/comment')->body();
+        Core\Applications::instance('blog/post/comment')->run();
     }
 }
