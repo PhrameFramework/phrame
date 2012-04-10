@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Phrame</title>
+        <title>Documentation</title>
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -20,6 +20,11 @@
                             <li <?php if ($this->app->route->controller === 'home') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->app->config->base_url; ?>">
                                     <?php echo $this->app->lang->get('Home'); ?>
+                                </a>
+                            </li>
+                            <li <?php if ($this->app->route->controller === 'core/home') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>/core">
+                                    <?php echo $this->app->lang->get('Core'); ?>
                                 </a>
                             </li>
                         </ul>

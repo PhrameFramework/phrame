@@ -8,6 +8,6 @@ class Home extends Core\Controller
 {
     public function index()
     {
-        return 'Documentation';
+        $this->layout->content = new Core\View('home', array(), $this->app_name);
     }
 }

@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'Lobster';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Lobster'), url('http://themes.googleusercontent.com/static/fonts/lobster/v4/MWVf-Rwh4GLQVBEwbyI61Q.woff') format('woff');
+}
+html, body {
+  background-color: #eee;
+}
+body {
+    padding-top: 40px;
+}
+.navbar .brand {
+    color: #DDDDDD;
+    font-family: 'Lobster', cursive;
+    padding-right: 10px;
+}
+.navbar .brand:hover {
+    text-decoration: none;
+    color: #fff;
+}
+.navbar .brand:active {
+    padding-top: 9px;
+    padding-left: 21px;
+    padding-right: 9px;
+    margin-bottom: -1px;
+}
+.content {
+    background-color: #fff;
+    padding: 20px;
+    margin: 0 -20px;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+footer {
+    padding-top: 10px;
+}
+.post .links {
+    padding-top: 10px;
+}
+.post form {
+    padding-top: 20px;
+}
+.comment {
+    padding: 10px 0;
+}
