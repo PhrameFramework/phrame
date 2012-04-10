@@ -1,0 +1,3 @@
+<div class="page-header">
+    <h1>Application</h1>
+</div>
