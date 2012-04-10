@@ -1,3 +1,13 @@
+<ul class="breadcrumb">
+    <li>
+        <a href="<?php echo $this->app->config->base_url; ?>"><?php echo $this->app->lang->get('Documentation'); ?></a>
+        <span class="divider">/</span>
+    </li>
+    <li>
+        <?php echo $this->app->lang->get('Core classes'); ?>
+    </li>
+</ul>
+
 <div class="page-header">
     <h1><?php echo $this->app->lang->get('Core classes'); ?></h1>
 </div>
@@ -5,67 +15,67 @@
 <ul>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/application">
-            Phrame\Core\Application
+            Application
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/applications">
-            Phrame\Core\Applications
+            Applications
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/asset">
-            Phrame\Core\Asset
+            Asset
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/config">
-            Phrame\Core\Config
+            Config
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/controller">
-            Phrame\Core\Controller
+            Controller
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/error">
-            Phrame\Core\Error
+            Error
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/lang">
-            Phrame\Core\Lang
+            Lang
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/log">
-            Phrame\Core\Log
+            Log
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/model">
-            Phrame\Core\Model
+            Model
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/request">
-            Phrame\Core\Request
+            Request
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/response">
-            Phrame\Core\Response
+            Response
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/route">
-            Phrame\Core\Route
+            Route
         </a>
     </li>
     <li>
         <a href="<?php echo $this->app->config->base_url; ?>/core/view">
-            Phrame\Core\View
+            View
         </a>
     </li>
 </ul>
