@@ -5,12 +5,12 @@ namespace Blog\Controllers;
 use Phrame\Core;
 use Blog\Models;
 
-class Home extends Core\Controller
+class Index extends Core\Controller
 {
     public function index()
     {
         $this->layout->content = new Core\View(
-            'home',
+            'index',
             array(
                 'posts' => Models\Post::find('all'),
             ),

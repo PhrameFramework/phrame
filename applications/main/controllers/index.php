@@ -4,12 +4,12 @@ namespace Main\Controllers;
 
 use Phrame\Core;
 
-class Home extends Core\Controller
+class Index extends Core\Controller
 {
     public function index($name = 'Phrame')
     {
         $this->layout->content = new Core\View(
-            'home',
+            'index',
             array(
                 'name' => $name
             )

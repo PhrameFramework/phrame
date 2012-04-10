@@ -17,7 +17,7 @@
                     <a class="brand" href="<?php echo $this->app->config->base_url; ?>">Phrame</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li <?php if ($this->app->route->controller === 'home') echo 'class="active"'; ?>>
+                            <li <?php if ($this->app->route->controller === 'index') echo 'class="active"'; ?>>
                                 <a href="<?php echo $this->app->config->base_url; ?>">
                                     <?php echo $this->app->lang->get('Home'); ?>
                                 </a>
