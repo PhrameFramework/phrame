@@ -13,12 +13,12 @@
 /**
  * Path to the applications
  */
-define('APPLICATIONS_PATH', __DIR__.'/../applications');
+define('APPLICATIONS_PATH', realpath(__DIR__.'/../applications'));
 
 /**
  * Path to the packages
  */
-define('PACKAGES_PATH', __DIR__.'/../packages');
+define('PACKAGES_PATH', realpath(__DIR__.'/../packages'));
 
 /**
  * Path to the docroot
