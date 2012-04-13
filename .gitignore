@@ -4,3 +4,5 @@ packages/.composer
 public/assets/*
 applications/*/logs/*
 .idea
+build.xml
+build.log
