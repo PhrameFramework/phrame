@@ -42,7 +42,6 @@ spl_autoload_register(
     function ($class_name)
     {
         $file = str_replace('\\', '/', strtolower($class_name)).'.php';
-        
         require_once is_file(APPLICATIONS_PATH.'/'.$file) ? APPLICATIONS_PATH.'/'.$file : PACKAGES_PATH.'/'.$file;
     }
 );
