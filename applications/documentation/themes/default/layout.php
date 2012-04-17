@@ -22,9 +22,24 @@
                                     <?php echo $this->app->lang->get('Home'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->app->route->controller === 'core/home') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->app->config->base_url; ?>/core">
-                                    <?php echo $this->app->lang->get('Core'); ?>
+                            <li <?php if ($this->app->route->controller === 'about') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>/about">
+                                    <?php echo $this->app->lang->get('About'); ?>
+                                </a>
+                            </li>
+                            <li <?php if ($this->app->route->controller === 'install') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>/install">
+                                    <?php echo $this->app->lang->get('Installation'); ?>
+                                </a>
+                            </li>
+                            <li <?php if ($this->app->route->controller === 'quickstart') echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>/quickstart">
+                                    <?php echo $this->app->lang->get('Quick Start'); ?>
+                                </a>
+                            </li>
+                            <li <?php if (strpos($this->app->route->controller, 'api') === 0) echo 'class="active"'; ?>>
+                                <a href="<?php echo $this->app->config->base_url; ?>/api">
+                                    <?php echo $this->app->lang->get('API'); ?>
                                 </a>
                             </li>
                         </ul>

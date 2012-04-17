@@ -10,4 +10,5 @@ class Index extends Core\Controller
     {
         $this->layout->content = new Core\View('index', array(), $this->app_name);
     }
+
 }
