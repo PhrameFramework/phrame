@@ -1,16 +1,11 @@
 <?php
+/**
+ * Lang config
+ * 
+ * @see  packages/phrame/core/config/lang.php
+ */
 
 return array(
-    
-    /**
-     * Application language
-     */
-    'language'          => 'auto',
-
-    /**
-     * Default application language
-     */
-    'default_language'  => 'en',
 
     /**
      * Translations
