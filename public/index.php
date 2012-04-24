@@ -13,27 +13,27 @@
 /**
  * Path to the applications
  */
-define('APPLICATIONS_PATH', realpath(__DIR__.'/../applications'));
+defined('APPLICATIONS_PATH') or define('APPLICATIONS_PATH', realpath(__DIR__.'/../applications'));
 
 /**
  * Path to the packages
  */
-define('PACKAGES_PATH', realpath(__DIR__.'/../packages'));
+defined('PACKAGES_PATH') or define('PACKAGES_PATH', realpath(__DIR__.'/../packages'));
 
 /**
  * Path to the docroot
  */
-define('PUBLIC_PATH', __DIR__);
+defined('PUBLIC_PATH') or define('PUBLIC_PATH', __DIR__);
 
 /**
- * Application to run
+ * Application name to be run
  */
-define('APPLICATION_NAME', getenv('APPLICATION_NAME') ?: 'main');
+defined('APPLICATION_NAME') or define('APPLICATION_NAME', getenv('APPLICATION_NAME') ?: 'main');
 
 /**
  * Application environment
  */
-define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
+defined('APPLICATION_ENV') or define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 
 // Registering autoloader
 spl_autoload_register(
