@@ -35,9 +35,7 @@ define('APPLICATION_NAME', getenv('APPLICATION_NAME') ?: 'main');
  */
 define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 
-/**
- * Registering autoloader
- */
+// Registering autoloader
 spl_autoload_register(
     function ($class_name)
     {
@@ -46,7 +44,5 @@ spl_autoload_register(
     }
 );
 
-/**
- * Booting
- */
+// Booting
 Phrame\Core\Bootstrap::init();
