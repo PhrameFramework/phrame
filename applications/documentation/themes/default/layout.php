@@ -1,45 +1,51 @@
+<?php
+/**
+ * @var  $app      \Phrame\Core\Application
+ * @var  $content  string
+ */
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
         <title>Documentation</title>
         <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <?php echo $this->app->asset->css('bootstrap.css', array('media'=>'all')); ?>
-        <?php echo $this->app->asset->css('style.css', array('media'=>'all')); ?>
+        <?php echo $app->asset->css('bootstrap.css', array('media'=>'all')); ?>
+        <?php echo $app->asset->css('style.css', array('media'=>'all')); ?>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
             <a href="http://github.com/PhrameFramework"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"></a>
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="<?php echo $this->app->config->base_url; ?>">Phrame</a>
+                    <a class="brand" href="<?php echo $app->config['base_url']; ?>">Phrame</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li <?php if ($this->app->route->controller === 'index') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->app->config->base_url; ?>">
-                                    <?php echo $this->app->lang->get('Home'); ?>
+                            <li <?php if ($app->route->controller === 'index') echo 'class="active"'; ?>>
+                                <a href="<?php echo $app->config['base_url']; ?>">
+                                    <?php echo $app->lang->get('Home'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->app->route->controller === 'about') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->app->config->base_url; ?>/about">
-                                    <?php echo $this->app->lang->get('About'); ?>
+                            <li <?php if ($app->route->controller === 'about') echo 'class="active"'; ?>>
+                                <a href="<?php echo $app->config['base_url']; ?>/about">
+                                    <?php echo $app->lang->get('About'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->app->route->controller === 'install') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->app->config->base_url; ?>/install">
-                                    <?php echo $this->app->lang->get('Installation'); ?>
+                            <li <?php if ($app->route->controller === 'install') echo 'class="active"'; ?>>
+                                <a href="<?php echo $app->config['base_url']; ?>/install">
+                                    <?php echo $app->lang->get('Installation'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($this->app->route->controller === 'quickstart') echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->app->config->base_url; ?>/quickstart">
-                                    <?php echo $this->app->lang->get('Quick Start'); ?>
+                            <li <?php if ($app->route->controller === 'quickstart') echo 'class="active"'; ?>>
+                                <a href="<?php echo $app->config['base_url']; ?>/quickstart">
+                                    <?php echo $app->lang->get('Quick Start'); ?>
                                 </a>
                             </li>
-                            <li <?php if (strpos($this->app->route->controller, 'api') === 0) echo 'class="active"'; ?>>
-                                <a href="<?php echo $this->app->config->base_url; ?>/api">
-                                    <?php echo $this->app->lang->get('API'); ?>
+                            <li <?php if (strpos($app->route->controller, 'api') === 0) echo 'class="active"'; ?>>
+                                <a href="<?php echo $app->config['base_url']; ?>/api">
+                                    <?php echo $app->lang->get('API'); ?>
                                 </a>
                             </li>
                         </ul>
