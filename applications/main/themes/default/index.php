@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1><?php echo $name; ?></h1>
+    <h1>Phrame</h1>
     <p>PHP 5.3 Framework</p>
 </div>
 

@@ -8,6 +8,7 @@ class About extends Core\Controller
 {
     public function index()
     {
-        $this->layout->content = 'About '.$this->app->request->cookie('about');
+        $this->layout->content = new Core\View('about');
     }
+
 }
