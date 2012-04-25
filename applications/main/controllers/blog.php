@@ -18,9 +18,4 @@ class Blog extends Core\Controller
         $this->layout->content = Core\Applications::content('blog');
     }
 
-    public function comment()
-    {
-        // Simple handling of a specific uri in another application
-        Core\Applications::run('blog/post/comment');
-    }
 }

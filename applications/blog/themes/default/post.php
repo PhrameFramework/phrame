@@ -31,14 +31,9 @@
         <?php
     }
     ?>
-    <form method="post" action="<?php echo $app->config['base_url']; ?>/post/comment">
+    <form method="post" action="<?php echo $app->config['base_url']; ?>/post/<?php echo $post->id; ?>">
         <fieldset>
             <legend><?php echo $app->lang->get('Add comment'); ?></legend>
-            <div class="control-group">
-                <div class="controls">
-                    <input type="hidden" name="post_id" value="<?php echo $post->id; ?>" />
-                </div>
-            </div>
             <div class="control-group">
                 <label class="control-label" for="comment_author"><?php echo $app->lang->get('Name'); ?></label>
                 <div class="controls">

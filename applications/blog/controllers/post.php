@@ -7,44 +7,47 @@ use Blog\Models;
 
 class Post extends Core\Controller
 {
-    public function index($id)
+    public function index($post_id)
     {
-        $post = Models\Post::find_by_id($id);
-
-        if ( ! empty($post))
+        if ($this->app->request->method() === 'POST')
         {
-            $this->layout->content = new Core\View(
-                'post',
-                array(
-                    'post' => $post
-                ),
-                $this->app_name
-            );
+            //TODO: Validation required
+            $comment_author = $this->app->request->post('comment_author');
+            $comment_text   = $this->app->request->post('comment_text');
+
+            if ( ! empty($post_id) and ! empty($comment_author) and ! empty($comment_text))
+            {
+                $comment = new Models\Comment();
+                $comment->post_id         = $post_id;
+                $comment->comment_date    = date('Y-m-d H:i');
+                $comment->comment_author  = $comment_author;
+                $comment->comment_text    = $comment_text;
+                $comment->save();
+            }
+
+            $url = $this->app->config['base_url'].'/post/'.$post_id;
+            $this->app->response->redirect($url);
         }
         else
         {
-            $this->error_404();
-        }
-    }
+            $post = Models\Post::find_by_id($post_id);
 
-    public function comment()
-    {
-        $post_id        = $this->app->request->post('post_id');
-        $comment_author = $this->app->request->post('comment_author');
-        $comment_text   = $this->app->request->post('comment_text');
-
-        if ( ! empty($post_id) and ! empty($comment_author) and ! empty($comment_text))
-        {
-            $comment = new Models\Comment();
-            $comment->post_id         = $post_id;
-            $comment->comment_date    = date('Y-m-d H:i');
-            $comment->comment_author  = $comment_author;
-            $comment->comment_text    = $comment_text;
-            $comment->save();
+            if ( ! empty($post))
+            {
+                $this->layout->content = new Core\View(
+                    'post',
+                    array(
+                        'post' => $post
+                    ),
+                    $this->app_name
+                );
+            }
+            else
+            {
+                $this->error_404();
+            }
         }
 
-        $url = $this->app->config['base_url'].'/post/'.$post_id;
-        $this->app->response->redirect($url);
     }
 
 }
