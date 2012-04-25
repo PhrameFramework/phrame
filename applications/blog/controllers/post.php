@@ -43,7 +43,7 @@ class Post extends Core\Controller
             $comment->save();
         }
 
-        $url = $this->app->config->base_url.'/post/'.$post_id;
+        $url = $this->app->config['base_url'].'/post/'.$post_id;
         $this->app->response->redirect($url);
     }
 
