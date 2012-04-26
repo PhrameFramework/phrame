@@ -9,13 +9,18 @@ class Post extends Core\Controller
 {
     public function index($post_id)
     {
+        $comment_author = $this->app->request->post('comment_author');
+        $comment_text   = $this->app->request->post('comment_text');
+
+        $validator = new Core\Validator();
+
         if ($this->app->request->method() === 'POST')
         {
-            //TODO: Validation required
-            $comment_author = $this->app->request->post('comment_author');
-            $comment_text   = $this->app->request->post('comment_text');
+            $valid = $validator->validate($post_id, 'required');
+            $valid = $validator->validate($comment_author, 'required', 'Name') && $valid;
+            $valid = $validator->validate($comment_text, 'required', 'Text') && $valid;
 
-            if ( ! empty($post_id) and ! empty($comment_author) and ! empty($comment_text))
+            if ($valid)
             {
                 $comment = new Models\Comment();
                 $comment->post_id         = $post_id;
@@ -23,31 +28,31 @@ class Post extends Core\Controller
                 $comment->comment_author  = $comment_author;
                 $comment->comment_text    = $comment_text;
                 $comment->save();
-            }
 
-            $url = $this->app->config['base_url'].'/post/'.$post_id;
-            $this->app->response->redirect($url);
+                $url = $this->app->config['base_url'].'/post/'.$post_id;
+                $this->app->response->redirect($url);
+            }
+        }
+
+        $post = Models\Post::find_by_id($post_id);
+
+        if ( ! empty($post))
+        {
+            $this->layout->content = new Core\View(
+                'post',
+                array(
+                    'post'           => $post,
+                    'comment_author' => $comment_author,
+                    'comment_text'   => $comment_text,
+                    'errors'         => $validator->errors,
+                ),
+                $this->app_name
+            );
         }
         else
         {
-            $post = Models\Post::find_by_id($post_id);
-
-            if ( ! empty($post))
-            {
-                $this->layout->content = new Core\View(
-                    'post',
-                    array(
-                        'post' => $post
-                    ),
-                    $this->app_name
-                );
-            }
-            else
-            {
-                $this->error_404();
-            }
+            $this->error_404();
         }
-
     }
 
 }
