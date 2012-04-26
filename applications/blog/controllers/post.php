@@ -12,13 +12,13 @@ class Post extends Core\Controller
         $comment_author = $this->app->request->post('comment_author');
         $comment_text   = $this->app->request->post('comment_text');
 
-        $validator = new Core\Validator();
+        $validator = new Core\Validator($this->app_name);
 
         if ($this->app->request->method() === 'POST')
         {
             $valid = $validator->validate($post_id, 'required');
-            $valid = $validator->validate($comment_author, 'required', 'Name') && $valid;
-            $valid = $validator->validate($comment_text, 'required', 'Text') && $valid;
+            $valid = $validator->validate($comment_author, 'required', $this->app->lang->get('Name')) && $valid;
+            $valid = $validator->validate($comment_text, 'required', $this->app->lang->get('Text')) && $valid;
 
             if ($valid)
             {
