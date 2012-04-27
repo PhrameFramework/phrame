@@ -10,3 +10,6 @@
 [submodule "packages/phrame/profiler"]
 	path = packages/phrame/profiler
 	url = git://github.com/PhrameFramework/profiler.git
+[submodule "packages/phrame/auth"]
+	path = packages/phrame/auth
+	url = git@github.com:PhrameFramework/auth.git
