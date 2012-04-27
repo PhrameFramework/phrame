@@ -5,8 +5,7 @@ php:
   - 5.4
 
 before_install:
-  - git submodule init
-  - git submodule update
+  - git submodule update --init --recursive
 
 script: phpunit --configuration packages/phrame/core/tests/phpunit.xml
 
