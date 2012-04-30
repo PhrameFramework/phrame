@@ -20,7 +20,7 @@ class Login extends Core\Controller
 
             $auth = new \Phrame\Auth\Auth();
 
-            if ($valid and $auth->check($name, $password))
+            if ($valid and $auth->login($name, $password))
             {
                 $this->app->response->redirect($this->app->config['base_url']);
             }
