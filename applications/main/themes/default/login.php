@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="name">Password:</label>
+            <label class="control-label" for="password">Password:</label>
             <div class="controls">
                 <input type="password" name="password" class="input-xlarge" id="password" value="" />
             </div>
