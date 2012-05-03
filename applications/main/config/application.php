@@ -8,6 +8,11 @@
 return array(
 
     /**
+     * Use php sessions
+     */
+    'use_sessions'     => true,
+
+    /**
      * Packages to load
      */
     'packages'         => array(
