@@ -7,7 +7,7 @@
     <h1>Login</h1>
 </div>
 
-<form method="post" action="<?php echo $app->config['base_url']; ?>/login">
+<form method="post" action="<?php echo $app->config['base_url']; ?>/auth/login">
     <fieldset>
         <div class="control-group">
             <label class="control-label" for="name">Name:</label>
