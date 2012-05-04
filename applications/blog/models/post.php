@@ -11,7 +11,7 @@ class Post extends Activerecord\Model
             'comments',
             'foreign_key'  => 'post_id',
             'class_name'   => 'Blog\Models\Comment',
-            'order'        => 'comment_date desc',
+            'order'        => 'comment_date asc',
         )
     );
 
