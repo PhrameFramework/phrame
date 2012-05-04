@@ -10,7 +10,8 @@ class Post extends Activerecord\Model
         array(
             'comments',
             'foreign_key'  => 'post_id',
-            'class_name'   => 'Blog\Models\Comment'
+            'class_name'   => 'Blog\Models\Comment',
+            'order'        => 'comment_date desc',
         )
     );
 

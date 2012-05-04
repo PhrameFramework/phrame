@@ -11,7 +11,7 @@ return array(
      * Routes
      */
     'routes' => array(
-        '^post/([0-9]+)'  => 'post/index/$1',
+        '^post/(\d+)'  => 'post/index/$1',
         
     ),
     
