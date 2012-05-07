@@ -21,7 +21,7 @@ class Post extends Core\Controller
             $comment->comment_text    = $form->comment_text;
             $comment->save();
 
-            $this->app->response->redirect($this->app->config['base_url'].'/post/'.$post_id);
+            $this->app->response->redirect($this->app->config['base_url'].'/post/'.$form->post_id);
         }
 
         $post = Models\Post::find_by_id($form->post_id);
