@@ -11,17 +11,17 @@
 if ( ! empty($errors))
 {
     ?>
-<div  class="alert alert-error">
-    <?php
-    foreach ($errors as $error)
-    {
-        ?>
-        <p><?php echo $error; ?></p>
+    <div  class="alert alert-error">
         <?php
-    }
-    ?>
-</div>
-<?php
+        foreach ($errors as $error)
+        {
+            ?>
+            <p><?php echo $error; ?></p>
+            <?php
+        }
+        ?>
+    </div>
+    <?php
 }
 ?>
 
