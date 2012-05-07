@@ -12,19 +12,16 @@ class Post extends Core\Controller
         $form = new \Blog\Forms\Comment('comment', $this->app->request->post(), $this->app_name);
         $form->post_id = $post_id;
 
-        if ($this->app->request->is_post())
+        if ($this->app->request->is_post() and $form->valid())
         {
-            if ($form->valid())
-            {
-                $comment = new Models\Comment();
-                $comment->post_id         = $form->post_id;
-                $comment->comment_date    = date('Y-m-d H:i');
-                $comment->comment_author  = $form->comment_author;
-                $comment->comment_text    = $form->comment_text;
-                $comment->save();
+            $comment = new Models\Comment();
+            $comment->post_id         = $form->post_id;
+            $comment->comment_date    = date('Y-m-d H:i');
+            $comment->comment_author  = $form->comment_author;
+            $comment->comment_text    = $form->comment_text;
+            $comment->save();
 
-                $this->app->response->redirect($this->app->config['base_url'].'/post/'.$post_id);
-            }
+            $this->app->response->redirect($this->app->config['base_url'].'/post/'.$post_id);
         }
 
         $post = Models\Post::find_by_id($form->post_id);
