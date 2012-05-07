@@ -14,7 +14,7 @@ class Post extends Core\Controller
 
         $validator = new Core\Validator($this->app_name);
 
-        if ($this->app->request->method() === 'POST')
+        if ($this->app->request->is_post())
         {
             $valid = $validator->validate($post_id, 'required|num');
             $valid = $validator->validate($comment_author, 'required', $this->app->lang->get('Name')) && $valid;

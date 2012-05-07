@@ -28,7 +28,7 @@ class Auth extends Core\Controller
         {
             $form = new \Main\Forms\Login('login', $this->app->request->post());
 
-            if ($this->app->request->method() === 'POST' and $form->valid())
+            if ($this->app->request->is_post() and $form->valid())
             {
                 $this->app->response->redirect($this->app->config['base_url']);
             }
@@ -51,7 +51,7 @@ class Auth extends Core\Controller
         }
         else
         {
-            if ($this->app->request->method() === 'POST')
+            if ($this->app->request->is_post())
             {
                 $auth->logout();
 
