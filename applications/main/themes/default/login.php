@@ -7,12 +7,30 @@
     <h1>Login</h1>
 </div>
 
+<?php
+if ( ! empty($errors))
+{
+    ?>
+<div  class="alert alert-error">
+    <?php
+    foreach ($errors as $error)
+    {
+        ?>
+        <p><?php echo $error; ?></p>
+        <?php
+    }
+    ?>
+</div>
+<?php
+}
+?>
+
 <form method="post" action="<?php echo $app->config['base_url']; ?>/auth/login">
     <fieldset>
         <div class="control-group">
             <label class="control-label" for="name">Name:</label>
             <div class="controls">
-                <input type="text" name="name" class="input-xlarge" id="name" value="<?php echo $name; ?>" />
+                <input type="text" name="name" class="input-xlarge" id="name" value="<?php echo $this->name; ?>" />
             </div>
         </div>
         <div class="control-group">

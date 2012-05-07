@@ -26,29 +26,14 @@ class Auth extends Core\Controller
 
         if ( ! $auth->authenticated())
         {
-            $name      = $this->app->request->post('name');
-            $password  = $this->app->request->post('password');
+            $form = new \Main\Forms\Login('login', $this->app->request->post());
 
-            $validator = new Core\Validator();
-
-            if ($this->app->request->method() === 'POST')
+            if ($this->app->request->method() === 'POST' and $form->valid())
             {
-                $valid = $validator->validate($name, 'required');
-                $valid = $validator->validate($password, 'required') && $valid;
-
-                if ($valid and $auth->login($name, $password))
-                {
-                    $this->app->response->redirect($this->app->config['base_url']);
-                }
+                $this->app->response->redirect($this->app->config['base_url']);
             }
 
-            $this->layout->content = new Core\View(
-                'login',
-                array(
-                    'name'    => $name,
-                    'errors'  => $validator->errors,
-                )
-            );
+            $this->layout->content = $form;
         }
         else
         {
