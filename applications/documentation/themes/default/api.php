@@ -50,6 +50,11 @@
         </a>
     </li>
     <li>
+        <a href="<?php echo $app->config['base_url']; ?>/api/core/form">
+            Form
+        </a>
+    </li>
+    <li>
         <a href="<?php echo $app->config['base_url']; ?>/api/core/lang">
             Lang
         </a>
@@ -77,6 +82,11 @@
     <li>
         <a href="<?php echo $app->config['base_url']; ?>/api/core/route">
             Route
+        </a>
+    </li>
+    <li>
+        <a href="<?php echo $app->config['base_url']; ?>/api/core/validator">
+            Validator
         </a>
     </li>
     <li>
