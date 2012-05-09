@@ -33,8 +33,8 @@
                                     <?php echo $app->lang->get('About'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($app->route->application === 'documentation') echo 'class="active"'; ?>>
-                                <a href="<?php echo $app->config['base_url']; ?>/documentation">
+                            <li <?php if ($app->route->application === 'docs') echo 'class="active"'; ?>>
+                                <a href="<?php echo $app->config['base_url']; ?>/docs">
                                     <?php echo $app->lang->get('Documentation'); ?>
                                 </a>
                             </li>

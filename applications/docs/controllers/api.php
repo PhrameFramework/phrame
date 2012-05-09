@@ -1,6 +1,6 @@
 <?php
 
-namespace Documentation\Controllers;
+namespace Docs\Controllers;
 
 use Phrame\Core;
 
