@@ -4,6 +4,13 @@ namespace Blog\Forms;
 
 use Phrame\Core;
 
+/**
+ * Comment form
+ *
+ * @property  int     $post_id
+ * @property  string  $comment_author
+ * @property  string  $comment_text
+ */
 class Comment extends Core\Form
 {
     public function valid()
