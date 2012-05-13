@@ -38,7 +38,7 @@
                                     <?php echo $app->lang->get('Documentation'); ?>
                                 </a>
                             </li>
-                            <li <?php if ($app->route->application === 'main' and $app->route->controller === 'blog') echo 'class="active"'; ?>>
+                            <li <?php if ($app->route->application === 'blog') echo 'class="active"'; ?>>
                                 <a href="<?php echo $app->config['base_url']; ?>/blog">
                                     <?php echo $app->lang->get('Blog'); ?>
                                 </a>
