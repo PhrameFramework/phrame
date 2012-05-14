@@ -24,7 +24,7 @@ class Login extends Core\Form
             $this->validator->errors[] = $this->app->lang->get('Wrong name or password');
         }
 
-        $valid = $login && $is_valid;
+        $is_valid = $login && $is_valid;
 
         return $is_valid;
     }
