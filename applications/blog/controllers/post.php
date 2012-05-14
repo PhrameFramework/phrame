@@ -12,7 +12,7 @@ class Post extends Core\Controller
         $form = new \Blog\Forms\Comment('comment', $this->app->request->post(), $this->app_name);
         $form->post_id = $post_id;
 
-        if ($this->app->request->is_post() and $form->valid())
+        if ($this->app->request->is_post() and $form->is_valid())
         {
             $comment = new Models\Comment();
             $comment->post_id         = $form->post_id;

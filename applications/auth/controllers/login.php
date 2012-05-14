@@ -10,11 +10,11 @@ class Login extends Core\Controller
     {
         $auth = new \Phrame\Auth\Auth($this->app_name);
 
-        if ( ! $auth->authenticated())
+        if ( ! $auth->is_authenticated())
         {
             $form = new \Auth\Forms\Login('login', $this->app->request->post(), $this->app_name);
 
-            if ($this->app->request->is_post() and $form->valid())
+            if ($this->app->request->is_post() and $form->is_valid())
             {
                 $this->app->response->redirect($this->app->config['base_url']);
             }

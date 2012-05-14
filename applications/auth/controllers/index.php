@@ -10,7 +10,7 @@ class Index extends Core\Controller
     {
         $auth = new \Phrame\Auth\Auth($this->app_name);
 
-        if ( ! $auth->authenticated())
+        if ( ! $auth->is_authenticated())
         {
             $this->app->response->redirect($this->app->config['base_url'].'/login');
         }

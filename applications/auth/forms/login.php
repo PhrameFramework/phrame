@@ -12,10 +12,10 @@ use Phrame\Core;
  */
 class Login extends Core\Form
 {
-    public function valid()
+    public function is_valid()
     {
-        $valid = $this->validator->validate($this->username, 'required', $this->app->lang->get('Username'));
-        $valid = $this->validator->validate($this->password, 'required', $this->app->lang->get('Password')) && $valid;
+        $is_valid = $this->validator->is_valid($this->username, 'required', $this->app->lang->get('Username'));
+        $is_valid = $this->validator->is_valid($this->password, 'required', $this->app->lang->get('Password')) && $is_valid;
 
         $auth = new \Phrame\Auth\Auth($this->app_name);
         $login = $auth->login($this->username, $this->password);
@@ -24,9 +24,9 @@ class Login extends Core\Form
             $this->validator->errors[] = $this->app->lang->get('Wrong name or password');
         }
 
-        $valid = $login && $valid;
+        $valid = $login && $is_valid;
 
-        return $valid;
+        return $is_valid;
     }
 
 }

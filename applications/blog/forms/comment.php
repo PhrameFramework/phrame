@@ -13,13 +13,13 @@ use Phrame\Core;
  */
 class Comment extends Core\Form
 {
-    public function valid()
+    public function is_valid()
     {
-        $valid = $this->validator->validate($this->post_id, 'required|num', $this->app->lang->get('Post ID'));
-        $valid = $this->validator->validate($this->comment_author, 'required', $this->app->lang->get('Name')) && $valid;
-        $valid = $this->validator->validate($this->comment_text, 'required', $this->app->lang->get('Text')) && $valid;
+        $is_valid = $this->validator->is_valid($this->post_id, 'required|num', $this->app->lang->get('Post ID'));
+        $is_valid = $this->validator->is_valid($this->comment_author, 'required', $this->app->lang->get('Name')) && $is_valid;
+        $is_valid = $this->validator->is_valid($this->comment_text, 'required', $this->app->lang->get('Text')) && $is_valid;
 
-        return $valid;
+        return $is_valid;
     }
 
 }
