@@ -1,6 +1,8 @@
 <?php
 /**
- * @var  $app  \Phrame\Core\Application
+ * @var  $app      \Phrame\Core\Application
+ * @var  $post     \Blog\Models\Post
+ * @var  $comment  string
  */
 ?>
 <div class="page-header">

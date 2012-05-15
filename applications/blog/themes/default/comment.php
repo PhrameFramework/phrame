@@ -1,6 +1,8 @@
 <?php
 /**
- * @var  $app  \Phrame\Core\Application
+ * @var  $app     \Phrame\Core\Application
+ * @var  $this    \Blog\Forms\Comment
+ * @var  $errors  array
  */
 ?>
 

@@ -1,6 +1,8 @@
 <?php
 /**
- * @var  $app  \Phrame\Core\Application
+ * @var  $app     \Phrame\Core\Application
+ * @var  $this    \Auth\Forms\Login
+ * @var  $errors  array
  */
 ?>
 <div class="page-header">

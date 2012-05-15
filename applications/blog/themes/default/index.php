@@ -1,6 +1,7 @@
 <?php
 /**
- * @var  $app  \Phrame\Core\Application
+ * @var  $app    \Phrame\Core\Application
+ * @var  $posts  array
  */
 ?>
 <div class="page-header">
