@@ -1,6 +1,6 @@
 <?php
 /**
- * Activerecord config for the production environment
+ * Activerecord config
  *
  * @see  packages/phrame/activerecord/config/activerecord.php
  */
