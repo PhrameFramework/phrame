@@ -11,7 +11,8 @@ class Admin extends Core\Controller
         parent::init();
 
         $this->filters = array(
-            'before_action' => function($controller){
+            'before_action' => function($controller)
+            {
                 $auth = new \Phrame\Auth\Auth($controller->app_name);
                 if ( ! $auth->is_authenticated())
                 {
