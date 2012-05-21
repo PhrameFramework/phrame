@@ -24,7 +24,11 @@ class Admin extends Core\Controller
                 $auth = new \Phrame\Auth\Auth($controller->app_name);
                 if ( ! $auth->is_authenticated())
                 {
-                    $controller->app->response->redirect('/auth');
+                    // set redirect url
+                    $controller->app->response->set_session('r', 'admin');
+                    $controller->app->response->send_session();
+
+                    $controller->app->response->redirect('auth/login');
                 }
             },
 

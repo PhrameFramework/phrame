@@ -24,8 +24,11 @@ class Login extends Core\Controller
 
             if ($this->app->request->is_post() and $form->is_valid())
             {
-                // redirect to the main app homepage
-                $this->app->response->redirect(Core\Applications::get_instance()->config['base_url']);
+                // redirect to the main app
+                $url = Core\Applications::get_instance()->config['base_url'];
+                $url .= '/'.Core\Applications::get_instance()->request->session('r');
+                
+                $this->app->response->redirect($url);
             }
 
             $this->layout->content = $form;
