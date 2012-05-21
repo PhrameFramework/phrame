@@ -16,8 +16,8 @@ return array(
      * Packages to load
      */
     'packages'         => array(
-        //'phrame/activerecord',
-        //'phrame/auth',
+        'phrame/activerecord',
+        'phrame/auth',
 
     ),
 
