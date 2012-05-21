@@ -13,6 +13,11 @@ use Phrame\Core;
  */
 class Comment extends Core\Form
 {
+    /**
+     * Validates form data
+     *
+     * @return  bool
+     */
     public function is_valid()
     {
         $is_valid = $this->validator->is_valid($this->post_id, 'required|num', $this->app->lang->get('Post ID'));

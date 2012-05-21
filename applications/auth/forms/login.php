@@ -12,6 +12,11 @@ use Phrame\Core;
  */
 class Login extends Core\Form
 {
+    /**
+     * Validates form data
+     *
+     * @return  bool
+     */
     public function is_valid()
     {
         $is_valid = $this->validator->is_valid($this->username, 'required', $this->app->lang->get('Username'));

@@ -5,8 +5,17 @@ namespace Blog\Controllers;
 use Phrame\Core;
 use Blog\Models;
 
+/**
+ * Post controller
+ */
 class Post extends Core\Controller
 {
+    /**
+     * Index action
+     *
+     * @param   int   $post_id  Post id
+     * @return  void
+     */
     public function index($post_id)
     {
         $form = new \Blog\Forms\Comment('comment', $this->app->request->post(), $this->app_name);
