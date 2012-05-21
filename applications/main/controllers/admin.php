@@ -8,7 +8,7 @@ class Admin extends Core\Controller
 {
     public function init()
     {
-        parent::__init();
+        parent::init();
 
         $this->filters = array(
             'before_action' => function($controller){
