@@ -1,5 +1,10 @@
-SetEnv  APPLICATION_NAME  main
-SetEnv  APPLICATION_ENV   development
+# Uncomment and provide appropriate values
+#
+# Application name to be run
+# SetEnv  APPLICATION_NAME  main
+#
+# Application environment
+# SetEnv  APPLICATION_ENV   development
 
 <IfModule mod_rewrite.c>
     RewriteEngine on

@@ -3,6 +3,7 @@ composer.lock
 packages/.composer
 public/assets/*
 applications/*/logs/*
+applications/f*
 .idea
 .buildpath
 .project
