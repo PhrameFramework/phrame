@@ -27,7 +27,7 @@ if ( ! empty($errors))
 }
 ?>
 
-<form method="post" action="<?php echo $app->config['base_url']; ?>/login">
+<form method="post" action="<?php echo $app->config['base_url']; ?>/login" class="form-horizontal">
     <fieldset>
         <div class="control-group">
             <label class="control-label" for="username"><?php echo $app->lang->get('Username'); ?>:</label>
