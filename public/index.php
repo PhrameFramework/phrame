@@ -35,7 +35,10 @@ defined('APPLICATION_NAME') or define('APPLICATION_NAME', getenv('APPLICATION_NA
  */
 defined('APPLICATION_ENV') or define('APPLICATION_ENV', getenv('APPLICATION_ENV') ?: 'development');
 
-// Registering autoloader
+// Turn on composer autoloader
+require PACKAGES_PATH.'/autoload.php';
+
+// Registering own autoloader
 spl_autoload_register(
     function ($class_name)
     {

@@ -1,6 +1,7 @@
 composer.phar
 composer.lock
-packages/.composer
+packages/composer
+packages/autoload.php
 public/assets/*
 applications/*/logs/*
 applications/f*
